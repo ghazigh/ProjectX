@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From demo to production: what it takes to ship a reliable AI agent</title>
+<meta name="description" content="The impressive prototype is the easy 20%. Here is the 80% — evaluation, guardrails, observability, integration — that decides whether your agentic AI survives real users and real data.">
+<link rel="canonical" href="https://ghazigh.github.io/insights/agentic-ai-demo-to-production.html">
+<meta property="og:title" content="From demo to production: what it takes to ship a reliable AI agent">
+<meta property="og:description" content="The 80% of agentic AI work that decides whether your agent survives production.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="article.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "From demo to production: what it takes to ship a reliable AI agent",
+  "description": "The engineering that turns an agentic AI prototype into a system you can trust in production.",
+  "author": {"@type": "Person", "name": "Ghazi Gharsallah", "url": "https://ghazigh.github.io/work-with-me.html"},
+  "mainEntityOfPage": "https://ghazigh.github.io/insights/agentic-ai-demo-to-production.html"
+}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="bar">
+  <a class="brand" href="../work-with-me.html">Ghazi Gharsallah</a>
+  <a class="cta" href="{{BOOKING_LINK}}">Book a call</a>
+</div></div>
+
+<div class="wrap">
+<article>
+  <div class="post-meta mono">Reliability · Agentic AI</div>
+  <h1>From demo to production: what it actually takes to ship a reliable AI agent</h1>
+  <p class="lede">The prototype that wowed the room is the easy 20%. The other 80% is what decides whether your agent survives real users, real data, and the day something goes wrong.</p>
+
+  <p>Most agentic AI projects don't fail because the model isn't capable. They fail in the gap between "it worked in the demo" and "we can rely on it." That gap is unglamorous engineering — and skipping it is why so many AI initiatives quietly stall after the proof-of-concept. Here's what lives in that gap, in plain terms.</p>
+
+  <h2>1. Evaluation — how do you <em>know</em> it works?</h2>
+  <p>A demo proves the agent can succeed once. Production needs to know how often it succeeds, on what, and whether a change made things better or worse. That means a test set of real cases and a way to score the agent against it — so you're measuring, not hoping. Without evals, every "improvement" is a guess and every regression is a surprise your users find first.</p>
+
+  <h2>2. Guardrails — what stops it doing the wrong thing?</h2>
+  <p>An agent that can act can act badly: call the wrong tool, take an irreversible step, leak something it shouldn't, or loop forever. Production systems constrain what the agent is allowed to do, validate inputs and outputs, require confirmation for high-stakes actions, and fail safe. This is the difference between a clever toy and something you'd let touch a customer or a transaction.</p>
+
+  <h2>3. Observability — can you see what it did and why?</h2>
+  <p>When an agent makes a bad call at 2 a.m., you need to reconstruct what happened: what it saw, what it decided, which tools it ran, what they returned. Logging, tracing, and a way to replay a conversation aren't extras — they're how you debug, improve, and earn trust. If you can't see inside the agent, you can't operate it.</p>
+
+  <h2>4. Integration — does it touch the real world?</h2>
+  <p>A notebook agent creates no value. A production agent is wired into the actual tools, data, and workflows of the business — with authentication, permissions, rate limits, and error handling for every system it touches. Most of the real engineering is in these seams, and they're where reliability is won or lost.</p>
+
+  <h2>5. Failure handling — what happens when something breaks?</h2>
+  <p>Tools time out. APIs return garbage. Inputs arrive in shapes nobody anticipated. A production agent expects this: it retries sensibly, degrades gracefully, and escalates to a human when it's out of its depth — rather than confidently doing the wrong thing. Designing for failure is most of designing for trust.</p>
+
+  <h2>6. Cost control</h2>
+  <p>Agents that plan and call tools can quietly run up usage — looping, over-calling, or processing more than needed. Production builds set budgets, cap iterations, and choose the right model for each step, so cost stays predictable as volume grows.</p>
+
+  <h2>7. Ownership — who keeps it alive?</h2>
+  <p>An agent is a living system. Models change, data drifts, requirements evolve. Someone has to own it. A responsible build hands over documentation, evals, and a clear operating model — so the system doesn't rot the moment the original builder walks away.</p>
+
+  <hr>
+  <h2>Signs your agent isn't production-ready</h2>
+  <ul>
+    <li>You can't say how often it succeeds, only that it "usually works."</li>
+    <li>There's no record of what it did on a given request.</li>
+    <li>Nothing stops it taking an irreversible action by mistake.</li>
+    <li>It breaks on inputs slightly different from the demo.</li>
+    <li>Nobody owns it, and no one's sure how to change it safely.</li>
+  </ul>
+
+  <p>None of this means agentic AI is too hard to be worth it — it means the work is real, and the value is in doing it properly. The teams that win with agents are the ones that treat the 80% as the job, not an afterthought.</p>
+
+  <div class="cta-box">
+    <h3>Have an agent stuck at the demo stage?</h3>
+    <p>That gap to production is exactly what I close. Book a 20-minute fit call and we'll see if it's a fit.</p>
+    <a href="{{BOOKING_LINK}}">Book a fit call</a>
+  </div>
+
+  <p style="color:#6c6557;font-size:.95rem">Related: <a href="agentic-ai-cost-guide.html">What does it cost to build an agentic AI system?</a></p>
+</article>
+</div>
+
+<footer><div class="wrap-wide">
+  © <span id="yr"></span> Ghazi Gharsallah · <a href="index.html">More insights</a> · <a href="../work-with-me.html">Work with me</a>
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
