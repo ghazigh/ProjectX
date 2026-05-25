@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghazi Gharsallah — Agentic AI systems that ship</title>
+<meta name="description" content="I design and build production-grade agentic AI systems — for teams that need reliability, not another demo. PhD AI researcher, IEEE-published, with agentic AI experience in financial services.">
+<meta property="og:title" content="Ghazi Gharsallah — Agentic AI systems that ship">
+<meta property="og:description" content="Production-grade agentic AI: audits, builds, and fractional leadership.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1EA; --paper-2:#EFEBE1; --ink:#1b1916; --muted:#6c6557;
+    --line:#dcd5c6; --accent:#b0512c; --accent-deep:#8f3f20; --card:#fbf9f4;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:var(--accent-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted)}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;line-height:1.08;font-weight:600;margin:0}
+  h1{font-size:clamp(2.4rem,6vw,4.4rem);letter-spacing:-.01em}
+  h2{font-size:clamp(1.7rem,3.5vw,2.6rem);margin-bottom:.4em}
+  h3{font-size:1.25rem;margin-bottom:.3em}
+  em{font-style:italic}
+  .accent{color:var(--accent)}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(244,241,234,.86);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:"Fraunces";font-weight:600;font-size:1.05rem}
+  .nav a{color:var(--ink);margin-left:22px;font-size:.95rem}
+  .nav a.cta{background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:2px}
+  .nav a.cta:hover{background:var(--accent-deep);text-decoration:none}
+  @media(max-width:680px){.nav a:not(.cta){display:none}}
+
+  /* hero */
+  .hero{padding:84px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{margin-bottom:22px}
+  .hero p.lede{font-size:clamp(1.05rem,2vw,1.3rem);color:#3a352c;max-width:42ch;margin:24px 0 0}
+  .hero .sub{color:var(--muted);max-width:54ch;margin-top:14px;font-size:1.02rem}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .btn{display:inline-block;padding:14px 26px;border-radius:2px;font-family:"JetBrains Mono";
+    font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--accent-deep);text-decoration:none}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);text-decoration:none}
+  .credline{margin-top:30px;display:flex;gap:8px 22px;flex-wrap:wrap;align-items:center}
+  .credline span{display:inline-flex;align-items:center;gap:8px}
+  .credline .dot{color:var(--accent)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .secnum{margin-bottom:18px}
+  .dek{color:var(--muted);max-width:60ch;margin-top:6px}
+
+  /* problem */
+  .prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:34px}
+  .prob{border-top:2px solid var(--ink);padding-top:16px}
+  .prob h3{font-size:1.08rem}
+  .prob p{font-size:1rem;color:#403a30;margin:.4em 0 0}
+
+  /* offers */
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:38px}
+  .offer{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:30px 26px;
+    display:flex;flex-direction:column}
+  .offer.feature{border-color:var(--accent);box-shadow:0 12px 40px -24px rgba(143,63,32,.6)}
+  .offer .tag{margin-bottom:14px}
+  .offer h3{font-size:1.4rem}
+  .offer .price{font-family:"JetBrains Mono";font-size:.95rem;color:var(--accent-deep);margin:10px 0 4px;font-weight:600}
+  .offer .term{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+  .offer ul{list-style:none;padding:0;margin:0 0 22px;font-size:1rem}
+  .offer li{padding:7px 0 7px 24px;position:relative;color:#3a352c;border-bottom:1px dotted var(--line)}
+  .offer li:before{content:"→";position:absolute;left:0;color:var(--accent)}
+  .offer .btn{margin-top:auto;text-align:center}
+
+  /* proof */
+  .proof-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-top:30px}
+  @media(max-width:760px){.proof-grid{grid-template-columns:1fr}}
+  .proof ul{padding-left:0;list-style:none;margin:18px 0 0}
+  .proof li{padding:10px 0;border-bottom:1px solid var(--line);font-size:1.02rem}
+  .proof li .mono{display:block;margin-bottom:2px}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-self:start}
+  .stat{background:var(--paper-2);border-radius:4px;padding:22px}
+  .stat b{font-family:"Fraunces";font-size:2.2rem;display:block;line-height:1}
+  .stat span{color:var(--muted);font-size:.9rem}
+
+  /* process */
+  .steps{counter-reset:s;margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+  .step{position:relative;padding-top:40px}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;
+    font-family:"Fraunces";font-size:1.6rem;color:var(--accent);font-weight:600}
+  .step h3{font-size:1.05rem}
+  .step p{font-size:.98rem;color:#403a30;margin:.3em 0 0}
+
+  /* faq */
+  details{border-bottom:1px solid var(--line);padding:18px 0}
+  summary{font-family:"Fraunces";font-size:1.15rem;cursor:pointer;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary:before{content:"+ ";color:var(--accent);font-weight:600}
+  details[open] summary:before{content:"– "}
+  details p{color:#403a30;margin:.7em 0 0;font-size:1.02rem}
+
+  /* final cta */
+  .final{background:var(--ink);color:var(--paper);text-align:center;border:none}
+  .final h2{color:var(--paper)}
+  .final .dek{color:#cfc6b4;margin:0 auto}
+  .final .btn-primary{background:var(--accent);margin-top:28px}
+  .final .btn-primary:hover{background:#c75d33}
+  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span class="brand">Ghazi Gharsallah</span>
+  <nav class="nav">
+    <a href="#offers">Work with me</a>
+    <a href="#proof">Track record</a>
+    <a class="cta" href="{{BOOKING_LINK}}">Book a call</a>
+  </nav>
+</div></div>
+
+<!-- HERO -->
+<header class="hero"><div class="wrap">
+  <div class="eyebrow mono">Agentic AI · Design &amp; Build · Remote / Global</div>
+  <h1>Agentic AI that survives <em class="accent">production</em>,<br>not just the demo.</h1>
+  <p class="lede">I design and build agentic AI systems that hold up under real load, real data, and real stakes.</p>
+  <p class="sub">Most agentic projects die as an impressive prototype that nobody trusts in production. I bring research-grade rigor and financial-sector reliability standards to the messy part — so the agent actually ships, and keeps working.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="{{BOOKING_LINK}}">Book a 20-min fit call</a>
+    <a class="btn btn-ghost" href="#offers">See how we'd work together</a>
+  </div>
+  <div class="credline mono">
+    <span><span class="dot">●</span> PhD AI researcher (ÉTS Montréal)</span>
+    <span><span class="dot">●</span> IEEE-published</span>
+    <span><span class="dot">●</span> Agentic AI in financial services</span>
+  </div>
+</div></header>
+
+<!-- PROBLEM -->
+<section id="problem"><div class="wrap">
+  <div class="secnum mono">§ 01 — Why most agentic AI stalls</div>
+  <h2>The demo works. <em>Then what?</em></h2>
+  <p class="dek">The gap between a slick proof-of-concept and a system your team relies on is where most budgets disappear. That gap is exactly what I close.</p>
+  <div class="prob-grid">
+    <div class="prob"><h3>It's unreliable</h3><p>Agents that hallucinate, loop, or break on edge cases the demo never hit. No evals, no guardrails, no observability.</p></div>
+    <div class="prob"><h3>It doesn't integrate</h3><p>A clever notebook that never touches your real tools, data, or workflows — so it never creates value.</p></div>
+    <div class="prob"><h3>It's not safe to trust</h3><p>No controls around data, cost, or failure modes. Fine for a toy; unacceptable for anything that matters.</p></div>
+    <div class="prob"><h3>Nobody owns it</h3><p>Built by a vendor who leaves, or a team without agentic depth. It rots the moment it's handed over.</p></div>
+  </div>
+</div></section>
+
+<!-- OFFERS -->
+<section id="offers"><div class="wrap">
+  <div class="secnum mono">§ 02 — Ways to work together</div>
+  <h2>Three clear ways in.</h2>
+  <p class="dek">Start small and de-risked, or go straight to a build. Each is fixed-scope and fixed-price — you always know what you're buying. <em>Prices below are starting points; tune to your numbers.</em></p>
+  <div class="offers">
+
+    <div class="offer">
+      <div class="tag mono">Start here</div>
+      <h3>Agentic AI Audit &amp; Roadmap</h3>
+      <div class="price">from $3,500</div>
+      <div class="term">~1–2 weeks · fixed price</div>
+      <ul>
+        <li>Where agentic AI creates real ROI in your business</li>
+        <li>Feasibility, risks, data &amp; integration review</li>
+        <li>Prioritized roadmap with effort &amp; impact</li>
+        <li>A concrete build plan you can execute (with me or without)</li>
+      </ul>
+      <a class="btn btn-ghost" href="{{BOOKING_LINK}}">Book the audit</a>
+    </div>
+
+    <div class="offer feature">
+      <div class="tag mono accent">Most popular</div>
+      <h3>Agentic AI Build Sprint</h3>
+      <div class="price">from $12,000</div>
+      <div class="term">4–6 weeks · fixed scope</div>
+      <ul>
+        <li>One high-value agent/workflow, built to production standard</li>
+        <li>Evals, guardrails, observability &amp; cost controls baked in</li>
+        <li>Integrated with your real tools and data</li>
+        <li>Handover docs + walkthrough so your team owns it</li>
+      </ul>
+      <a class="btn btn-primary" href="{{BOOKING_LINK}}">Scope a build</a>
+    </div>
+
+    <div class="offer">
+      <div class="tag mono">Ongoing</div>
+      <h3>Fractional Agentic AI Lead</h3>
+      <div class="price">from $4,000/mo</div>
+      <div class="term">monthly · cancel anytime</div>
+      <ul>
+        <li>Senior agentic-AI direction without a full-time hire</li>
+        <li>Architecture, code review, and team upskilling</li>
+        <li>Keeps your agents reliable as they scale</li>
+        <li>On-call for the decisions that matter</li>
+      </ul>
+      <a class="btn btn-ghost" href="{{BOOKING_LINK}}">Discuss a retainer</a>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- PROOF -->
+<section id="proof"><div class="wrap">
+  <div class="secnum mono">§ 03 — Why me</div>
+  <h2>Research depth. <em>Shipping discipline.</em></h2>
+  <div class="proof-grid">
+    <div class="proof">
+      <p class="dek">I don't just follow the agentic AI trend — I've published peer-reviewed research on the underlying models and built agentic systems where reliability is non-negotiable.</p>
+      <ul>
+        <li><span class="mono">Role</span>Principal / Senior Agentic AI Developer — production agentic systems</li>
+        <li><span class="mono">Sector</span>Agentic AI experience in financial services (high-reliability, high-stakes)</li>
+        <li><span class="mono">Research</span>PhD researcher, ÉTS Montréal — multiple IEEE publications</li>
+        <li><span class="mono">Depth</span>Multimodal models, transformers, RL, evals &amp; agent orchestration</li>
+      </ul>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>5+</b><span>peer-reviewed papers</span></div>
+      <div class="stat"><b>PhD</b><span>AI / agentic systems</span></div>
+      <div class="stat"><b>Fin</b><span>finance-grade reliability</span></div>
+      <div class="stat"><b>E2E</b><span>research → production</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PROCESS -->
+<section id="process"><div class="wrap">
+  <div class="secnum mono">§ 04 — How it works</div>
+  <h2>Low-risk, by design.</h2>
+  <div class="steps">
+    <div class="step"><h3>Fit call</h3><p>20 minutes. We check that the problem is real and a fit. No pitch.</p></div>
+    <div class="step"><h3>Audit</h3><p>I map where agentic AI pays off and what it takes — a plan you keep either way.</p></div>
+    <div class="step"><h3>Build sprint</h3><p>Fixed scope, fixed price. Production-grade, integrated, evaluated.</p></div>
+    <div class="step"><h3>Handover</h3><p>Your team owns it — docs, walkthrough, and optional ongoing support.</p></div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section id="faq"><div class="wrap">
+  <div class="secnum mono">§ 05 — Questions</div>
+  <h2>Before you book.</h2>
+  <details><summary>We don't have an AI team. Is this still for us?</summary><p>Yes — that's the common case. The audit tells you what's worth doing before you spend on hiring, and the build sprint gives you a working system plus the docs to run it.</p></details>
+  <details><summary>How do you handle our data and security?</summary><p>Data handling, access, cost limits, and failure modes are part of the design, not an afterthought — that discipline comes from building agentic systems in finance. We agree on the rules before any data moves.</p></details>
+  <details><summary>Why fixed price instead of hourly?</summary><p>You should know what you're buying. Fixed scope and price means the risk of estimation sits with me, not you.</p></details>
+  <details><summary>What if we just need a second opinion?</summary><p>That's what the audit is for. Many clients start there, get a clear plan, and decide what to build next.</p></details>
+</div></section>
+
+<!-- FINAL CTA -->
+<section class="final"><div class="wrap">
+  <h2>Have an agentic AI project worth doing right?</h2>
+  <p class="dek">Book a 20-minute fit call. If it's not a fit, I'll tell you — and point you in a better direction.</p>
+  <a class="btn btn-primary" href="{{BOOKING_LINK}}">Book a fit call</a>
+  <p style="margin-top:22px"><a href="mailto:{{EMAIL}}" style="color:#cfc6b4">or email me directly →</a></p>
+</div></section>
+
+<footer><div class="wrap">
+  © <span id="yr"></span> Ghazi Gharsallah · <a href="https://www.linkedin.com/in/ghazi-gharsallah-29264a155/">LinkedIn</a> · <a href="/">Research site</a>
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
