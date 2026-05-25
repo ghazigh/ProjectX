@@ -1,0 +1,38 @@
+{
+  "tenant_id": "bright_home_services",
+  "name": "Bright Home Services",
+  "industry": "home cleaning & handyman",
+  "service_area": "the greater Austin area",
+  "timezone": "America/Chicago",
+  "services": [
+    {"name": "Standard cleaning", "description": "Routine home cleaning, 2-3 hours"},
+    {"name": "Deep cleaning", "description": "Top-to-bottom, move-in/move-out, 4-6 hours"},
+    {"name": "Handyman visit", "description": "Small repairs, mounting, assembly"}
+  ],
+  "business_hours": {
+    "monday": ["08:00", "17:00"],
+    "tuesday": ["08:00", "17:00"],
+    "wednesday": ["08:00", "17:00"],
+    "thursday": ["08:00", "17:00"],
+    "friday": ["08:00", "16:00"],
+    "saturday": ["09:00", "13:00"],
+    "sunday": null
+  },
+  "slot_minutes": 120,
+  "booking_horizon_days": 14,
+  "required_fields": ["name", "phone", "service", "address"],
+  "qualifying_questions": [
+    "What service do they need, and roughly how big is the home (beds/baths)?",
+    "Is this a one-time job or recurring?",
+    "What's their ideal timeframe / how urgent is it?",
+    "Is the property inside the service area?"
+  ],
+  "escalation_rules": [
+    "The lead wants a firm price quote for a large or unusual job.",
+    "It's an emergency (flooding, safety) that can't wait for a booked slot.",
+    "The lead explicitly asks to speak to a person.",
+    "The property is outside the service area."
+  ],
+  "tone": "warm, upbeat, concise — like a friendly local front desk",
+  "greeting": "Hi! Thanks for reaching out to Bright Home Services. What can we help you with today?"
+}
