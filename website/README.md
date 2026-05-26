@@ -10,8 +10,8 @@ Single file, no build step, no dependencies (fonts load from Google Fonts).
 
 Open `index.html` and replace:
 
-- `{{BOOKING_LINK}}` — your Calendly / Cal.com link
-- `{{EMAIL}}` — your contact email
+- `https://calendly.com/gharsallahghazi` — your Calendly / Cal.com link
+- `gharsallahghazi@gmail.com` — your contact email
 
 Then verify the `§ 03 — Why me` section against what you're comfortable stating
 publicly (exact PhD status, role title, and how much of your current employer to
@@ -52,7 +52,7 @@ cd website && python3 -m http.server 8000   # then open http://localhost:8000
 ## SEO / getting found (the inbound engine)
 
 1. Deploy the landing page + `insights/` + `sitemap.xml` + `robots.txt`.
-2. Replace `{{BOOKING_LINK}}` in **every** file (landing page + all insights pages).
+2. Replace `https://calendly.com/gharsallahghazi` in **every** file (landing page + all insights pages).
 3. Add the site to **Google Search Console** and submit `sitemap.xml` once.
 4. Expand the blog over time — see `sales/seo-content-plan.md` for the topic
    backlog and how to generate drafts with the `content_engine` in this repo.
@@ -64,6 +64,6 @@ free, no-soliciting channel. Keep shipping articles; each one keeps working.
 
 ```bash
 # from the website/ folder, after setting your real values:
-grep -rl '{{BOOKING_LINK}}' . | xargs sed -i 's|{{BOOKING_LINK}}|https://cal.com/you/intro|g'
-grep -rl '{{EMAIL}}' . | xargs sed -i 's|{{EMAIL}}|you@example.com|g'
+grep -rl 'https://calendly.com/gharsallahghazi' . | xargs sed -i 's|https://calendly.com/gharsallahghazi|https://cal.com/you/intro|g'
+grep -rl 'gharsallahghazi@gmail.com' . | xargs sed -i 's|gharsallahghazi@gmail.com|you@example.com|g'
 ```
