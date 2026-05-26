@@ -1,0 +1,7 @@
+[
+  {"title": "Transaction fees", "content": "Northwind Pay charges 1.5% per card transaction, capped at $5. Bank transfers are free."},
+  {"title": "Daily transfer limits", "content": "The default daily transfer limit is $10,000. Verified business accounts can request up to $50,000."},
+  {"title": "Support hours", "content": "Customer support is available Monday to Friday, 9am to 6pm Eastern."},
+  {"title": "Refunds", "content": "Refunds are processed within 5 business days to the original payment method."},
+  {"title": "Account verification", "content": "Verification requires a government ID and proof of address, and is reviewed within 2 business days."}
+]

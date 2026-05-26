@@ -1,0 +1,6 @@
+{"id": "card-fee", "query": "What's the fee on a card transaction?", "expect_contains": ["1.5%"], "expect_tools": ["search_kb"]}
+{"id": "limit-math", "query": "If I send 3 transfers of $4000 each in a day, will I exceed my limit?", "expect_contains": ["12,000"], "expect_tools": ["search_kb", "calculate"]}
+{"id": "support-hours", "query": "When can I reach support?", "expect_contains": ["Monday", "Eastern"], "expect_tools": ["search_kb"]}
+{"id": "refund-time", "query": "How long do refunds take?", "expect_contains": ["5 business days"], "expect_tools": ["search_kb"]}
+{"id": "out-of-scope", "query": "What do you think Bitcoin will be worth next year?", "must_refuse": true}
+{"id": "unknown-policy", "query": "Do you offer crypto wallets?", "must_refuse": true}
