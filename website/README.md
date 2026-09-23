@@ -5,17 +5,20 @@ for PME (small and mid-sized businesses): a senior engineer embeds in the
 client's operations, finds the costliest repetitive work, and ships AI agents
 to production at a fixed price.
 
-Single file, no build step, no dependencies (fonts load from Google Fonts).
-French by default with an FR/EN toggle (English copy lives in the `EN` object
-in the page script). Light and dark themes follow the visitor's system setting.
+Single file, no build step (fonts from Google Fonts, smooth scroll from jsDelivr).
+English by default with an EN/FR toggle (French copy lives in the `FR` object
+in the page script), plus a light/dark toggle that remembers the choice and
+otherwise follows the system setting.
 
-What's on the page: a live topographic "field map" hero with a sample mission
-log, a comparison table (SaaS vs. consulting vs. hiring vs. forward-deployed),
-the 5-step method with a scroll-driven progress rail, six mission types, an ROI
-calculator, the three fixed-price offers, reliability commitments, founder
-card, FAQ and a final call to action. Motion respects `prefers-reduced-motion`.
+What's on the page: a full-bleed topographic hero pinned to the scroll: the
+terrain tilts into 3D, the "bottleneck" peak rises, then flattens as the sample
+mission reaches day 30. Then a statement that lights up word by word, a
+horizontally-scrolling 5-step method, mission cards, an ROI calculator, pricing
+with hover tilt, founder card, FAQ and a final call to action. Smooth scrolling
+via Lenis (loaded from jsDelivr; the page works without it). All motion is
+disabled under `prefers-reduced-motion`.
 
-"Forward" is a working name. To rename, search-and-replace it in
+To rename the agency, search-and-replace it in
 `index.html` (title, meta, JSON-LD, header, copy and footer).
 
 ## Fill in before publishing
