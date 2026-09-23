@@ -356,7 +356,7 @@
   .crd b{font-weight:600}
   .crd .mut{opacity:.6;font:400 .72rem/1.4 var(--f-mono);display:block;margin-top:2px}
   .pills{display:flex;flex-wrap:wrap;gap:6px}
-  .pl{display:inline-flex;align-items:center;gap:6px;font:500 .68rem/1 var(--f-mono);padding:6px 9px;border-radius:999px;border:1px solid rgba(var(--topo-inv),.25);transition:background-color .5s,color .5s,border-color .5s}
+  .pl{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;font:500 .68rem/1 var(--f-mono);padding:6px 9px;border-radius:999px;border:1px solid rgba(var(--topo-inv),.25);transition:background-color .5s,color .5s,border-color .5s}
   .pl.acc,.pl.sel{background:var(--inv-accent);color:var(--inv-accent-ink);border-color:transparent}
   .bub.out .pl{border-color:currentColor}
   .bub.out .pl.sel{background:var(--inv-accent-ink);color:var(--inv-accent)}
@@ -377,6 +377,82 @@
   .erp .ck{justify-self:end}
   .photo{height:74px;border-radius:12px;margin-top:6px;background:linear-gradient(135deg,rgba(var(--topo-inv),.18),rgba(var(--topo-inv),.05));display:grid;place-items:center}
   .photo svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.5;opacity:.7}
+  /* week calendar */
+  .toast{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:rgba(var(--topo-inv),.1);font-size:.82rem}
+  .toast .av{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:600 .66rem/1 var(--f-mono);background:rgba(var(--topo-inv),.2)}
+  .toast small{display:block;font:500 .64rem/1.2 var(--f-mono);opacity:.6;margin-bottom:2px}
+  .cal{display:grid;grid-template-columns:2.6em repeat(5,minmax(0,1fr));gap:4px;font:500 .64rem/1 var(--f-mono)}
+  .cal .h{opacity:.55;text-align:center;padding:4px 0;text-transform:uppercase;letter-spacing:.06em}
+  .cal .t{opacity:.55;align-self:center}
+  .cal .c{position:relative;height:34px;border-radius:7px;background:rgba(var(--topo-inv),.07)}
+  .cal .c.b{background:rgba(var(--topo-inv),.2)}
+  .cal .c.free{background:transparent;border:1px dashed rgba(var(--topo-inv),.3)}
+  .cal .c.pulse{animation:pulse 1.2s ease-in-out infinite}
+  @keyframes pulse{50%{border-color:var(--inv-accent);background:rgba(140,150,255,.12)}}
+  .cal .c .fill{position:absolute;inset:0;border-radius:7px;background:var(--inv-accent);color:var(--inv-accent-ink);display:grid;place-items:center;font-size:.6rem;font-weight:600;padding:0 4px;text-align:center;line-height:1.15}
+  .cal .c.gone{background:transparent;border:1px dashed rgba(var(--topo-inv),.3)}
+  /* document portal */
+  .docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .doc{border:1px solid rgba(var(--topo-inv),.16);border-radius:11px;padding:10px;display:grid;gap:6px;font:500 .68rem/1.2 var(--f-mono)}
+  .doc .fi{width:26px;height:32px;border-radius:4px;background:rgba(var(--topo-inv),.14);position:relative}
+  .doc .fi::after{content:"";position:absolute;right:0;top:0;border:5px solid transparent;border-top-color:var(--ink);border-right-color:var(--ink)}
+  .doc .lb{font-size:.6rem;padding:3px 6px;border-radius:6px;background:var(--inv-accent);color:var(--inv-accent-ink);justify-self:start}
+  .check{display:grid;gap:5px;font-size:.84rem}
+  .check div{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-radius:9px;background:rgba(var(--topo-inv),.06)}
+  .check .x{font:600 .64rem/1 var(--f-mono);padding:4px 7px;border-radius:999px;background:rgba(var(--topo-inv),.12)}
+  .check .x.ok{background:var(--inv-accent);color:var(--inv-accent-ink)}
+  .check .x.warn{background:#F2A33A;color:#1A1204}
+  .logrow{display:flex;gap:10px;align-items:center;font:500 .7rem/1.35 var(--f-mono);padding:8px 10px;border-left:2px solid var(--inv-accent);background:rgba(var(--topo-inv),.05);border-radius:0 8px 8px 0}
+  .btnm{display:inline-block;margin-top:8px;font:600 .7rem/1 var(--f-body);padding:7px 12px;border-radius:999px;background:var(--inv-accent);color:var(--inv-accent-ink)}
+  /* PDF -> ERP split */
+  .split{display:grid;grid-template-columns:minmax(0,.85fr) 18px minmax(0,1.15fr);gap:8px;align-items:start}
+  .pdf{position:relative;background:#F7F6F2;color:#1B1B1B;border-radius:8px;padding:12px 11px;font:400 .6rem/1.5 var(--f-mono);overflow:hidden;box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
+  .pdf b{display:block;font:700 .7rem/1.2 var(--f-body);margin-bottom:6px}
+  .pdf .ln{display:flex;justify-content:space-between;padding:3px 4px;border-radius:3px;transition:background-color .4s}
+  .pdf .ln.hl{background:rgba(35,52,224,.14)}
+  .pdf .ln.bad{background:rgba(242,163,58,.35)}
+  .pdf .scan{position:absolute;left:0;right:0;height:26px;top:18px;background:linear-gradient(180deg,transparent,rgba(35,52,224,.22),transparent);opacity:0}
+  .pdf .scan.go{animation:scan 1.3s ease-in-out 1 forwards}
+  @keyframes scan{0%{top:18px;opacity:1}90%{top:calc(100% - 26px);opacity:1}100%{opacity:0}}
+  .arrow{align-self:center;text-align:center;font:600 .9rem/1 var(--f-mono);color:var(--inv-accent)}
+  .erpf{border:1px solid rgba(var(--topo-inv),.18);border-radius:10px;overflow:hidden;font:400 .64rem/1.3 var(--f-mono)}
+  .erpf .eh{display:flex;justify-content:space-between;padding:7px 9px;background:rgba(var(--topo-inv),.08);font-weight:600;font-size:.62rem;letter-spacing:.04em}
+  .erpf .er{display:grid;grid-template-columns:1.25fr .5fr .7fr 1fr;gap:4px;padding:6px 9px;border-top:1px solid rgba(var(--topo-inv),.08);align-items:center}
+  .erpf .er .ck{justify-self:end}
+  /* helpdesk */
+  .desk{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:8px;flex:1}
+  .tl{display:grid;gap:5px;align-content:start}
+  .tk{padding:8px 9px;border-radius:9px;border:1px solid transparent;font-size:.74rem;line-height:1.3;transition:background-color .4s,border-color .4s}
+  .tk small{display:flex;justify-content:space-between;font:500 .6rem/1 var(--f-mono);opacity:.6;margin-bottom:3px}
+  .tk.act{background:rgba(var(--topo-inv),.09);border-color:rgba(var(--topo-inv),.2)}
+  .tk .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#F2A33A;margin-right:5px;transition:background-color .4s}
+  .tk.res .dot{background:var(--inv-accent)}
+  .tk.appr .dot{background:#F2A33A;box-shadow:0 0 0 3px rgba(242,163,58,.25)}
+  .tdet{border:1px solid rgba(var(--topo-inv),.14);border-radius:11px;padding:11px;display:flex;flex-direction:column;gap:9px;font-size:.78rem}
+  .track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;margin-top:6px}
+  .track i{height:4px;border-radius:3px;background:rgba(var(--topo-inv),.15)}
+  .track i.f{background:var(--inv-accent)}
+  .track-l{display:flex;justify-content:space-between;font:500 .56rem/1 var(--f-mono);opacity:.6;margin-top:5px}
+  .mailr{border-left:2px solid var(--inv-accent);padding:6px 9px;background:rgba(var(--topo-inv),.05);border-radius:0 8px 8px 0;font-size:.74rem}
+  .mailr small{display:block;font:500 .58rem/1 var(--f-mono);opacity:.6;margin-bottom:3px}
+  /* kanban */
+  .kb{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;min-height:190px}
+  .kb .col{border-radius:10px;background:rgba(var(--topo-inv),.05);padding:24px 5px 5px;position:relative}
+  .kb .col>span{position:absolute;top:7px;left:8px;font:500 .56rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+  .kb .col .ghost{height:46px;border-radius:8px;background:rgba(var(--topo-inv),.08);margin-bottom:5px}
+  .kcard{position:absolute;top:24px;left:5px;width:calc((100% - 18px) / 4 - 10px);border-radius:9px;background:var(--bg);color:var(--ink);padding:8px;font-size:.66rem;line-height:1.3;
+    box-shadow:0 10px 24px -10px rgba(0,0,0,.6);transition:opacity .5s ease,transform .7s var(--ease),translate 1s var(--ease);z-index:2}
+  .kcard b{display:block;font-size:.7rem;margin-bottom:4px}
+  .kcard .pl{font-size:.52rem;padding:3px 5px;margin:2px 2px 0 0;border-color:var(--line-2)}
+  .kcard .pl.warn,.kcard .pl.acc{border-color:transparent}
+  .kcard .pl.acc{background:var(--accent);color:var(--accent-ink)}
+  .kcard.c2{translate:calc(100% + 16px) 0}
+  .kcard.c3{translate:calc(200% + 32px) 0}
+  .kcard.c4{translate:calc(300% + 48px) 0}
+  .kcard .kx{display:none;margin-top:5px;font:500 .54rem/1.3 var(--f-mono);opacity:.75}
+  .kcard.c2 .k2,.kcard.c3 .k3,.kcard.c4 .k4{display:block}
+  .kcard.c3 .k2,.kcard.c4 .k2,.kcard.c4 .k3{display:none}
+  @media (max-width:520px){.split{grid-template-columns:minmax(0,1fr)}.arrow{transform:rotate(90deg)}.desk{grid-template-columns:minmax(0,1fr)}.docs{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .sc-cap{padding:13px 16px 15px;border-top:1px solid rgba(var(--topo-inv),.12);display:grid;gap:10px}
   .sc-prog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
   .sc-prog i{height:3px;border-radius:3px;background:rgba(var(--topo-inv),.16);transition:background-color .4s}
@@ -593,9 +669,9 @@
   <section class="sec" id="model">
     <div class="wrap">
       <p class="tag" data-i18n="t1">The model</p>
-      <p class="stmt" id="stmt" data-i18n="stmt">Most AI projects die as a <em>demo.</em> We put a senior engineer inside your team, who stays until it runs in <em>production.</em></p>
+      <p class="stmt" id="stmt" data-i18n="stmt">Most AI projects die as a <em>demo.</em> We put a senior engineer inside your team, who stays until the agents do the job and you see the <em>ROI.</em></p>
       <div class="stats">
-        <div class="stat rv"><span class="n"><span class="count" data-to="6">6</span><small data-i18n="u1">wks</small></span><p data-i18n="k1">From first day to production</p></div>
+        <div class="stat rv"><span class="n"><span class="count" data-to="6">6</span><small data-i18n="u1">wks</small></span><p data-i18n="k1">From day one to agents at work</p></div>
         <div class="stat rv" style="--d:1"><span class="n"><span class="count" data-to="100">100</span><small>%</small></span><p data-i18n="k2">Fixed price, known upfront</p></div>
         <div class="stat rv" style="--d:2"><span class="n"><span class="count" data-to="0">0</span></span><p data-i18n="k3">Hires needed on your side</p></div>
       </div>
@@ -721,7 +797,7 @@
   <section class="sec" id="team">
     <div class="wrap who">
       <div class="rv"><p class="tag" data-i18n="t7">Who shows up</p>
-        <p class="quote" data-i18n="quote"><span class="q">“</span>I don't leave until it runs in production.<span class="q">”</span></p></div>
+        <p class="quote" data-i18n="quote"><span class="q">“</span>I don't leave until the agents do the job and you see the ROI.<span class="q">”</span></p></div>
       <div class="card-who rv" style="--d:1">
         <p class="who-name">Ghazi Gharsallah</p>
         <p class="who-role" data-i18n="role">Founder · forward-deployed engineer</p>
@@ -804,8 +880,8 @@
     cap2: `<b>Jour 30</b>80 heures récupérées. <span>Chaque mois.</span>`,
     legend: `Courbes = heures perdues / semaine`, hint: `Défiler`,
     t1: `Le modèle`,
-    stmt: `La plupart des projets IA meurent en <em>démo.</em> Nous plaçons un ingénieur senior dans votre équipe, qui reste jusqu'à la mise en <em>production.</em>`,
-    u1: `sem`, k1: `Du premier jour à la production`, k2: `Prix fixe, connu d'avance`, k3: `Embauche de votre côté`,
+    stmt: `La plupart des projets IA meurent en <em>démo.</em> Nous plaçons un ingénieur senior dans votre équipe, qui reste jusqu'à ce que les agents fassent le travail et que vous en voyiez le <em>rendement.</em>`,
+    u1: `sem`, k1: `Du premier jour aux agents au travail`, k2: `Prix fixe, connu d'avance`, k3: `Embauche de votre côté`,
     t2: `Méthode`, h2b: `Cinq étapes. Six semaines.`,
     s1w: `Semaine 1`, s1h: `Immersion`, s1p: `On s'installe avec votre équipe et on observe le vrai travail.`,
     s2w: `Semaine 1`, s2h: `Diagnostic`, s2p: `Chaque tâche répétitive, chiffrée en heures et en dollars.`,
@@ -832,7 +908,7 @@
     f3k: `En continu`, f3h: `Forfait mensuel`, f3p: `<small>à partir de</small><span>4 000 $/mois</span>`, f3t: `Mensuel · sans engagement`,
     f3l: `<li>Un nouveau chantier chaque mois</li><li>Agents surveillés et améliorés</li><li>Un partenaire IA senior disponible</li>`, f3b: `Parlons-en`,
     t7: `Qui vient chez vous`,
-    quote: `<span class="q">«&nbsp;</span>Je ne repars pas tant que ça ne tourne pas en production.<span class="q">&nbsp;»</span>`,
+    quote: `<span class="q">«&nbsp;</span>Je ne repars pas avant que les agents fassent le travail et que vous en voyiez le rendement.<span class="q">&nbsp;»</span>`,
     role: `Fondateur · ingénieur déployé`,
     facts: `<li>Doctorat en IA, ÉTS Montréal</li><li>Recherche IEEE évaluée par les pairs</li><li>Systèmes agentiques en services financiers</li>`,
     t8: `FAQ`, h2g: `Réponses rapides.`,
@@ -1205,60 +1281,92 @@
         <div class="crd ok" data-at="4"><b>✓ ${tr('Booked · Tomorrow 1:30 pm', 'Réservé · Demain 13 h 30')}</b><span class="mut">${tr('Furnace repair · Tech: Marc · SMS confirmation sent', 'Réparation fournaise · Tech : Marc · Confirmation envoyée')}</span></div>
         <p class="sys" data-at="5">${tr('Safety check: no gas smell → standard priority · on-call not paged', 'Sécurité : aucune odeur de gaz → priorité normale · garde non appelée')}</p>
       </div>`,
-    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Schedule · Thursday · Dr. Nguyen', 'Horaire · jeudi · Dre Nguyen')}</span><span class="ag">Agent</span></div>
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Schedule · week of May 12 · Dr. Nguyen', 'Horaire · semaine du 12 mai · Dre Nguyen')}</span><span class="ag">Agent</span></div>
       <div class="sc-body">
-        <p class="bub in" data-at="1"><small>SMS · 7:12 am</small>${tr('Can I move my cleaning to Thursday afternoon? – Sarah L.', 'Puis-je déplacer mon nettoyage à jeudi après-midi ? – Sarah L.')}</p>
-        <div class="pills" data-at="2"><span class="pl acc">${tr('Existing patient', 'Patiente existante')}</span><span class="pl">${tr('Cleaning · 60 min', 'Nettoyage · 60 min')}</span><span class="pl">${tr('Reschedule', 'Report')}</span></div>
-        <div class="slots">
-          <div class="slot"><time>13:00</time><div class="blk">M. Roy · ${tr('Exam', 'Examen')}</div></div>
-          <div class="slot"><time>14:00</time><div class="blk free" data-add="3 pulse">${tr('Open', 'Libre')}<span class="fill" data-at="4">Sarah L. · ${tr('Cleaning', 'Nettoyage')}</span></div></div>
-          <div class="slot"><time>15:00</time><div class="blk">J. Côté · ${tr('Filling', 'Plombage')}</div></div>
-          <div class="slot"><time>16:00</time><div class="blk free">${tr('Open', 'Libre')}</div></div>
+        <div class="toast" data-at="1"><span class="av">SL</span><span><small>SMS · 7:12</small>${tr('Can I move my Tuesday cleaning to Thursday afternoon?', 'Puis-je déplacer mon nettoyage de mardi à jeudi après-midi ?')}</span></div>
+        <div class="pills" data-at="2"><span class="pl acc">Sarah L. · ${tr('existing patient', 'patiente existante')}</span><span class="pl">${tr('Cleaning · 60 min', 'Nettoyage · 60 min')}</span></div>
+        <div class="cal">
+          <span></span><span class="h">${tr('Mon', 'Lun')}</span><span class="h">${tr('Tue', 'Mar')}</span><span class="h">${tr('Wed', 'Mer')}</span><span class="h">${tr('Thu', 'Jeu')}</span><span class="h">${tr('Fri', 'Ven')}</span>
+          <span class="t">13:00</span><i class="c b"></i><i class="c b"></i><i class="c"></i><i class="c b"></i><i class="c b"></i>
+          <span class="t">14:00</span><i class="c"></i><i class="c b" data-add="4 gone"></i><i class="c b"></i><i class="c free" data-add="3 pulse"><span class="fill" data-at="4">Sarah L.</span></i><i class="c"></i>
+          <span class="t">15:00</span><i class="c b"></i><i class="c"></i><i class="c b"></i><i class="c b"></i><i class="c free" data-add="3 pulse"></i>
+          <span class="t">16:00</span><i class="c b"></i><i class="c b"></i><i class="c"></i><i class="c free" data-add="3 pulse"></i><i class="c b"></i>
         </div>
-        <div class="pills" data-at="4"><span class="pl ok">${tr('Old slot released', 'Ancienne plage libérée')}</span><span class="pl ok">${tr('Reminder + forms sent', 'Rappel + formulaires envoyés')}</span></div>
-        <p class="sys" data-at="5">${tr('“Is sensitivity normal?” → sent to the hygienist', '« La sensibilité est-elle normale ? » → transmis à l’hygiéniste')}</p>
+        <div class="logrow" data-at="4">✓ ${tr('Moved to Thu 14:00 · Tuesday slot released · reminder + forms sent', 'Déplacé à jeu 14 h · plage de mardi libérée · rappel + formulaires envoyés')}</div>
+        <div class="logrow" data-at="5">→ ${tr('“Is sensitivity after a cleaning normal?” routed to the hygienist', '« La sensibilité est-elle normale ? » transmis à l’hygiéniste')}</div>
       </div>`,
-    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Client file · Tremblay · 2025 return', 'Dossier client · Tremblay · déclaration 2025')}</span><span class="ag">Agent</span></div>
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Client portal · Tremblay · 2025 return', 'Portail client · Tremblay · déclaration 2025')}</span><span class="ag">Agent</span></div>
       <div class="sc-body">
-        <div class="crd" data-at="1"><b>${tr('Email from M. Tremblay', 'Courriel de M. Tremblay')}</b><span class="mut">${tr('“Here are my documents for this year.”', '« Voici mes documents pour cette année. »')}</span>
-          <div class="pills" style="margin-top:9px"><span class="pl" data-add="2 acc">T4.pdf${tr('', '')}</span><span class="pl" data-add="2 acc">RRSP.pdf</span><span class="pl" data-add="2 acc">IMG_2291.jpg</span></div></div>
-        <div class="pills" data-at="2"><span class="pl">T4 → ${tr('Employment income', 'Revenu d’emploi')}</span><span class="pl">${tr('RRSP receipt', 'Reçu REER')}</span><span class="pl">${tr('Rental invoice', 'Facture locative')}</span></div>
-        <div class="pills" data-at="3"><span class="pl ok">T4</span><span class="pl ok">${tr('RRSP', 'REER')}</span><span class="pl ok">${tr('Rental', 'Location')}</span><span class="pl warn">T5 · ${tr('missing', 'manquant')}</span></div>
-        <p class="bub out dl" data-at="3">${tr('Thanks! One thing missing: your T5 from the bank. You can reply with a photo.', 'Merci ! Il manque votre T5 de la banque. Vous pouvez répondre avec une photo.')}</p>
-        <p class="sys" data-at="4">${tr('3 files filed → /Clients/Tremblay/2025 · synced to practice software', '3 fichiers classés → /Clients/Tremblay/2025 · synchronisé')}</p>
-        <div class="crd ok" data-at="5"><b>${tr('Summary ready for review', 'Résumé prêt pour relecture')}</b><span class="mut">${tr('Income, deductions, 1 item pending · awaiting your approval', 'Revenus, déductions, 1 élément en attente · à approuver')}</span></div>
-      </div>`,
-    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Orders inbox → ERP', 'Boîte commandes → ERP')}</span><span class="ag">Agent</span></div>
-      <div class="sc-body">
-        <div class="crd" data-at="1"><b>PO-4471 · Maison Dubé Inc.</b><span class="mut">${tr('Attachment: PO-4471.pdf · 3 lines', 'Pièce jointe : PO-4471.pdf · 3 lignes')}</span></div>
-        <div class="erp" data-at="2">
-          <div><span>SKU</span><span>${tr('Qty', 'Qté')}</span><span>${tr('Price', 'Prix')}</span><span class="ck">${tr('Check', 'Contrôle')}</span></div>
-          <div><span>BRK-2210</span><span>40</span><span>$12.80</span><span class="ck"><span class="pl" data-add="3 acc">✓</span></span></div>
-          <div><span>HNG-0457</span><span>120</span><span>$4.10</span><span class="ck"><span class="pl" data-add="3 warn">≠ $4.35</span></span></div>
-          <div><span>SCR-9001</span><span>500</span><span>$0.18</span><span class="ck"><span class="pl" data-add="3 acc">✓</span></span></div>
+        <div class="docs">
+          <div class="doc" data-at="1"><span class="fi"></span>T4.pdf<span class="lb" data-at="2">${tr('Employment income', 'Revenu d’emploi')}</span></div>
+          <div class="doc dl" data-at="1"><span class="fi"></span>RRSP.pdf<span class="lb" data-at="2">${tr('RRSP receipt', 'Reçu REER')}</span></div>
+          <div class="doc" data-at="1"><span class="fi"></span>IMG_2291.jpg<span class="lb" data-at="2">${tr('Rental expense', 'Dépense locative')}</span></div>
         </div>
-        <p class="sys" data-at="3">${tr('Price mismatch on HNG-0457 → flagged to sales rep', 'Écart de prix sur HNG-0457 → signalé au représentant')}</p>
-        <div class="crd ok" data-at="4"><b>✓ ${tr('Sales order SO-10288 created', 'Commande SO-10288 créée')}</b><span class="mut">${tr('3 lines · in ERP · price confirmed by rep', '3 lignes · dans l’ERP · prix confirmé par le représentant')}</span></div>
-        <p class="bub out" data-at="5">${tr('Order confirmed. Ships Tuesday.', 'Commande confirmée. Expédition mardi.')}</p>
+        <div class="check" data-at="3">
+          <div>T4 <span class="x ok">✓</span></div>
+          <div>${tr('RRSP', 'REER')} <span class="x ok">✓</span></div>
+          <div>${tr('Rental expenses', 'Dépenses locatives')} <span class="x ok">✓</span></div>
+          <div>${tr('T5 · bank interest', 'T5 · intérêts bancaires')} <span class="x warn">${tr('missing', 'manquant')}</span></div>
+        </div>
+        <div class="logrow dl" data-at="3">✉ ${tr('Reminder emailed to client: “We just need your T5 from the bank.”', 'Rappel envoyé au client : « Il ne manque que votre T5 de la banque. »')}</div>
+        <div class="logrow" data-at="4">▤ ${tr('3 files filed → /Clients/Tremblay/2025', '3 fichiers classés → /Clients/Tremblay/2025')}</div>
+        <div class="crd ok" data-at="5"><b>${tr('Summary ready for review', 'Résumé prêt pour relecture')}</b><span class="mut">${tr('Income, deductions · 1 item pending', 'Revenus, déductions · 1 élément en attente')}</span><span class="btnm">${tr('Approve', 'Approuver')}</span></div>
       </div>`,
-    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Support inbox · Monday', 'Boîte support · lundi')}</span><span class="ag">Agent</span></div>
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('PO-4471.pdf → ERP · Sales orders', 'PO-4471.pdf → ERP · Commandes')}</span><span class="ag">Agent</span></div>
       <div class="sc-body">
-        <div class="crd" data-at="1"><b>#2381 · ${tr('Where is my order?', 'Où est ma commande ?')}</b><span class="mut">julie.m@… · ${tr('2 min ago', 'il y a 2 min')}</span></div>
-        <div class="crd" data-at="2"><b>${tr('Order #10432 · Shipped', 'Commande #10432 · Expédiée')}</b><span class="mut">Canada Post · ${tr('arrives Thursday', 'arrive jeudi')}</span></div>
-        <p class="bub out" data-at="3">${tr('It’s on its way and arrives Thursday. Here’s your tracking link.', 'Elle est en route et arrive jeudi. Voici votre lien de suivi.')}</p>
-        <div class="pills" data-at="3"><span class="pl ok">#2381 ${tr('resolved', 'résolu')}</span></div>
-        <div class="crd" data-at="4"><b>#2382 · ${tr('Refund request · $480', 'Demande de remboursement · 480 $')}</b>
-          <div class="pills" style="margin-top:8px"><span class="pl warn">${tr('Over $200 limit', 'Au-delà du seuil de 200 $')}</span><span class="pl">→ ${tr('Approval: Julie (manager)', 'Approbation : Julie (gérante)')}</span></div></div>
-        <p class="sys" data-at="5">${tr('Trend: 14 “where is my order” tickets this week → weekly report', 'Tendance : 14 billets « où est ma commande » cette semaine → rapport')}</p>
+        <div class="split">
+          <div class="pdf" data-at="1"><span class="scan" data-add="2 go"></span><b>PURCHASE ORDER · PO-4471</b>Maison Dubé Inc.<br>
+            <span class="ln" data-add="2 hl"><span>BRK-2210 ×40</span><span>12.80</span></span>
+            <span class="ln" data-add="2 hl"><span>HNG-0457 ×120</span><span>4.10</span></span>
+            <span class="ln" data-add="2 hl"><span>SCR-9001 ×500</span><span>0.18</span></span>
+            <span style="display:block;margin-top:6px;opacity:.6">${tr('Ship by: May 20', 'Livrer avant : 20 mai')}</span></div>
+          <span class="arrow" data-at="2">→</span>
+          <div class="erpf" data-at="2">
+            <div class="eh"><span>${tr('Sales order', 'Commande client')}</span><span data-at="4">SO-10288</span></div>
+            <div class="er"><span>BRK-2210</span><span>40</span><span>12.80</span><span class="ck"><span class="pl" data-add="3 acc">✓</span></span></div>
+            <div class="er"><span>HNG-0457</span><span>120</span><span>4.10</span><span class="ck"><span class="pl" data-add="3 warn">≠ 4.35</span></span></div>
+            <div class="er"><span>SCR-9001</span><span>500</span><span>0.18</span><span class="ck"><span class="pl" data-add="3 acc">✓</span></span></div>
+          </div>
+        </div>
+        <div class="logrow" data-at="3">⚑ ${tr('HNG-0457 priced below list → flagged to sales rep', 'HNG-0457 sous le prix de liste → signalé au représentant')}</div>
+        <div class="logrow" data-at="4">✓ ${tr('SO-10288 created in ERP · rep confirmed price', 'SO-10288 créée dans l’ERP · prix confirmé')}</div>
+        <div class="logrow" data-at="5">✉ ${tr('Confirmation sent to Maison Dubé · ships Tuesday', 'Confirmation envoyée à Maison Dubé · expédition mardi')}</div>
       </div>`,
-    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Maintenance · 1480 Saint-Denis, apt 3', 'Entretien · 1480 Saint-Denis, app. 3')}</span><span class="ag">Agent</span></div>
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Helpdesk · 3 open tickets', 'Service client · 3 billets ouverts')}</span><span class="ag">Agent</span></div>
       <div class="sc-body">
-        <div class="bub in" data-at="1"><small>${tr('Tenant · text + photo', 'Locataire · texto + photo')}</small>${tr('Water is leaking under the kitchen sink.', 'Il y a une fuite d’eau sous l’évier de la cuisine.')}
-          <div class="photo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg></div></div>
-        <div class="pills" data-at="2"><span class="pl warn">${tr('Urgent', 'Urgent')}</span><span class="pl acc">${tr('Plumbing', 'Plomberie')}</span><span class="pl">${tr('Water damage risk', 'Risque de dégât d’eau')}</span></div>
-        <div class="crd ok" data-at="3"><b>✓ Plomberie Nord · ${tr('Tomorrow 8–10 am', 'Demain 8 h – 10 h')}</b><span class="mut">${tr('Vendor confirmed · access code shared', 'Fournisseur confirmé · code d’accès transmis')}</span></div>
-        <p class="bub out" data-at="4">${tr('A plumber is booked for tomorrow 8–10 am. Please turn off the valve under the sink.', 'Un plombier est réservé demain 8 h – 10 h. Fermez la valve sous l’évier en attendant.')}</p>
-        <div class="crd" data-at="5"><b>${tr('Ticket #318 closed', 'Billet #318 fermé')}</b><span class="mut">${tr('Before/after photos · invoice $185 attached', 'Photos avant/après · facture 185 $ jointe')}</span></div>
+        <div class="desk">
+          <div class="tl">
+            <div class="tk act" data-add="3 res"><small><span><span class="dot"></span>#2381</span><span>2m</span></small>${tr('Where is my order?', 'Où est ma commande ?')}</div>
+            <div class="tk" data-add="4 appr"><small><span><span class="dot"></span>#2382</span><span>9m</span></small>${tr('Refund request · $480', 'Remboursement · 480 $')}</div>
+            <div class="tk"><small><span><span class="dot"></span>#2383</span><span>14m</span></small>${tr('Size exchange', 'Échange de taille')}</div>
+          </div>
+          <div class="tdet">
+            <div data-at="1"><b>#2381 · Julie M.</b><div style="opacity:.7;font-size:.74rem;margin-top:3px">${tr('“Ordered last week, nothing yet?”', '« Commandé la semaine dernière, rien reçu ? »')}</div></div>
+            <div data-at="2"><b>${tr('Order #10432', 'Commande #10432')}</b> · Canada Post
+              <div class="track"><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div>
+              <div class="track-l"><span>${tr('Paid', 'Payée')}</span><span>${tr('Packed', 'Emballée')}</span><span>${tr('In transit', 'En transit')}</span><span>${tr('Thu', 'Jeu')}</span></div></div>
+            <div class="mailr" data-at="3"><small>${tr('Reply sent · ticket resolved', 'Réponse envoyée · billet résolu')}</small>${tr('On its way, arriving Thursday. Tracking link inside.', 'En route, arrive jeudi. Lien de suivi inclus.')}</div>
+            <div class="pills" data-at="4"><span class="pl warn">#2382 · ${tr('over $200 limit', 'au-delà de 200 $')}</span><span class="pl">→ ${tr('Julie (manager) approves', 'Julie (gérante) approuve')}</span></div>
+          </div>
+        </div>
+        <div class="logrow" data-at="5">▦ ${tr('Weekly report: 14 “where is my order” tickets · 11 auto-resolved', 'Rapport : 14 billets « où est ma commande » · 11 résolus automatiquement')}</div>
+      </div>`,
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Maintenance board · 1480 Saint-Denis', 'Tableau entretien · 1480 Saint-Denis')}</span><span class="ag">Agent</span></div>
+      <div class="sc-body">
+        <div class="kb">
+          <div class="col"><span>${tr('New', 'Nouveau')}</span><div class="ghost"></div></div>
+          <div class="col"><span>${tr('Scheduled', 'Planifié')}</span><div class="ghost"></div></div>
+          <div class="col"><span>${tr('In progress', 'En cours')}</span></div>
+          <div class="col"><span>${tr('Closed', 'Fermé')}</span><div class="ghost"></div><div class="ghost"></div></div>
+          <div class="kcard" data-at="1" data-add="3 c2" data-add-b="4 c3" data-add-c="5 c4"><b>#318 · ${tr('Apt 3', 'App. 3')}</b>${tr('Leak under kitchen sink', 'Fuite sous l’évier')}
+            <div data-at="2"><span class="pl warn">${tr('Urgent', 'Urgent')}</span><span class="pl acc">${tr('Plumbing', 'Plomberie')}</span></div>
+            <span class="kx k2">Plomberie Nord · ${tr('tomorrow 8–10', 'demain 8–10')}</span>
+            <span class="kx k3">${tr('Tenant notified · tech on site', 'Locataire avisé · technicien sur place')}</span>
+            <span class="kx k4">✓ ${tr('Photos + invoice $185', 'Photos + facture 185 $')}</span></div>
+        </div>
+        <div class="toast" data-at="1"><span class="av">📷</span><span><small>${tr('Tenant · apt 3 · 6:40 am', 'Locataire · app. 3 · 6 h 40')}</small>${tr('Water is leaking under the kitchen sink.', 'Il y a une fuite d’eau sous l’évier.')}</span></div>
+        <div class="logrow" data-at="3">✓ ${tr('Plomberie Nord booked tomorrow 8–10 am · access code shared', 'Plomberie Nord réservée demain 8 h–10 h · code d’accès transmis')}</div>
+        <div class="logrow" data-at="4">✉ ${tr('Tenant: “A plumber comes tomorrow 8–10. Please close the valve under the sink.”', 'Locataire : « Un plombier passe demain 8 h–10 h. Fermez la valve sous l’évier. »')}</div>
       </div>`
   ];
   const ucTabs = $('#uc-tabs'), ucPanel = $('#uc-panel');
@@ -1287,10 +1395,12 @@
     clearTimeout(ucTimer);
     const sc = $('#scene'); if (!sc) return;
     const it = CASES[lang].items[ucIdx], n = it.steps.length, L = CASES[lang].L;
-    const at = $$('[data-at]', sc), adds = $$('[data-add]', sc), prog = $$('.sc-prog i', sc), now = $('#sc-now');
+    const at = $$('[data-at]', sc), prog = $$('.sc-prog i', sc), now = $('#sc-now');
+    const adds = [];
+    ['add', 'addB', 'addC'].forEach(key => $$('*', sc).forEach(el => { const v = el.dataset[key]; if (v) { const [m, c] = v.split(' '); adds.push([el, +m, c]); } }));
     const show = k => {
       at.forEach(el => el.classList.toggle('on', +el.dataset.at <= k));
-      adds.forEach(el => { const [m, c] = el.dataset.add.split(' '); el.classList.toggle(c, +m <= k); });
+      adds.forEach(([el, m, c]) => el.classList.toggle(c, m <= k));
       prog.forEach((el, i) => el.classList.toggle('on', i < k));
       if (k > 0) {
         const [a, b] = it.steps[k - 1];
