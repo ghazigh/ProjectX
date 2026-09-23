@@ -1,10 +1,22 @@
-# Service landing page
+# Avant-Poste — agency landing page
 
-A self-contained, buyer-facing landing page for the agentic-AI service offering.
-Matches your existing site's editorial brand (Fraunces / Newsreader / JetBrains
-Mono) but is positioned to convert clients, not impress academics.
+The landing page for **Avant-Poste**, a forward-deployed AI engineering agency
+for PME (small and mid-sized businesses): a senior engineer embeds in the
+client's operations, finds the costliest repetitive work, and ships AI agents
+to production at a fixed price.
 
 Single file, no build step, no dependencies (fonts load from Google Fonts).
+French by default with an FR/EN toggle (English copy lives in the `EN` object
+in the page script). Light and dark themes follow the visitor's system setting.
+
+What's on the page: a live topographic "field map" hero with a sample mission
+log, a comparison table (SaaS vs. consulting vs. hiring vs. forward-deployed),
+the 5-step method with a scroll-driven progress rail, six mission types, an ROI
+calculator, the three fixed-price offers, reliability commitments, founder
+card, FAQ and a final call to action. Motion respects `prefers-reduced-motion`.
+
+"Avant-Poste" is a working name. To rename, search-and-replace it in
+`index.html` (title, meta, JSON-LD, header, copy and footer).
 
 ## Fill in before publishing
 
@@ -13,7 +25,7 @@ Open `index.html` and replace:
 - `https://calendly.com/gharsallahghazi` — your Calendly / Cal.com link
 - `gharsallahghazi@gmail.com` — your contact email
 
-Then verify the `§ 03 — Why me` section against what you're comfortable stating
+Then verify the founder card (`#equipe`) against what you're comfortable stating
 publicly (exact PhD status, role title, and how much of your current employer to
 name — see the conflict-of-interest note in `sales/agentic-ai-offer.md`).
 
@@ -45,7 +57,7 @@ cd website && python3 -m http.server 8000   # then open http://localhost:8000
 
 ## Files in this folder
 
-- `index.html` — the service landing page (deploy as `work-with-me.html`)
+- `index.html` — the Avant-Poste agency landing page (deploy as `work-with-me.html` or its own domain)
 - `insights/` — the SEO blog: `index.html` + two cornerstone articles + `article.css`
 - `sitemap.xml`, `robots.txt` — copy to your site **root** for indexing
 
