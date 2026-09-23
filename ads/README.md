@@ -25,6 +25,16 @@ Source: `build2.py` (Three.js scenes driven by HyperFrames `hf-seek` time, GSAP 
 type) and `synth.py` (placeholder beat tracks, pure Python). Drafts with sound:
 `drafts/round2/`.
 
+## Round 3: recognition hook ("that's me"), premium craft
+
+| | Concept | Format | Idea |
+|---|---|---|---|
+| 1 | 11:47 PM | 9:16 · 15 s | Night lock screen flooded with admin notifications; the agent clears them: "Go to bed." |
+| 2 | Starring: You | 16:9 · 15 s | Movie credits: Receptionist: You, Night shift: You… "Time to recast." → Agent. CEO: You. |
+| 3 | Sunday | 1:1 · 15 s | Admin fills every evening and Sunday; blocks fly to "Agents · 24/7": "Your Sundays. Back." |
+
+Source: `build3.py` (GSAP + synthesized pings/whooshes/hits). Drafts: `drafts/round3/`.
+
 ## Build and render
 
 Needs Node 22+, FFmpeg, and the HyperFrames CLI (`npm i -g hyperframes`,
@@ -33,6 +43,7 @@ then `hyperframes browser ensure`).
 ```bash
 python3 build.py            # round 1 low-res drafts -> projects/<concept>/
 python3 build2.py           # round 2 low-res drafts (Three.js + audio)
+python3 build3.py           # round 3 low-res drafts (recognition hooks + audio)
 python3 build.py --final    # full resolution (1080x1920, 1080x1080, 1920x1080)
 cd projects/a-942pm && hyperframes render -q draft -f 24 -o ../../a.mp4
 ```

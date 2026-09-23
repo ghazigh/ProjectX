@@ -151,3 +151,75 @@ def hours(path):  # 100 BPM, 15 s, ambient
     T.impact(10.4, 1.0)
     T.tone(10.4, 15, [146.8, 220, 293.7, 440], gain=0.07, attack=0.1, release=3)
     T.write(path)
+
+
+# ---------------------------------------------------------------- round 3 helpers + tracks
+def _ping(T, t, f=1318.5, gain=0.22, dec=0.35):
+    out, ph, ph2 = [], 0.0, 0.0
+    for k in range(int(dec * SR * 2.5)):
+        x = k / SR
+        ph += 2 * math.pi * f / SR
+        ph2 += 2 * math.pi * f * 1.5 / SR
+        out.append(gain * (math.sin(ph) + 0.4 * math.sin(ph2)) * math.exp(-x / dec))
+    T._add(t, out)
+
+
+def _whoosh(T, t, dur=0.35, gain=0.25):
+    r = T.rng
+    n, out, lp = int(dur * SR), [], 0.0
+    for k in range(n):
+        p = k / n
+        lp += (0.05 + 0.5 * p) * (r.uniform(-1, 1) - lp)
+        out.append(gain * lp * math.sin(math.pi * p))
+    T._add(t, out)
+
+
+def notif(path, card_times, swipe_times):  # 15 s
+    T = Track(15, 31)
+    T.tone(0, 15, [55, 82.4], gain=0.1, attack=2, release=2)
+    notes = [1318.5, 1567.9, 1174.7, 1760.0]
+    for i, t in enumerate(card_times):
+        _ping(T, t, notes[i % 4], gain=0.16 + 0.012 * i)
+    T.tone(2.4, 5.2, [220, 233.1], gain=0.035, attack=1.5, release=0.3)   # tension
+    T.impact(5.3, 0.55)
+    for t in swipe_times:
+        _whoosh(T, t, 0.22, 0.18)
+    b, t = 0.5, 5.3
+    while t < 10.2:
+        T.kick(t, 0.5); T.hat(t + b / 2, 0.07); t += b
+    T.tone(5.3, 10.4, [110, 164.8, 220, 277.2], gain=0.05, attack=0.6, release=0.6)
+    T.impact(10.4, 0.8)
+    T.tone(10.4, 15, [220, 277.2, 329.6, 440], gain=0.06, attack=0.1, release=3)
+    T.write(path)
+
+
+def credits(path, hits, recast, final):  # 15 s, cinematic
+    T = Track(15, 47)
+    T.tone(0, 7.2, [41.2, 61.7, 98], gain=0.12, attack=1.5, release=0.4)
+    for i, t in enumerate(hits):
+        T.kick(t, 0.45 + 0.03 * i, f0=90, f1=38, dec=0.5)
+    T.riser(5.6, 7.1, 0.3)
+    T.impact(7.2, 0.7)
+    for t in recast:
+        T.snare(t, 0.35); _whoosh(T, t - 0.08, 0.16, 0.12)
+    T.tone(7.6, 11, [82.4, 123.5, 164.8, 207.7], gain=0.06, attack=0.5, release=0.5)
+    T.impact(final, 1.0)
+    T.tone(final, 15, [164.8, 246.9, 329.6, 415.3], gain=0.07, attack=0.1, release=3)
+    T.write(path)
+
+
+def sunday(path, drops, flies):  # 15 s
+    T = Track(15, 59)
+    T.tone(0, 15, [49, 73.4], gain=0.1, attack=2, release=2)
+    tick = 0.0
+    while tick < 6.0:  # clock
+        T.hat(tick, 0.09, dec=0.02); tick += 0.5
+    for t in drops:
+        T.kick(t, 0.22, f0=180, f1=90, dec=0.08)
+    T.impact(6.2, 0.6)
+    for t in flies:
+        _whoosh(T, t, 0.25, 0.14)
+    T.tone(6.2, 10.4, [196, 246.9, 293.7, 392], gain=0.05, attack=0.8, release=0.8)
+    T.impact(10.4, 0.9)
+    T.tone(10.4, 15, [196, 246.9, 293.7, 392], gain=0.07, attack=0.1, release=3)
+    T.write(path)
