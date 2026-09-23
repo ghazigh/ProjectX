@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Avant-Poste — Ingénieurs IA déployés dans votre PME</title>
-<meta name="description" content="Avant-Poste intègre un ingénieur IA senior au cœur de votre PME. Il observe vos équipes, trouve les tâches qui coûtent le plus d'heures, et met en production des agents IA en 4 à 6 semaines. Prix fixe.">
-<meta property="og:title" content="Avant-Poste — Ingénieurs IA déployés dans votre PME">
+<title>Forward — Ingénieurs IA déployés dans votre PME</title>
+<meta name="description" content="Forward intègre un ingénieur IA senior au cœur de votre PME. Il observe vos équipes, trouve les tâches qui coûtent le plus d'heures, et met en production des agents IA en 4 à 6 semaines. Prix fixe.">
+<meta property="og:title" content="Forward — Ingénieurs IA déployés dans votre PME">
 <meta property="og:description" content="On vous envoie un ingénieur, pas un PowerPoint. Des agents IA en production en 4 à 6 semaines, à prix fixe.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_CA">
 <meta property="og:locale:alternate" content="en_CA">
-<link rel="canonical" href="https://ghazigh.github.io/work-with-me.html">
+<link rel="canonical" href="https://ghazigh.github.io/ProjectX/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Avant-Poste",
+  "name": "Forward",
   "description": "Agence d'ingénieurs IA déployés sur le terrain pour les PME : diagnostic, mise en production d'agents IA et accompagnement mensuel.",
-  "url": "https://ghazigh.github.io/work-with-me.html",
+  "url": "https://ghazigh.github.io/ProjectX/",
   "knowsLanguage": ["fr", "en"],
   "priceRange": "$$$",
   "founder": {
@@ -113,8 +113,9 @@
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);
     font-family:var(--f-display);font-stretch:118%;font-weight:700;font-size:1.06rem;letter-spacing:-.02em}
   .mark{width:22px;height:22px;flex:none}
-  .mark path{fill:none;stroke:currentColor;stroke-width:1.7}
-  .mark circle{fill:var(--accent)}
+  .mark path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s var(--ease)}
+  .mark .m2{stroke:var(--accent)}
+  .brand:hover .mark .m2{transform:translateX(2px)}
   .nav{display:flex;gap:26px;margin-left:auto}
   .nav a{position:relative;text-decoration:none;font-size:.92rem;color:var(--muted);transition:color .2s}
   .nav a:hover,.nav a.active{color:var(--ink)}
@@ -166,7 +167,25 @@
   .proof li{display:flex;align-items:center;gap:8px}
   .proof li::before{content:"";width:5px;height:5px;background:var(--accent);transform:rotate(45deg)}
 
-  .hero-visual{position:relative}
+  .hero-visual{position:relative;perspective:1400px}
+  .hero-copy,.log{will-change:transform}
+  .pin{transition:none}
+  .pin-label.b{display:none}
+  .pin.solved .pin-label.a{display:none}
+  .pin.solved .pin-label.b{display:flex;animation-delay:0s}
+  .pin.solved .pin-dot{background:var(--accent)}
+  .pin.solved .pin-ring{animation-duration:1.6s}
+  .hint{display:none}
+  @media (min-width:981px) and (min-height:620px) and (prefers-reduced-motion:no-preference){
+    .hero-track{height:260vh;margin-top:-70px}
+    .hero{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding-block:78px 48px}
+    .hero .wrap{width:100%}
+    .map{max-height:calc(100vh - 190px)}
+    .hint{display:flex;position:absolute;left:50%;bottom:22px;transform:translateX(-50%);flex-direction:column;align-items:center;gap:10px;
+      font:500 .64rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:opacity .3s}
+    .hint i{display:block;width:1px;height:34px;background:linear-gradient(var(--accent),transparent);transform-origin:top;animation:drip 1.8s var(--ease) infinite}
+    @keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+  }
   .map{position:relative;aspect-ratio:1/1.04;max-width:100%;border-radius:22px;background:var(--surface);
     border:1px solid var(--line);overflow:hidden;isolation:isolate;cursor:crosshair}
   .map canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -429,8 +448,8 @@
 <header class="hdr" id="hdr">
   <div class="wrap">
     <a class="brand" href="#top">
-      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8 21.2 12 12 21.2 2.8 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
-      <span>avant-poste</span>
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5 11 12l-6.5 6.5"/><path class="m2" d="M12.5 5.5 19 12l-6.5 6.5"/></svg>
+      <span>forward</span>
     </a>
     <nav class="nav" aria-label="Navigation">
       <a href="#modele" data-i18n="nav1">Le modèle</a>
@@ -452,12 +471,13 @@
 <main id="main">
 
   <!-- HERO -->
+  <div class="hero-track" id="hero-track">
   <section class="hero" id="top">
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="eyebrow">Agence d'ingénieurs IA déployés · pour les PME</span></p>
         <h1 id="h1" data-i18n="h1">On vous envoie un <em>ingénieur</em>. <span class="dim">Pas un PowerPoint.</span></h1>
-        <p class="lede" data-i18n="lede">Avant-Poste intègre un ingénieur IA senior au cœur de votre PME. Il travaille avec vos équipes, repère les tâches qui vous coûtent le plus d'heures, et met en production des agents IA qui s'en chargent. En quelques semaines, pas en trimestres.</p>
+        <p class="lede" data-i18n="lede">Forward intègre un ingénieur IA senior au cœur de votre PME. Il travaille avec vos équipes, repère les tâches qui vous coûtent le plus d'heures, et met en production des agents IA qui s'en chargent. En quelques semaines, pas en trimestres.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://calendly.com/gharsallahghazi" target="_blank" rel="noopener">
             <span data-i18n="cta1">Réserver un appel de 20 min</span>
@@ -479,7 +499,8 @@
           <div class="hud br" id="alt" aria-hidden="true">≈ 7,1 h/sem</div>
           <div class="pin" style="left:62%;top:41%">
             <span class="pin-ring"></span><span class="pin-ring r2"></span><span class="pin-dot"></span>
-            <div class="pin-label"><b data-i18n="pinT">Goulot identifié · J+04</b><span data-i18n="pinS">Devis faits à la main : 4 h/jour</span></div>
+            <div class="pin-label a"><b data-i18n="pinT">Goulot identifié · J+04</b><span data-i18n="pinS">Devis faits à la main : 4 h/jour</span></div>
+            <div class="pin-label b"><b data-i18n="pinT2">Résolu · J+30</b><span data-i18n="pinS2">80 h récupérées ce mois-ci</span></div>
           </div>
         </div>
         <aside class="log" aria-labelledby="log-t">
@@ -488,7 +509,9 @@
         </aside>
       </div>
     </div>
+    <div class="hint" id="hint" aria-hidden="true"><span data-i18n="hint">Défilez pour déployer</span><i></i></div>
   </section>
+  </div>
 
   <!-- TOOLS -->
   <section class="tools" aria-labelledby="tools-k">
@@ -514,7 +537,7 @@
         <p class="tag" data-i18n="t1">Le modèle</p>
         <div>
           <h2 data-i18n="h2a">Un ingénieur dans vos opérations, jusqu'à ce que ça tourne.</h2>
-          <p data-i18n="p2a">Les grandes entreprises tech ont un nom pour ça : l'ingénieur «&nbsp;déployé sur le terrain&nbsp;» (<i>forward deployed engineer</i>). Au lieu de vendre un outil et de repartir, il s'installe chez le client, sur place ou à distance, et reste jusqu'à ce que le système donne des résultats. Avant-Poste apporte ce modèle aux PME, à prix fixe.</p>
+          <p data-i18n="p2a">Les grandes entreprises tech ont un nom pour ça : l'ingénieur «&nbsp;déployé sur le terrain&nbsp;» (<i>forward deployed engineer</i>). Au lieu de vendre un outil et de repartir, il s'installe chez le client, sur place ou à distance, et reste jusqu'à ce que le système donne des résultats. Forward apporte ce modèle aux PME, à prix fixe.</p>
         </div>
       </div>
       <div class="cmp-wrap rv">
@@ -782,7 +805,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> Avant-Poste</span>
+    <span>© <span id="yr">2026</span> Forward</span>
     <nav aria-label="Pied de page">
       <a href="insights/" data-i18n="ft1">Articles</a>
       <a href="https://www.linkedin.com/in/ghazi-gharsallah-29264a155/" target="_blank" rel="noopener">LinkedIn</a>
@@ -808,16 +831,17 @@
     navCta: `Book <span class="long">a call</span>`,
     eyebrow: `Forward-deployed AI engineers · for SMEs`,
     h1: `We send you an <em>engineer</em>. <span class="dim">Not a slide deck.</span>`,
-    lede: `Avant-Poste embeds a senior AI engineer inside your business. They work alongside your teams, find the tasks that cost you the most hours, and put AI agents into production to handle them. In weeks, not quarters.`,
+    lede: `Forward embeds a senior AI engineer inside your business. They work alongside your teams, find the tasks that cost you the most hours, and put AI agents into production to handle them. In weeks, not quarters.`,
     cta1: `Book a 20-min call`, cta1b: `Book a 20-min call`, cta2: `See the method`,
     proof: `<li>Fixed price</li><li>Live in 4–6 weeks</li><li>Your data stays yours</li>`,
     mapT: `Field map · your business`, mapL: `Contours = hours lost / week`,
     pinT: `Bottleneck found · D+04`, pinS: `Quotes written by hand: 4 h/day`,
+    pinT2: `Solved · D+30`, pinS2: `80 hours saved this month`, hint: `Scroll to deploy`,
     logT: `Field log`, logC: `Sample mission`,
     toolsK: `Plugged into the tools you already use`,
     t1: `The model`,
     h2a: `An engineer inside your operations, until it works.`,
-    p2a: `Big tech companies have a name for it: the <i>forward-deployed engineer</i>. Instead of selling a tool and walking away, the engineer works inside the client's business, on site or remotely, and stays until the system delivers. Avant-Poste brings that model to small and mid-sized businesses, at a fixed price.`,
+    p2a: `Big tech companies have a name for it: the <i>forward-deployed engineer</i>. Instead of selling a tool and walking away, the engineer works inside the client's business, on site or remotely, and stays until the system delivers. Forward brings that model to small and mid-sized businesses, at a fixed price.`,
     capt: `Comparison of the ways an SME can adopt AI`,
     th: `<th scope="col"><span class="sr">Criterion</span></th><th scope="col">SaaS software</th><th scope="col">Consulting firm</th><th scope="col">Hiring an AI team</th><th scope="col" class="us">Forward-deployed engineer</th>`,
     r1: `<th scope="row">Time to results</th><td>Instant… if it's adopted</td><td>3–6 months</td><td>6–12 months</td><td class="us">4–6 weeks</td>`,
@@ -889,8 +913,8 @@
     en: { copied: 'Copied', copy: 'Copy', hours: 'h', perH: '/h', week: 'h/wk', months: m => `${m} months`, never: '> 24 months', W: 'W' }
   };
   const META = {
-    fr: { title: 'Avant-Poste — Ingénieurs IA déployés dans votre PME', desc: document.querySelector('meta[name="description"]').content },
-    en: { title: 'Avant-Poste — Forward-deployed AI engineers for SMEs', desc: 'Avant-Poste embeds a senior AI engineer inside your business to find the tasks that cost the most hours and put AI agents into production in 4–6 weeks. Fixed price.' }
+    fr: { title: 'Forward — Ingénieurs IA déployés dans votre PME', desc: document.querySelector('meta[name="description"]').content },
+    en: { title: 'Forward — Forward-deployed AI engineers for SMEs', desc: 'Forward embeds a senior AI engineer inside your business to find the tasks that cost the most hours and put AI agents into production in 4–6 weeks. Fixed price.' }
   };
   const LOG = {
     fr: [
@@ -952,17 +976,21 @@
     renderLog(first);
     calc(true);
     topo && topo.redrawHud();
-    if (!first) store.set('ap-lang', l);
+    if (!first) store.set('fw-lang', l);
   }
   $$('.lang button').forEach(b => b.addEventListener('click', () => { if (b.dataset.lang !== lang) setLang(b.dataset.lang, false); }));
 
   /* ------------------------------------------------------------ field log */
   let logTimer = 0;
+  function setLogStep(i) {
+    $$('#log-list li').forEach((li, k) => { li.classList.toggle('on', k <= i); li.classList.toggle('cur', k === i); });
+  }
   function renderLog(animate) {
     const ol = $('#log-list');
     clearTimeout(logTimer);
     ol.innerHTML = LOG[lang].map(([t, x]) => `<li><time>${t}</time><span>${x}</span></li>`).join('');
     const items = [...ol.children];
+    if (pinMQ.matches) { setLogStep(Math.max(0, Math.min(5, Math.floor(Math.max(heroP, 0) * 6.4)))); return; }
     if (!animate || RM.matches) { items.forEach(li => li.classList.add('on')); items[items.length - 1].classList.add('cur'); return; }
     let k = 0;
     const step = () => {
@@ -993,10 +1021,16 @@
     return l1 + v * (l2 - l1);
   }
 
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const smooth = x => x * x * (3 - 2 * x);
+
   function Topo(canvas, opt) {
     const ctx = canvas.getContext('2d');
     const cell = opt.cell;
-    let W = 0, H = 0, dpr = 1, cols = 0, rows = 0, vals = null, t = opt.t0 || 0, ptr = null, col = {}, on = false, raf = 0, last = 0, inView = false, frames = 0;
+    let W = 0, H = 0, dpr = 1, cols = 0, rows = 0, vals = null, t = opt.t0 || 0, ptr = null, col = {};
+    let on = false, raf = 0, last = 0, inView = false, frames = 0;
+    const S = { rise: 0, collapse: 0 };
+    let pr = null;
     const readColors = () => {
       const cs = getComputedStyle(document.documentElement);
       col.line = cs.getPropertyValue(opt.lineVar).trim() || '14,18,16';
@@ -1004,20 +1038,40 @@
     };
     const field = (x, y) => {
       const nx = x / W * opt.scale, ny = y / W * opt.scale;
-      let v = noise(nx + t * .022, ny - t * .014) * .8
-            + noise(nx * 2.3 - t * .03 + 20, ny * 2.3 + 7) * .34
-            + noise(nx * 5.1 + 3, ny * 5.1 + t * .045) * .1;
+      let v = noise(nx + t * .02, ny - t * .013) * .85
+            + noise(nx * 1.8 - t * .026 + 20, ny * 1.8 + 7) * .3;
       if (opt.pin) {
         const dx = x / W - opt.pin[0], dy = (y - opt.pin[1] * H) / W;
-        v += opt.peak * Math.exp(-(dx * dx + dy * dy) / opt.spread);
+        v += opt.peak * (1 - .85 * S.collapse) * Math.exp(-(dx * dx + dy * dy) / opt.spread);
       }
       return v;
     };
+
+    /* 3D projection: tilt the plane back, lift each contour to its level */
+    function setupProj() {
+      const r = S.rise, th = r * 52 * Math.PI / 180, ph = -r * 18 * Math.PI / 180;
+      pr = { r, ct: Math.cos(th), st: Math.sin(th), cp: Math.cos(ph), sp: Math.sin(ph),
+        hs: r * Math.min(W, H) * .13, F: 1400, k: 1 + .06 * r, cx: W / 2, cy: H / 2, oy: r * H * .1 };
+    }
+    function proj(x, y, L, out) {
+      if (pr.r < 1e-3) { out[0] = x; out[1] = y; return; }
+      const x0 = (x - pr.cx) * pr.k, y0 = (y - pr.cy) * pr.k, z = (L + 1.1) * pr.hs;
+      const xr = x0 * pr.cp - y0 * pr.sp, yr = x0 * pr.sp + y0 * pr.cp;
+      const ys = yr * pr.ct - z * pr.st, zc = z * pr.ct + yr * pr.st * pr.k;
+      const sc = pr.F / (pr.F - zc);
+      out[0] = pr.cx + xr * sc; out[1] = pr.cy + pr.oy + ys * sc;
+    }
+
+    /* marching squares → chained polylines → smooth quadratic curves */
     function draw() {
       if (!W) return;
-      const C = cols + 1, s = cell, step = opt.step, lo = -3;
+      const C = cols + 1, s = cell, step = opt.step, lo = -3, E = 2 * C * (rows + 1);
       for (let j = 0; j <= rows; j++) for (let i = 0; i <= cols; i++) vals[j * C + i] = field(i * s, j * s);
-      const thin = new Path2D(), idx = new Path2D(), hot = new Path2D();
+      const pts = new Map(), adj = new Map();
+      const link = (ka, kb) => {
+        let a = adj.get(ka); if (!a) adj.set(ka, a = []); a.push(kb);
+        let b = adj.get(kb); if (!b) adj.set(kb, b = []); b.push(ka);
+      };
       for (let j = 0; j < rows; j++) {
         for (let i = 0; i < cols; i++) {
           const a = vals[j * C + i], b = vals[j * C + i + 1], c = vals[(j + 1) * C + i + 1], d = vals[(j + 1) * C + i];
@@ -1027,42 +1081,89 @@
             const L = lo + k * step;
             const code = (a > L ? 8 : 0) | (b > L ? 4 : 0) | (c > L ? 2 : 0) | (d > L ? 1 : 0);
             if (code === 0 || code === 15) continue;
-            const p = (opt.hot != null && L >= opt.hot) ? hot : (k % 5 === 0 ? idx : thin);
-            const x0 = i * s, y0 = j * s, X1 = x0 + s, Y1 = y0 + s;
-            const tx = x0 + s * (L - a) / (b - a), ry = y0 + s * (L - b) / (c - b);
-            const bx = x0 + s * (L - d) / (c - d), ly = y0 + s * (L - a) / (d - a);
+            const base = k * E, x0 = i * s, y0 = j * s;
+            const T = base + 2 * (j * C + i), B = base + 2 * ((j + 1) * C + i);
+            const Lk = base + 2 * (j * C + i) + 1, R = base + 2 * (j * C + i + 1) + 1;
+            if (!pts.has(T)) pts.set(T, [x0 + s * (L - a) / (b - a), y0]);
+            if (!pts.has(B)) pts.set(B, [x0 + s * (L - d) / (c - d), y0 + s]);
+            if (!pts.has(Lk)) pts.set(Lk, [x0, y0 + s * (L - a) / (d - a)]);
+            if (!pts.has(R)) pts.set(R, [x0 + s, y0 + s * (L - b) / (c - b)]);
             switch (code) {
-              case 1: case 14: p.moveTo(x0, ly); p.lineTo(bx, Y1); break;
-              case 2: case 13: p.moveTo(bx, Y1); p.lineTo(X1, ry); break;
-              case 3: case 12: p.moveTo(x0, ly); p.lineTo(X1, ry); break;
-              case 4: case 11: p.moveTo(tx, y0); p.lineTo(X1, ry); break;
-              case 5: p.moveTo(tx, y0); p.lineTo(x0, ly); p.moveTo(bx, Y1); p.lineTo(X1, ry); break;
-              case 6: case 9: p.moveTo(tx, y0); p.lineTo(bx, Y1); break;
-              case 7: case 8: p.moveTo(tx, y0); p.lineTo(x0, ly); break;
-              case 10: p.moveTo(tx, y0); p.lineTo(X1, ry); p.moveTo(x0, ly); p.lineTo(bx, Y1); break;
+              case 1: case 14: link(Lk, B); break;
+              case 2: case 13: link(B, R); break;
+              case 3: case 12: link(Lk, R); break;
+              case 4: case 11: link(T, R); break;
+              case 5: link(T, Lk); link(B, R); break;
+              case 6: case 9: link(T, B); break;
+              case 7: case 8: link(T, Lk); break;
+              case 10: link(T, R); link(Lk, B); break;
             }
           }
         }
       }
+      setupProj();
+      const thin = new Path2D(), idx = new Path2D(), hot = new Path2D();
+      const seen = new Set(), q = [], tmp = [0, 0];
+      const trace = start => {
+        const line = [start]; seen.add(start);
+        let prev = -1, cur = start, closed = false;
+        for (;;) {
+          const nb = adj.get(cur); let nx = -1;
+          for (let m = 0; m < nb.length; m++) if (nb[m] !== prev && !seen.has(nb[m])) { nx = nb[m]; break; }
+          if (nx < 0) { closed = line.length > 2 && nb.includes(start); break; }
+          line.push(nx); seen.add(nx); prev = cur; cur = nx;
+        }
+        const k = Math.floor(start / E), L = lo + k * step;
+        const p = (opt.hot != null && L >= opt.hot) ? hot : (k % 5 === 0 ? idx : thin);
+        const n = line.length; if (n < 2) return;
+        q.length = 0;
+        for (let m = 0; m < n; m++) { const pt = pts.get(line[m]); proj(pt[0], pt[1], L, tmp); q.push(tmp[0], tmp[1]); }
+        if (closed) {
+          p.moveTo((q[2 * n - 2] + q[0]) / 2, (q[2 * n - 1] + q[1]) / 2);
+          for (let m = 0; m < n; m++) {
+            const m2 = (m + 1) % n;
+            p.quadraticCurveTo(q[2 * m], q[2 * m + 1], (q[2 * m] + q[2 * m2]) / 2, (q[2 * m + 1] + q[2 * m2 + 1]) / 2);
+          }
+        } else {
+          p.moveTo(q[0], q[1]);
+          for (let m = 1; m < n - 1; m++) p.quadraticCurveTo(q[2 * m], q[2 * m + 1], (q[2 * m] + q[2 * m + 2]) / 2, (q[2 * m + 1] + q[2 * m + 3]) / 2);
+          p.lineTo(q[2 * n - 2], q[2 * n - 1]);
+        }
+      };
+      for (const [key, nb] of adj) if (nb.length === 1 && !seen.has(key)) trace(key);
+      for (const key of adj.keys()) if (!seen.has(key)) trace(key);
+
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
       ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      if (pr.r > .01) {
+        // the ground plate the terrain stands on
+        const c = [[0, 0], [W, 0], [W, H], [0, H]].map(([x, y]) => { proj(x, y, -1.1, tmp); return [tmp[0], tmp[1]]; });
+        ctx.beginPath(); c.forEach(([x, y], m) => m ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath();
+        ctx.fillStyle = `rgba(${col.line},${.035 * pr.r})`; ctx.fill();
+        ctx.strokeStyle = `rgba(${col.line},${.4 * pr.r})`; ctx.lineWidth = 1; ctx.stroke();
+      }
       ctx.strokeStyle = `rgba(${col.line},${opt.a})`; ctx.lineWidth = 1; ctx.stroke(thin);
       ctx.strokeStyle = `rgba(${col.line},${opt.ai})`; ctx.lineWidth = 1.4; ctx.stroke(idx);
       if (opt.hot != null) { ctx.strokeStyle = col.acc; ctx.lineWidth = 1.5; ctx.stroke(hot); }
-      if (opt.ticks) {
+      if (opt.ticks && pr.r < .02) {
         ctx.strokeStyle = `rgba(${col.line},.35)`; ctx.lineWidth = 1; ctx.beginPath();
         for (let x = 20; x < W; x += 20) { const l = x % 100 === 0 ? 9 : 4; ctx.moveTo(x, 0); ctx.lineTo(x, l); ctx.moveTo(x, H); ctx.lineTo(x, H - l); }
         for (let y = 20; y < H; y += 20) { const l = y % 100 === 0 ? 9 : 4; ctx.moveTo(0, y); ctx.lineTo(l, y); ctx.moveTo(W, y); ctx.lineTo(W - l, y); }
         ctx.stroke();
       }
-      if (ptr) {
+      if (ptr && pr.r < .02) {
         ctx.save();
         ctx.setLineDash([3, 5]); ctx.strokeStyle = col.acc; ctx.globalAlpha = .55; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(ptr.x, 0); ctx.lineTo(ptr.x, H); ctx.moveTo(0, ptr.y); ctx.lineTo(W, ptr.y); ctx.stroke();
         ctx.setLineDash([]); ctx.globalAlpha = 1;
         ctx.beginPath(); ctx.arc(ptr.x, ptr.y, 5, 0, Math.PI * 2); ctx.stroke();
         ctx.restore();
+      }
+      if (opt.onPin) {
+        const px = opt.pin[0] * W, py = opt.pin[1] * H;
+        proj(px, py, field(px, py), tmp);
+        opt.onPin(tmp[0], tmp[1]);
       }
     }
     function hud() {
@@ -1109,21 +1210,30 @@
       });
       opt.pointerEl.addEventListener('pointerleave', () => { ptr = null; hud(); if (!on) draw(); });
     }
-    return { redrawHud: hud };
+    return {
+      redrawHud: hud,
+      setProgress(p) {
+        S.rise = smooth(clamp(p / .5));
+        S.collapse = smooth(clamp((p - .55) / .38));
+        if (!on) draw();
+      }
+    };
   }
 
   let topo = null;
+  const pinEl = $('.pin');
   const heroCanvas = $('#topo');
   if (heroCanvas && heroCanvas.getContext) {
     topo = Topo(heroCanvas, {
-      cell: 10, scale: 2.3, step: .11, lineVar: '--topo', a: .2, ai: .42,
+      cell: 8, scale: 2.0, step: .1, lineVar: '--topo', a: .22, ai: .45,
       pin: [.62, .41], peak: 1.15, spread: .014, hot: 1.02, ticks: true,
+      onPin: (x, y) => { pinEl.style.left = x + 'px'; pinEl.style.top = y + 'px'; },
       pointerEl: $('#map'), hud: { coords: $('#coords'), alt: $('#alt') }
     });
   }
   const endCanvas = $('#topo2');
   if (endCanvas && endCanvas.getContext) {
-    Topo(endCanvas, { cell: 14, scale: 1.6, step: .12, lineVar: '--topo-inv', a: .1, ai: .2, t0: 40 });
+    Topo(endCanvas, { cell: 12, scale: 1.5, step: .12, lineVar: '--topo-inv', a: .1, ai: .2, t0: 40 });
   }
 
   /* ------------------------------------------------------------ header + nav */
@@ -1131,8 +1241,36 @@
   const steps = $('#steps');
   const stepItems = steps ? $$('.step', steps) : [];
   let ticking = false;
+  const track = $('#hero-track'), heroCopy = $('.hero-copy'), logEl = $('.log'), hint = $('#hint'), mapEl = $('#map');
+  const pinMQ = matchMedia('(min-width: 981px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)');
+  let heroP = -1;
+  function heroProgress() {
+    if (RM.matches) return 0;
+    if (pinMQ.matches) {
+      const span = track.offsetHeight - innerHeight;
+      return span > 0 ? clamp(-track.getBoundingClientRect().top / span) : 0;
+    }
+    const m = mapEl.getBoundingClientRect();
+    return clamp((innerHeight * .62 - m.top) / (m.height * 1.1));
+  }
+  function applyHero(p) {
+    topo && topo.setProgress(p);
+    if (pinMQ.matches) {
+      heroCopy.style.transform = `translate3d(0, ${(-p * 40).toFixed(1)}px, 0)`;
+      heroCopy.style.opacity = (1 - p * .12).toFixed(3);
+      logEl.style.transform = `translate3d(${(-p * 36).toFixed(1)}px, ${(p * 48).toFixed(1)}px, ${(p * 90).toFixed(1)}px) rotateX(${(p * 6).toFixed(2)}deg) rotateY(${(p * 12).toFixed(2)}deg)`;
+      setLogStep(Math.min(5, Math.floor(p * 6.4)));
+    } else {
+      heroCopy.style.transform = heroCopy.style.opacity = logEl.style.transform = '';
+    }
+    pinEl.classList.toggle('solved', p > .82);
+    if (hint) hint.style.opacity = String(clamp(1 - p * 10));
+  }
+  pinMQ.addEventListener && pinMQ.addEventListener('change', () => { heroP = -1; renderLog(false); onScroll(); });
   function onScroll() {
     hdr.classList.toggle('scrolled', window.scrollY > 8);
+    const hp = heroProgress();
+    if (Math.abs(hp - heroP) > .0004) { heroP = hp; applyHero(hp); }
     if (steps) {
       const r = steps.getBoundingClientRect();
       const p = Math.min(1, Math.max(0, (innerHeight * .7 - r.top) / (r.height * .9)));
@@ -1228,7 +1366,7 @@
 
   /* ------------------------------------------------------------ boot */
   $('#yr').textContent = new Date().getFullYear();
-  const saved = store.get('ap-lang');
+  const saved = store.get('fw-lang');
   const initial = saved === 'en' ? 'en' : 'fr';
   setLang(initial, true);
   onScroll();

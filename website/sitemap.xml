@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ghazigh.github.io/work-with-me.html</loc><priority>1.0</priority></url>
-  <url><loc>https://ghazigh.github.io/insights/</loc><priority>0.8</priority></url>
-  <url><loc>https://ghazigh.github.io/insights/agentic-ai-cost-guide.html</loc><priority>0.7</priority></url>
-  <url><loc>https://ghazigh.github.io/insights/agentic-ai-demo-to-production.html</loc><priority>0.7</priority></url>
-  <url><loc>https://ghazigh.github.io/insights/hire-agentic-ai-developer.html</loc><priority>0.7</priority></url>
-  <url><loc>https://ghazigh.github.io/insights/build-vs-buy-ai-agent.html</loc><priority>0.7</priority></url>
+  <url><loc>https://ghazigh.github.io/ProjectX/</loc><priority>1.0</priority></url>
+  <url><loc>https://ghazigh.github.io/ProjectX/insights/</loc><priority>0.8</priority></url>
+  <url><loc>https://ghazigh.github.io/ProjectX/insights/agentic-ai-cost-guide.html</loc><priority>0.7</priority></url>
+  <url><loc>https://ghazigh.github.io/ProjectX/insights/agentic-ai-demo-to-production.html</loc><priority>0.7</priority></url>
+  <url><loc>https://ghazigh.github.io/ProjectX/insights/hire-agentic-ai-developer.html</loc><priority>0.7</priority></url>
+  <url><loc>https://ghazigh.github.io/ProjectX/insights/build-vs-buy-ai-agent.html</loc><priority>0.7</priority></url>
 </urlset>

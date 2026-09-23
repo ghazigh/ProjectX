@@ -1,6 +1,6 @@
-# Avant-Poste — agency landing page
+# Forward — agency landing page
 
-The landing page for **Avant-Poste**, a forward-deployed AI engineering agency
+The landing page for **Forward**, a forward-deployed AI engineering agency
 for PME (small and mid-sized businesses): a senior engineer embeds in the
 client's operations, finds the costliest repetitive work, and ships AI agents
 to production at a fixed price.
@@ -15,7 +15,7 @@ the 5-step method with a scroll-driven progress rail, six mission types, an ROI
 calculator, the three fixed-price offers, reliability commitments, founder
 card, FAQ and a final call to action. Motion respects `prefers-reduced-motion`.
 
-"Avant-Poste" is a working name. To rename, search-and-replace it in
+"Forward" is a working name. To rename, search-and-replace it in
 `index.html` (title, meta, JSON-LD, header, copy and footer).
 
 ## Fill in before publishing
@@ -29,23 +29,14 @@ Then verify the founder card (`#equipe`) against what you're comfortable stating
 publicly (exact PhD status, role title, and how much of your current employer to
 name — see the conflict-of-interest note in `sales/agentic-ai-offer.md`).
 
-## Deploy options
+## Deploy (GitHub Pages)
 
-**A. As a page on your existing site** (recommended — keeps your research site intact):
+`.github/workflows/pages.yml` publishes this `website/` folder on every push to
+`main` that touches it. Live at **https://ghazigh.github.io/ProjectX/**.
 
-```bash
-# from a clone of your github.io repo:
-cp /path/to/ProjectX/website/index.html ./work-with-me.html
-git add work-with-me.html && git commit -m "Add agentic AI services page" && git push
-# live at https://ghazigh.github.io/work-with-me.html
-```
-
-Then link to it from your main site's nav ("Work with me") and from your
-LinkedIn profile + posts.
-
-**B. As its own domain** — drop `index.html` on Netlify/Cloudflare Pages/Vercel
-and point a domain at it (e.g. an `agentic-` subdomain). Cleaner separation
-between "researcher" and "vendor" identities.
+One-time setup: repo **Settings → Pages → Build and deployment → Source:
+GitHub Actions**. Then re-run the workflow (Actions tab → "Deploy website to
+GitHub Pages" → Run workflow) or push any change to `website/`.
 
 ## Preview locally
 
@@ -57,7 +48,7 @@ cd website && python3 -m http.server 8000   # then open http://localhost:8000
 
 ## Files in this folder
 
-- `index.html` — the Avant-Poste agency landing page (deploy as `work-with-me.html` or its own domain)
+- `index.html` — the Forward agency landing page (served at the site root)
 - `insights/` — the SEO blog: `index.html` + two cornerstone articles + `article.css`
 - `sitemap.xml`, `robots.txt` — copy to your site **root** for indexing
 
