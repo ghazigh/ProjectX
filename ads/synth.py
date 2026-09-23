@@ -223,3 +223,26 @@ def sunday(path, drops, flies):  # 15 s
     T.impact(10.4, 0.9)
     T.tone(10.4, 15, [196, 246.9, 293.7, 392], gain=0.07, attack=0.1, release=3)
     T.write(path)
+
+
+# ---------------------------------------------------------------- round 4: clear-message tracks
+def explainer(path, dur, impacts, beat_from, beat_to, bpm=110, pings=(), ticks_to=0.0, chords=None):
+    T = Track(dur, 71)
+    b = 60 / bpm
+    T.tone(0, dur, [55, 82.4], gain=0.1, attack=2, release=2)
+    t = 0.0
+    while t < ticks_to:  # clock tick
+        T.hat(t, 0.08, dec=0.02); t += 0.5
+    t = beat_from
+    while t < beat_to:
+        T.kick(t, 0.5); T.hat(t + b / 2, 0.07); t += b
+    for i, t in enumerate(pings):
+        _ping(T, t, [1318.5, 1567.9, 1760.0][i % 3], gain=0.14)
+    for i, t in enumerate(impacts):
+        T.riser(max(0, t - 1.0), t, 0.22)
+        T.impact(t, 0.55 if i < len(impacts) - 1 else 0.95)
+    chords = chords or [[110, 164.8, 220], [123.5, 185, 246.9], [98, 146.8, 196], [110, 164.8, 220, 277.2]]
+    edges = [0.0] + list(impacts) + [dur]
+    for i in range(len(edges) - 1):
+        T.tone(edges[i], edges[i + 1], chords[i % len(chords)], gain=0.045, attack=0.4, release=0.5)
+    T.write(path)

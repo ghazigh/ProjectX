@@ -35,6 +35,16 @@ type) and `synth.py` (placeholder beat tracks, pure Python). Drafts with sound:
 
 Source: `build3.py` (GSAP + synthesized pings/whooshes/hits). Drafts: `drafts/round3/`.
 
+## Round 4: clear message (what we do, what the business wins)
+
+| | Concept | Format | Idea |
+|---|---|---|---|
+| 1 | How it works | 16:9 · 20 s | Blueprint of a business: engineer walks in, hours found (27 h/wk), agents take over; results + CTA |
+| 2 | Same day | 9:16 · 18 s | Split screen, same day without vs with agents; lead/quote/PO/call/invoice outcomes; score |
+| 3 | The offer | 1:1 · 15 s | "We put AI agents to work in your business" + 6 weeks · <60 s · 27 h · 1 fixed price + CTA |
+
+Source: `build4.py`. Drafts: `drafts/round4/`. Numbers are illustrative targets.
+
 ## Build and render
 
 Needs Node 22+, FFmpeg, and the HyperFrames CLI (`npm i -g hyperframes`,
@@ -44,6 +54,7 @@ then `hyperframes browser ensure`).
 python3 build.py            # round 1 low-res drafts -> projects/<concept>/
 python3 build2.py           # round 2 low-res drafts (Three.js + audio)
 python3 build3.py           # round 3 low-res drafts (recognition hooks + audio)
+python3 build4.py           # round 4 low-res drafts (clear message + audio)
 python3 build.py --final    # full resolution (1080x1920, 1080x1080, 1920x1080)
 cd projects/a-942pm && hyperframes render -q draft -f 24 -o ../../a.mp4
 ```
