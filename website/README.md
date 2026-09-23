@@ -35,7 +35,8 @@ name — see the conflict-of-interest note in `sales/agentic-ai-offer.md`).
 `main` that touches it. Live at **https://ghazigh.github.io/ProjectX/**.
 
 One-time setup: repo **Settings → Pages → Build and deployment → Source:
-GitHub Actions**. Then re-run the workflow (Actions tab → "Deploy website to
+GitHub Actions**. `main` must also be the repo's default branch (Settings →
+General), because the `github-pages` environment only accepts deploys from it. Then re-run the workflow (Actions tab → "Deploy website to
 GitHub Pages" → Run workflow) or push any change to `website/`.
 
 ## Preview locally
