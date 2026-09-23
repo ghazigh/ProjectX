@@ -1,6 +1,6 @@
 # XForward ad campaign: HyperFrames concepts
 
-Five ad concepts, each a [HyperFrames](https://github.com/heygen-com/hyperframes)
+Ad concepts, each a [HyperFrames](https://github.com/heygen-com/hyperframes)
 composition (HTML + GSAP, rendered to MP4).
 
 | | Concept | Format | Idea |
@@ -11,7 +11,19 @@ composition (HTML + GSAP, rendered to MP4).
 | D | Help Wanted | 9:16 · 14 s | Newspaper classified for an impossible hire, stamped "It's an AI agent" |
 | E | The Receipt | 1:1 · 13 s | A receipt totals the week's wasted time in dollars, stamped "Recovered" |
 
-Low-res silent drafts of round 1 are in `drafts/`.
+Round 1 (above) was rejected as too literal. Low-res silent drafts: `drafts/round1/`.
+
+## Round 2: premium (Apple / Stripe) x manifesto (Nike), awe-first hook
+
+| | Concept | Format | Idea |
+|---|---|---|---|
+| 1 | Chrome X | 16:9 · 15 s | Glossy 3D arrows in studio light lock into the X; 4-beat manifesto |
+| 2 | Tunnel | 9:16 · 14 s | Fly through a tunnel of busywork words; beat cuts; "Your people deserve better work" |
+| 3 | Hours | 1:1 · 15 s | 20,000 particle "hours" trapped in circles, then streaming forward into the X |
+
+Source: `build2.py` (Three.js scenes driven by HyperFrames `hf-seek` time, GSAP for
+type) and `synth.py` (placeholder beat tracks, pure Python). Drafts with sound:
+`drafts/round2/`.
 
 ## Build and render
 
@@ -19,7 +31,8 @@ Needs Node 22+, FFmpeg, and the HyperFrames CLI (`npm i -g hyperframes`,
 then `hyperframes browser ensure`).
 
 ```bash
-python3 build.py            # low-res drafts  -> projects/<concept>/
+python3 build.py            # round 1 low-res drafts -> projects/<concept>/
+python3 build2.py           # round 2 low-res drafts (Three.js + audio)
 python3 build.py --final    # full resolution (1080x1920, 1080x1080, 1920x1080)
 cd projects/a-942pm && hyperframes render -q draft -f 24 -o ../../a.mp4
 ```
