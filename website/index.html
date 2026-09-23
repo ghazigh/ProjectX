@@ -59,7 +59,7 @@
     --line:#D7DBD4; --line-2:#BFC5BD;
     --accent:#2334E0; --accent-2:#1A28B8; --accent-ink:#FFFFFF;
     --accent-soft:rgba(35,52,224,.08); --glow:rgba(35,52,224,.12);
-    --inv-accent:#9AA5FF;
+    --inv-accent:#9AA5FF; --inv-accent-ink:#0A0B0D;
     --topo:14,18,16; --topo-inv:241,242,238;
     --word-dim:rgba(14,18,16,.16);
     --shadow:0 1px 0 rgba(14,18,16,.04), 0 18px 40px -18px rgba(14,18,16,.22);
@@ -80,7 +80,7 @@
       --line:#1F2329; --line-2:#2E343C;
       --accent:#8C96FF; --accent-2:#A9B1FF; --accent-ink:#0A0B0D;
       --accent-soft:rgba(140,150,255,.10); --glow:rgba(140,150,255,.16);
-      --inv-accent:#2334E0;
+      --inv-accent:#2334E0; --inv-accent-ink:#FFFFFF;
       --topo:236,238,242; --topo-inv:10,11,13;
       --word-dim:rgba(236,238,242,.14);
       --shadow:0 1px 0 rgba(0,0,0,.3), 0 24px 48px -20px rgba(0,0,0,.8);
@@ -93,7 +93,7 @@
     --line:#1F2329; --line-2:#2E343C;
     --accent:#8C96FF; --accent-2:#A9B1FF; --accent-ink:#0A0B0D;
     --accent-soft:rgba(140,150,255,.10); --glow:rgba(140,150,255,.16);
-    --inv-accent:#2334E0;
+    --inv-accent:#2334E0; --inv-accent-ink:#FFFFFF;
     --topo:236,238,242; --topo-inv:10,11,13;
     --word-dim:rgba(236,238,242,.14);
     --shadow:0 1px 0 rgba(0,0,0,.3), 0 24px 48px -20px rgba(0,0,0,.8);
@@ -319,25 +319,6 @@
   .uc-also{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--ink-2);font-size:.95rem}
   .uc-also li{display:flex;gap:10px;align-items:baseline}
   .uc-also li::before{content:"+";color:var(--accent);font-family:var(--f-mono)}
-  .trace{position:relative;border-radius:22px;background:var(--ink);color:var(--bg);padding:22px 22px 18px;display:flex;flex-direction:column;overflow:hidden;min-height:100%}
-  .trace-head{display:flex;justify-content:space-between;align-items:center;font:500 .66rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.75;padding-bottom:16px;border-bottom:1px solid rgba(var(--topo-inv),.14)}
-  .trace-head .live{display:flex;align-items:center;gap:8px}
-  .trace-head .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--inv-accent);animation:blink2 1.4s ease-in-out infinite}
-  @keyframes blink2{50%{opacity:.25}}
-  .trace ol{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:4px;position:relative}
-  .trace li{position:relative;display:grid;grid-template-columns:3.6em 18px minmax(0,1fr);gap:12px;align-items:start;padding:9px 0;opacity:.28;transition:opacity .6s var(--ease)}
-  .trace li.on{opacity:1}
-  .trace li::after{content:"";position:absolute;left:calc(3.6em + 12px + 8.5px);top:30px;bottom:-12px;width:1px;background:rgba(var(--topo-inv),.18)}
-  .trace li:last-child::after{display:none}
-  .trace time{font:500 .72rem/1.6 var(--f-mono);opacity:.6;font-variant-numeric:tabular-nums}
-  .trace .nd{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(var(--topo-inv),.35);margin-top:2px;display:grid;place-items:center;transition:background .4s,border-color .4s}
-  .trace li.on .nd{border-color:var(--inv-accent);background:var(--inv-accent)}
-  .trace li.cur .nd{box-shadow:0 0 0 5px rgba(140,150,255,.18)}
-  .trace li.on .nd::after{content:"";width:6px;height:3px;border-left:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(-45deg) translate(1px,-1px)}
-  .trace .tx b{display:block;font-weight:600;font-size:.96rem}
-  .trace .tx span{display:block;font:400 .74rem/1.4 var(--f-mono);opacity:.62;margin-top:3px}
-  .trace .done{margin-top:auto;padding-top:14px;border-top:1px solid rgba(var(--topo-inv),.14);font:500 .7rem/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--inv-accent);opacity:0;transition:opacity .6s}
-  .trace.fin .done{opacity:1}
   .uc-note{margin-top:16px;font-size:.84rem;color:var(--muted)}
   @media (max-width:980px){.uc-panel{grid-template-columns:minmax(0,1fr)}}
   @media (max-width:520px){.uc-targets{grid-template-columns:minmax(0,1fr)}.uc-targets div{display:flex;align-items:baseline;gap:12px}.uc-targets span{margin:0}}
@@ -351,6 +332,61 @@
   .ic svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
   @media (max-width:900px){.trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (max-width:520px){.trust-grid{grid-template-columns:minmax(0,1fr)}}
+
+  /* use-case scenes: a mini app per industry */
+  .scene{background:var(--ink);color:var(--bg);border-radius:22px;display:flex;flex-direction:column;overflow:hidden;min-height:500px}
+  .sc-bar{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid rgba(var(--topo-inv),.12);font:500 .7rem/1.2 var(--f-mono);letter-spacing:.04em}
+  .sc-bar .dots{display:flex;gap:5px}
+  .sc-bar .dots i{width:8px;height:8px;border-radius:50%;background:rgba(var(--topo-inv),.22)}
+  .sc-bar .ttl{flex:1;min-width:0;opacity:.78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sc-bar .ag{display:flex;align-items:center;gap:7px;color:var(--inv-accent);text-transform:uppercase;letter-spacing:.1em;font-size:.64rem}
+  .sc-bar .ag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--inv-accent);animation:blink2 1.4s ease-in-out infinite}
+  @keyframes blink2{50%{opacity:.25}}
+  .sc-body{flex:1;padding:18px 16px;display:flex;flex-direction:column;gap:9px;font-size:.88rem;line-height:1.4}
+  .sc-body [data-at]{opacity:0;transform:translateY(10px) scale(.985);transition:opacity .5s ease,transform .7s var(--ease),background-color .5s,border-color .5s,color .5s}
+  .sc-body [data-at].on{opacity:1;transform:none}
+  .sc-body [data-at].dl{transition-delay:.5s}
+  .bub{max-width:84%;padding:9px 12px;border-radius:15px}
+  .bub.in{align-self:flex-start;background:rgba(var(--topo-inv),.1);border-bottom-left-radius:5px}
+  .bub.out{align-self:flex-end;background:var(--inv-accent);color:var(--inv-accent-ink);border-bottom-right-radius:5px}
+  .bub small{display:block;font:500 .64rem/1.2 var(--f-mono);opacity:.6;margin-bottom:3px;letter-spacing:.04em}
+  .sys{align-self:center;font:500 .66rem/1.3 var(--f-mono);letter-spacing:.04em;padding:6px 10px;border-radius:999px;background:rgba(var(--topo-inv),.08);opacity:.85;text-align:center}
+  .crd{border:1px solid rgba(var(--topo-inv),.16);border-radius:13px;padding:11px 13px;background:rgba(var(--topo-inv),.05)}
+  .crd.ok{border-color:var(--inv-accent)}
+  .crd b{font-weight:600}
+  .crd .mut{opacity:.6;font:400 .72rem/1.4 var(--f-mono);display:block;margin-top:2px}
+  .pills{display:flex;flex-wrap:wrap;gap:6px}
+  .pl{display:inline-flex;align-items:center;gap:6px;font:500 .68rem/1 var(--f-mono);padding:6px 9px;border-radius:999px;border:1px solid rgba(var(--topo-inv),.25);transition:background-color .5s,color .5s,border-color .5s}
+  .pl.acc,.pl.sel{background:var(--inv-accent);color:var(--inv-accent-ink);border-color:transparent}
+  .bub.out .pl{border-color:currentColor}
+  .bub.out .pl.sel{background:var(--inv-accent-ink);color:var(--inv-accent)}
+  .pl.warn{background:#F2A33A;color:#1A1204;border-color:transparent}
+  .pl.ok::before{content:"✓"}
+  .pl.no{border-style:dashed;opacity:.75}
+  .slots{display:grid;gap:6px}
+  .slot{position:relative;display:grid;grid-template-columns:3.4em minmax(0,1fr);gap:10px;align-items:center}
+  .slot time{font:500 .72rem/1 var(--f-mono);opacity:.6}
+  .slot .blk{position:relative;height:36px;border-radius:9px;padding:0 11px;display:flex;align-items:center;font-size:.82rem;background:rgba(var(--topo-inv),.08)}
+  .slot .blk.free{background:transparent;border:1px dashed rgba(var(--topo-inv),.28);opacity:.75}
+  .slot .blk.pulse{animation:pulse 1.3s ease-in-out infinite}
+  @keyframes pulse{50%{border-color:var(--inv-accent)}}
+  .slot .fill{position:absolute;inset:0;border-radius:9px;background:var(--inv-accent);color:var(--inv-accent-ink);display:flex;align-items:center;padding:0 11px;font-weight:600}
+  .erp{display:grid;border:1px solid rgba(var(--topo-inv),.16);border-radius:12px;overflow:hidden;font:400 .74rem/1.3 var(--f-mono)}
+  .erp>div{display:grid;grid-template-columns:1.3fr .6fr .8fr 1fr;gap:8px;padding:8px 11px;border-top:1px solid rgba(var(--topo-inv),.1);align-items:center}
+  .erp>div:first-child{border-top:0;opacity:.55;text-transform:uppercase;font-size:.62rem;letter-spacing:.08em}
+  .erp .ck{justify-self:end}
+  .photo{height:74px;border-radius:12px;margin-top:6px;background:linear-gradient(135deg,rgba(var(--topo-inv),.18),rgba(var(--topo-inv),.05));display:grid;place-items:center}
+  .photo svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.5;opacity:.7}
+  .sc-cap{padding:13px 16px 15px;border-top:1px solid rgba(var(--topo-inv),.12);display:grid;gap:10px}
+  .sc-prog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+  .sc-prog i{height:3px;border-radius:3px;background:rgba(var(--topo-inv),.16);transition:background-color .4s}
+  .sc-prog i.on{background:var(--inv-accent)}
+  .sc-now{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:baseline;min-height:2.6em}
+  .sc-now .n{font:600 .72rem/1 var(--f-mono);color:var(--inv-accent)}
+  .sc-now b{font-weight:600;font-size:.94rem}
+  .sc-now span{display:block;font:400 .72rem/1.4 var(--f-mono);opacity:.62;margin-top:2px}
+  .sc-now.fade{animation:capin .5s var(--ease)}
+  @keyframes capin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
   /* big brand mark in the final CTA */
   .bigmark{width:clamp(56px,7vw,84px);height:clamp(56px,7vw,84px);margin-bottom:28px;color:var(--bg)}
@@ -1156,6 +1192,75 @@
       ]
     }
   };
+  /* per-industry scene: elements with data-at="n" appear at step n; data-add="n cls" adds a class at step n */
+  const tr = (en, fr) => lang === 'fr' ? fr : en;
+  const SCENES = [
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">SMS · (514) 555-0142</span><span class="ag">${tr('Agent', 'Agent')}</span></div>
+      <div class="sc-body">
+        <p class="bub in" data-at="1"><small>${tr('New lead · 9:42 pm', 'Nouvelle demande · 21 h 42')}</small>${tr('Hi, my furnace stopped working. Can someone come tomorrow?', 'Bonjour, ma fournaise ne fonctionne plus. Quelqu’un peut passer demain ?')}</p>
+        <p class="bub out" data-at="2">${tr('Sorry to hear that! What’s your postal code, and do you smell any gas?', 'Désolé ! Quel est votre code postal, et sentez-vous une odeur de gaz ?')}</p>
+        <p class="bub in dl" data-at="2">${tr('H2X 1Y4. No smell.', 'H2X 1Y4. Aucune odeur.')}</p>
+        <div class="bub out" data-at="3">${tr('A technician is in your area tomorrow:', 'Un technicien est dans votre secteur demain :')}
+          <div class="pills" style="margin-top:8px"><span class="pl">${tr('9:00 am', '9 h 00')}</span><span class="pl" data-add="4 sel">${tr('1:30 pm', '13 h 30')}</span><span class="pl">${tr('4:00 pm', '16 h 00')}</span></div></div>
+        <div class="crd ok" data-at="4"><b>✓ ${tr('Booked · Tomorrow 1:30 pm', 'Réservé · Demain 13 h 30')}</b><span class="mut">${tr('Furnace repair · Tech: Marc · SMS confirmation sent', 'Réparation fournaise · Tech : Marc · Confirmation envoyée')}</span></div>
+        <p class="sys" data-at="5">${tr('Safety check: no gas smell → standard priority · on-call not paged', 'Sécurité : aucune odeur de gaz → priorité normale · garde non appelée')}</p>
+      </div>`,
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Schedule · Thursday · Dr. Nguyen', 'Horaire · jeudi · Dre Nguyen')}</span><span class="ag">Agent</span></div>
+      <div class="sc-body">
+        <p class="bub in" data-at="1"><small>SMS · 7:12 am</small>${tr('Can I move my cleaning to Thursday afternoon? – Sarah L.', 'Puis-je déplacer mon nettoyage à jeudi après-midi ? – Sarah L.')}</p>
+        <div class="pills" data-at="2"><span class="pl acc">${tr('Existing patient', 'Patiente existante')}</span><span class="pl">${tr('Cleaning · 60 min', 'Nettoyage · 60 min')}</span><span class="pl">${tr('Reschedule', 'Report')}</span></div>
+        <div class="slots">
+          <div class="slot"><time>13:00</time><div class="blk">M. Roy · ${tr('Exam', 'Examen')}</div></div>
+          <div class="slot"><time>14:00</time><div class="blk free" data-add="3 pulse">${tr('Open', 'Libre')}<span class="fill" data-at="4">Sarah L. · ${tr('Cleaning', 'Nettoyage')}</span></div></div>
+          <div class="slot"><time>15:00</time><div class="blk">J. Côté · ${tr('Filling', 'Plombage')}</div></div>
+          <div class="slot"><time>16:00</time><div class="blk free">${tr('Open', 'Libre')}</div></div>
+        </div>
+        <div class="pills" data-at="4"><span class="pl ok">${tr('Old slot released', 'Ancienne plage libérée')}</span><span class="pl ok">${tr('Reminder + forms sent', 'Rappel + formulaires envoyés')}</span></div>
+        <p class="sys" data-at="5">${tr('“Is sensitivity normal?” → sent to the hygienist', '« La sensibilité est-elle normale ? » → transmis à l’hygiéniste')}</p>
+      </div>`,
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Client file · Tremblay · 2025 return', 'Dossier client · Tremblay · déclaration 2025')}</span><span class="ag">Agent</span></div>
+      <div class="sc-body">
+        <div class="crd" data-at="1"><b>${tr('Email from M. Tremblay', 'Courriel de M. Tremblay')}</b><span class="mut">${tr('“Here are my documents for this year.”', '« Voici mes documents pour cette année. »')}</span>
+          <div class="pills" style="margin-top:9px"><span class="pl" data-add="2 acc">T4.pdf${tr('', '')}</span><span class="pl" data-add="2 acc">RRSP.pdf</span><span class="pl" data-add="2 acc">IMG_2291.jpg</span></div></div>
+        <div class="pills" data-at="2"><span class="pl">T4 → ${tr('Employment income', 'Revenu d’emploi')}</span><span class="pl">${tr('RRSP receipt', 'Reçu REER')}</span><span class="pl">${tr('Rental invoice', 'Facture locative')}</span></div>
+        <div class="pills" data-at="3"><span class="pl ok">T4</span><span class="pl ok">${tr('RRSP', 'REER')}</span><span class="pl ok">${tr('Rental', 'Location')}</span><span class="pl warn">T5 · ${tr('missing', 'manquant')}</span></div>
+        <p class="bub out dl" data-at="3">${tr('Thanks! One thing missing: your T5 from the bank. You can reply with a photo.', 'Merci ! Il manque votre T5 de la banque. Vous pouvez répondre avec une photo.')}</p>
+        <p class="sys" data-at="4">${tr('3 files filed → /Clients/Tremblay/2025 · synced to practice software', '3 fichiers classés → /Clients/Tremblay/2025 · synchronisé')}</p>
+        <div class="crd ok" data-at="5"><b>${tr('Summary ready for review', 'Résumé prêt pour relecture')}</b><span class="mut">${tr('Income, deductions, 1 item pending · awaiting your approval', 'Revenus, déductions, 1 élément en attente · à approuver')}</span></div>
+      </div>`,
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Orders inbox → ERP', 'Boîte commandes → ERP')}</span><span class="ag">Agent</span></div>
+      <div class="sc-body">
+        <div class="crd" data-at="1"><b>PO-4471 · Maison Dubé Inc.</b><span class="mut">${tr('Attachment: PO-4471.pdf · 3 lines', 'Pièce jointe : PO-4471.pdf · 3 lignes')}</span></div>
+        <div class="erp" data-at="2">
+          <div><span>SKU</span><span>${tr('Qty', 'Qté')}</span><span>${tr('Price', 'Prix')}</span><span class="ck">${tr('Check', 'Contrôle')}</span></div>
+          <div><span>BRK-2210</span><span>40</span><span>$12.80</span><span class="ck"><span class="pl" data-add="3 acc">✓</span></span></div>
+          <div><span>HNG-0457</span><span>120</span><span>$4.10</span><span class="ck"><span class="pl" data-add="3 warn">≠ $4.35</span></span></div>
+          <div><span>SCR-9001</span><span>500</span><span>$0.18</span><span class="ck"><span class="pl" data-add="3 acc">✓</span></span></div>
+        </div>
+        <p class="sys" data-at="3">${tr('Price mismatch on HNG-0457 → flagged to sales rep', 'Écart de prix sur HNG-0457 → signalé au représentant')}</p>
+        <div class="crd ok" data-at="4"><b>✓ ${tr('Sales order SO-10288 created', 'Commande SO-10288 créée')}</b><span class="mut">${tr('3 lines · in ERP · price confirmed by rep', '3 lignes · dans l’ERP · prix confirmé par le représentant')}</span></div>
+        <p class="bub out" data-at="5">${tr('Order confirmed. Ships Tuesday.', 'Commande confirmée. Expédition mardi.')}</p>
+      </div>`,
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Support inbox · Monday', 'Boîte support · lundi')}</span><span class="ag">Agent</span></div>
+      <div class="sc-body">
+        <div class="crd" data-at="1"><b>#2381 · ${tr('Where is my order?', 'Où est ma commande ?')}</b><span class="mut">julie.m@… · ${tr('2 min ago', 'il y a 2 min')}</span></div>
+        <div class="crd" data-at="2"><b>${tr('Order #10432 · Shipped', 'Commande #10432 · Expédiée')}</b><span class="mut">Canada Post · ${tr('arrives Thursday', 'arrive jeudi')}</span></div>
+        <p class="bub out" data-at="3">${tr('It’s on its way and arrives Thursday. Here’s your tracking link.', 'Elle est en route et arrive jeudi. Voici votre lien de suivi.')}</p>
+        <div class="pills" data-at="3"><span class="pl ok">#2381 ${tr('resolved', 'résolu')}</span></div>
+        <div class="crd" data-at="4"><b>#2382 · ${tr('Refund request · $480', 'Demande de remboursement · 480 $')}</b>
+          <div class="pills" style="margin-top:8px"><span class="pl warn">${tr('Over $200 limit', 'Au-delà du seuil de 200 $')}</span><span class="pl">→ ${tr('Approval: Julie (manager)', 'Approbation : Julie (gérante)')}</span></div></div>
+        <p class="sys" data-at="5">${tr('Trend: 14 “where is my order” tickets this week → weekly report', 'Tendance : 14 billets « où est ma commande » cette semaine → rapport')}</p>
+      </div>`,
+    () => `<div class="sc-bar"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">${tr('Maintenance · 1480 Saint-Denis, apt 3', 'Entretien · 1480 Saint-Denis, app. 3')}</span><span class="ag">Agent</span></div>
+      <div class="sc-body">
+        <div class="bub in" data-at="1"><small>${tr('Tenant · text + photo', 'Locataire · texto + photo')}</small>${tr('Water is leaking under the kitchen sink.', 'Il y a une fuite d’eau sous l’évier de la cuisine.')}
+          <div class="photo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg></div></div>
+        <div class="pills" data-at="2"><span class="pl warn">${tr('Urgent', 'Urgent')}</span><span class="pl acc">${tr('Plumbing', 'Plomberie')}</span><span class="pl">${tr('Water damage risk', 'Risque de dégât d’eau')}</span></div>
+        <div class="crd ok" data-at="3"><b>✓ Plomberie Nord · ${tr('Tomorrow 8–10 am', 'Demain 8 h – 10 h')}</b><span class="mut">${tr('Vendor confirmed · access code shared', 'Fournisseur confirmé · code d’accès transmis')}</span></div>
+        <p class="bub out" data-at="4">${tr('A plumber is booked for tomorrow 8–10 am. Please turn off the valve under the sink.', 'Un plombier est réservé demain 8 h – 10 h. Fermez la valve sous l’évier en attendant.')}</p>
+        <div class="crd" data-at="5"><b>${tr('Ticket #318 closed', 'Billet #318 fermé')}</b><span class="mut">${tr('Before/after photos · invoice $185 attached', 'Photos avant/après · facture 185 $ jointe')}</span></div>
+      </div>`
+  ];
   const ucTabs = $('#uc-tabs'), ucPanel = $('#uc-panel');
   let ucIdx = 0, ucTimer = 0, ucVisible = false;
   const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -1163,8 +1268,6 @@
     const D = CASES[lang], L = D.L, it = D.items[ucIdx];
     ucTabs.innerHTML = D.items.map((c, i) => `<button type="button" class="uc-tab" role="tab" id="uc-t${i}" aria-controls="uc-panel" aria-selected="${i === ucIdx}" tabindex="${i === ucIdx ? 0 : -1}">${esc(c.ind)}</button>`).join('');
     ucPanel.setAttribute('aria-labelledby', 'uc-t' + ucIdx);
-    let tsum = 0;
-    const times = it.steps.map((_, i) => { tsum += [0.4, 1.8, 1.1, 2.3, 0.9][i] || 1; return '00:' + tsum.toFixed(1).padStart(4, '0'); });
     ucPanel.innerHTML = `
       <div class="uc-main">
         <div><p class="uc-kick">${esc(L.kick)} · ${esc(it.ind)}</p><h3 class="uc-title">${esc(it.title)}</h3><p class="uc-sub">${esc(it.sub)}</p></div>
@@ -1173,27 +1276,36 @@
         <div><p class="uc-lbl">${esc(L.tools)}</p><div class="chips">${it.tools.map(t => `<span>${esc(t)}</span>`).join('')}</div></div>
         <div><p class="uc-lbl">${esc(L.also)}</p><ul class="uc-also">${it.also.map(a => `<li>${esc(a)}</li>`).join('')}</ul></div>
       </div>
-      <div class="trace" id="trace" aria-label="${esc(L.does)}">
-        <div class="trace-head"><span>${esc(L.run)} · ${esc(L.does)}</span><span class="live">${esc(L.live)}</span></div>
-        <ol>${it.steps.map(([a, b], i) => `<li><time>${times[i]}</time><span class="nd" aria-hidden="true"></span><span class="tx"><b>${esc(a)}</b><span>${esc(b)}</span></span></li>`).join('')}</ol>
-        <p class="done">${esc(L.done)}</p>
+      <div class="scene" id="scene" aria-label="${esc(L.does)}">
+        ${SCENES[ucIdx]()}
+        <div class="sc-cap"><div class="sc-prog">${it.steps.map(() => '<i></i>').join('')}</div><div class="sc-now" id="sc-now"></div></div>
       </div>`;
     if (animate) { ucPanel.classList.remove('uc-anim'); void ucPanel.offsetWidth; ucPanel.classList.add('uc-anim'); }
     runTrace();
   }
   function runTrace() {
     clearTimeout(ucTimer);
-    const tr = $('#trace'); if (!tr) return;
-    const li = $$('li', tr);
-    if (RM.matches || !ucVisible) { li.forEach(l => l.classList.add('on')); tr.classList.add('fin'); return; }
-    li.forEach(l => l.classList.remove('on', 'cur')); tr.classList.remove('fin');
-    let k = 0;
-    const step = () => {
-      if (k > 0) li[k - 1].classList.remove('cur');
-      if (k < li.length) { li[k].classList.add('on', 'cur'); k++; ucTimer = setTimeout(step, 900); }
-      else { tr.classList.add('fin'); ucTimer = setTimeout(runTrace, 3200); }
+    const sc = $('#scene'); if (!sc) return;
+    const it = CASES[lang].items[ucIdx], n = it.steps.length, L = CASES[lang].L;
+    const at = $$('[data-at]', sc), adds = $$('[data-add]', sc), prog = $$('.sc-prog i', sc), now = $('#sc-now');
+    const show = k => {
+      at.forEach(el => el.classList.toggle('on', +el.dataset.at <= k));
+      adds.forEach(el => { const [m, c] = el.dataset.add.split(' '); el.classList.toggle(c, +m <= k); });
+      prog.forEach((el, i) => el.classList.toggle('on', i < k));
+      if (k > 0) {
+        const [a, b] = it.steps[k - 1];
+        now.innerHTML = `<span class="n">${String(k).padStart(2, '0')}/${String(n).padStart(2, '0')}</span><span><b>${esc(a)}</b><span>${esc(b)}</span></span>`;
+        now.classList.remove('fade'); void now.offsetWidth; now.classList.add('fade');
+      } else now.innerHTML = `<span class="n">00/${String(n).padStart(2, '0')}</span><span><b>${esc(L.run)}</b><span>${esc(it.title)}</span></span>`;
     };
-    ucTimer = setTimeout(step, 450);
+    if (RM.matches || !ucVisible) { show(n); return; }
+    let k = 0; show(0);
+    const step = () => {
+      k++;
+      if (k <= n) { show(k); ucTimer = setTimeout(step, k === n ? 3800 : 1500); }
+      else { show(0); k = 0; ucTimer = setTimeout(step, 700); }
+    };
+    ucTimer = setTimeout(step, 600);
   }
   ucTabs.addEventListener('click', e => {
     const b = e.target.closest('.uc-tab'); if (!b) return;

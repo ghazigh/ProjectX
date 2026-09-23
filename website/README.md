@@ -14,8 +14,10 @@ What's on the page: a full-bleed topographic hero pinned to the scroll: the
 terrain tilts into 3D, the "bottleneck" peak rises, then flattens as the sample
 mission reaches day 30. Then a statement that lights up word by word, a
 horizontally-scrolling 5-step method, an industry use-case explorer (six
-example agent projects, each with an animated agent-run trace; content lives in
-the `CASES` object in the script), a trust band, an ROI calculator, pricing
+example agent projects, each with its own animated mini-app scene (SMS chat,
+calendar, client file, ERP, support inbox, maintenance ticket); content lives in
+the `CASES` and `SCENES` objects in
+the script), a trust band, an ROI calculator, pricing
 with hover tilt, founder card, FAQ and a final call to action. Smooth scrolling
 via Lenis (loaded from jsDelivr; the page works without it). All motion is
 disabled under `prefers-reduced-motion`.
