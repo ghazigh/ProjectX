@@ -3,21 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Forward — AI engineers embedded in your business</title>
-<meta name="description" content="Forward embeds a senior AI engineer in your SME. We find the tasks that cost you the most hours and put AI agents into production in weeks, at a fixed price.">
-<meta property="og:title" content="Forward — AI engineers embedded in your business">
+<title>XForward — AI engineers embedded in your business</title>
+<meta name="description" content="XForward embeds a senior AI engineer in your SME. We find the tasks that cost you the most hours and put AI agents into production in weeks, at a fixed price.">
+<meta property="og:title" content="XForward — AI engineers embedded in your business">
 <meta property="og:description" content="We send an engineer, not a slide deck. AI agents in production in weeks, at a fixed price.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_CA">
 <meta property="og:locale:alternate" content="fr_CA">
 <meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0A0B0D" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect width=%2724%27 height=%2724%27 rx=%276%27 fill=%27%230A0B0D%27/%3E%3Cpath d=%27M5 5l7 7-7 7%27 fill=%27none%27 stroke=%27%23ECEEF2%27 stroke-width=%272.4%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M19 5l-7 7 7 7%27 fill=%27none%27 stroke=%27%238C96FF%27 stroke-width=%272.4%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
 <link rel="canonical" href="https://ghazigh.github.io/ProjectX/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Forward",
+  "name": "XForward",
   "description": "Forward-deployed AI engineering for small and mid-sized businesses: diagnostic, AI agents in production, and ongoing support.",
   "url": "https://ghazigh.github.io/ProjectX/",
   "knowsLanguage": ["en", "fr"],
@@ -122,10 +123,15 @@
   .hdr.scrolled{background:var(--bg);background:color-mix(in srgb,var(--bg) 78%,transparent);
     -webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);border-color:var(--line)}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--f-display);font-stretch:118%;font-weight:700;font-size:1.08rem;letter-spacing:-.02em}
-  .mark{width:22px;height:22px;flex:none}
-  .mark path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s var(--ease)}
-  .mark .m2{stroke:var(--accent)}
-  .brand:hover .mark .m2{transform:translateX(2.5px)}
+  .mark{width:22px;height:22px;flex:none;overflow:visible}
+  .xmark path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .xmark .m2{stroke:var(--accent);transform-box:fill-box;transform-origin:center;transition:transform .9s var(--ease)}
+  .xmark .m1{transition:transform .9s var(--ease)}
+  .xmark.x .m2{transform:scaleX(-1)}
+  .brand:hover .xmark.x .m2{transform:translateX(1px)}
+  .brand:hover .xmark.x .m1{transform:translateX(-1px)}
+  .wm{letter-spacing:-.025em}
+  .wm b{color:var(--accent);font-weight:800;margin-right:.02em}
   .nav{display:flex;gap:26px;margin-left:auto}
   .nav a{position:relative;text-decoration:none;font-size:.92rem;color:var(--muted);transition:color .25s}
   .nav a:hover,.nav a.active{color:var(--ink)}
@@ -283,20 +289,73 @@
     .st .st-n{font-size:4.2rem}
   }
 
-  /* missions */
-  .grid-m{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
-  .m{position:relative;background:var(--bg);padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;gap:14px;min-height:260px;isolation:isolate}
-  .m::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .45s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),var(--glow),transparent 62%)}
-  .m:hover::before{opacity:1}
-  .m-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:auto;padding-bottom:28px}
-  .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;border:1px solid var(--line-2);color:var(--accent);transition:transform .6s var(--ease),background .4s,border-color .4s}
-  .m:hover .ic{transform:rotate(-10deg) scale(1.08);background:var(--accent-soft);border-color:transparent}
-  .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .flag{font:600 .62rem/1 var(--f-mono);letter-spacing:.11em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:6px 8px;border-radius:999px}
-  .m h3{font-size:1.3rem;font-stretch:108%;font-weight:630;letter-spacing:-.025em;line-height:1.15}
-  .m p{color:var(--muted)}
-  @media (max-width:980px){.grid-m{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media (max-width:620px){.grid-m{grid-template-columns:minmax(0,1fr)}.m{min-height:0}}
+  /* use cases */
+  .uc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,26em);gap:24px 56px;align-items:end}
+  .uc-intro{color:var(--ink-2);font-size:1.12rem;line-height:1.5}
+  @media (max-width:900px){.uc-head{grid-template-columns:minmax(0,1fr)}}
+  .uc-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;padding:2px}
+  .uc-tabs::-webkit-scrollbar{display:none}
+  .uc-tab{flex:none;appearance:none;cursor:pointer;border:1px solid var(--line-2);border-radius:999px;padding:11px 18px;background:transparent;color:var(--muted);
+    font:500 .93rem/1 var(--f-body);transition:background .35s var(--ease),color .35s,border-color .35s}
+  .uc-tab:hover{color:var(--ink);border-color:var(--ink)}
+  .uc-tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .uc-panel{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(20px,3.4vw,48px);align-items:stretch;
+    border:1px solid var(--line);border-radius:28px;padding:clamp(20px,3.2vw,44px);background:var(--surface)}
+  .uc-anim>*{animation:ucin .8s var(--ease) both}
+  .uc-anim>*:nth-child(2){animation-delay:.08s}
+  @keyframes ucin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .uc-main{display:flex;flex-direction:column;gap:26px}
+  .uc-kick{font:500 .7rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .uc-title{font-size:clamp(1.8rem,1.2rem + 2vw,2.8rem);font-stretch:112%;font-weight:650;letter-spacing:-.04em;line-height:1.02;margin-top:10px}
+  .uc-sub{color:var(--muted);margin-top:8px;font-size:.95rem}
+  .uc-lbl{font:500 .66rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .uc-before{padding:16px 18px;border-radius:14px;background:var(--bg);border:1px dashed var(--line-2);color:var(--ink-2)}
+  .uc-targets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .uc-targets div{padding:16px;border-radius:14px;background:var(--raise);border:1px solid var(--line)}
+  .uc-targets b{display:block;font-family:var(--f-display);font-stretch:112%;font-weight:650;font-size:clamp(1.4rem,1rem + 1vw,1.9rem);letter-spacing:-.04em;line-height:1;color:var(--accent)}
+  .uc-targets span{display:block;margin-top:8px;font-size:.84rem;color:var(--muted);line-height:1.3}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips span{font:500 .72rem/1 var(--f-mono);padding:7px 10px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink-2)}
+  .uc-also{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--ink-2);font-size:.95rem}
+  .uc-also li{display:flex;gap:10px;align-items:baseline}
+  .uc-also li::before{content:"+";color:var(--accent);font-family:var(--f-mono)}
+  .trace{position:relative;border-radius:22px;background:var(--ink);color:var(--bg);padding:22px 22px 18px;display:flex;flex-direction:column;overflow:hidden;min-height:100%}
+  .trace-head{display:flex;justify-content:space-between;align-items:center;font:500 .66rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;opacity:.75;padding-bottom:16px;border-bottom:1px solid rgba(var(--topo-inv),.14)}
+  .trace-head .live{display:flex;align-items:center;gap:8px}
+  .trace-head .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--inv-accent);animation:blink2 1.4s ease-in-out infinite}
+  @keyframes blink2{50%{opacity:.25}}
+  .trace ol{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:4px;position:relative}
+  .trace li{position:relative;display:grid;grid-template-columns:3.6em 18px minmax(0,1fr);gap:12px;align-items:start;padding:9px 0;opacity:.28;transition:opacity .6s var(--ease)}
+  .trace li.on{opacity:1}
+  .trace li::after{content:"";position:absolute;left:calc(3.6em + 12px + 8.5px);top:30px;bottom:-12px;width:1px;background:rgba(var(--topo-inv),.18)}
+  .trace li:last-child::after{display:none}
+  .trace time{font:500 .72rem/1.6 var(--f-mono);opacity:.6;font-variant-numeric:tabular-nums}
+  .trace .nd{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(var(--topo-inv),.35);margin-top:2px;display:grid;place-items:center;transition:background .4s,border-color .4s}
+  .trace li.on .nd{border-color:var(--inv-accent);background:var(--inv-accent)}
+  .trace li.cur .nd{box-shadow:0 0 0 5px rgba(140,150,255,.18)}
+  .trace li.on .nd::after{content:"";width:6px;height:3px;border-left:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(-45deg) translate(1px,-1px)}
+  .trace .tx b{display:block;font-weight:600;font-size:.96rem}
+  .trace .tx span{display:block;font:400 .74rem/1.4 var(--f-mono);opacity:.62;margin-top:3px}
+  .trace .done{margin-top:auto;padding-top:14px;border-top:1px solid rgba(var(--topo-inv),.14);font:500 .7rem/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--inv-accent);opacity:0;transition:opacity .6s}
+  .trace.fin .done{opacity:1}
+  .uc-note{margin-top:16px;font-size:.84rem;color:var(--muted)}
+  @media (max-width:980px){.uc-panel{grid-template-columns:minmax(0,1fr)}}
+  @media (max-width:520px){.uc-targets{grid-template-columns:minmax(0,1fr)}.uc-targets div{display:flex;align-items:baseline;gap:12px}.uc-targets span{margin:0}}
+
+  /* trust band */
+  .trust{padding-block:clamp(64px,8vw,110px);border-block:1px solid var(--line);background:var(--surface)}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,3vw,40px);margin-top:32px}
+  .trust h3{font-size:1.12rem;font-stretch:106%;font-weight:620;letter-spacing:-.015em;margin:18px 0 6px}
+  .trust p{color:var(--muted);font-size:.95rem}
+  .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line-2);color:var(--accent)}
+  .ic svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  @media (max-width:900px){.trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.trust-grid{grid-template-columns:minmax(0,1fr)}}
+
+  /* big brand mark in the final CTA */
+  .bigmark{width:clamp(56px,7vw,84px);height:clamp(56px,7vw,84px);margin-bottom:28px;color:var(--bg)}
+  .bigmark path{stroke-width:2}
+  .bigmark .m2{stroke:var(--inv-accent)}
 
   /* calculator */
   .calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,72px);align-items:center}
@@ -421,14 +480,14 @@
 
 <header class="hdr" id="hdr">
   <div class="wrap">
-    <a class="brand" href="#top">
-      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5 11 12l-6.5 6.5"/><path class="m2" d="M12.5 5.5 19 12l-6.5 6.5"/></svg>
-      <span>forward</span>
+    <a class="brand" href="#top" aria-label="XForward, back to top">
+      <svg class="mark xmark" viewBox="0 0 24 24" aria-hidden="true"><path class="m1" d="M5 5l7 7-7 7"/><path class="m2" d="M12 5l7 7-7 7"/></svg>
+      <span class="wm"><b>X</b>Forward</span>
     </a>
     <nav class="nav" aria-label="Main">
       <a href="#model" data-i18n="nav1">Model</a>
       <a href="#method" data-i18n="nav2">Method</a>
-      <a href="#missions" data-i18n="nav3">Missions</a>
+      <a href="#cases" data-i18n="nav3">Use cases</a>
       <a href="#pricing" data-i18n="nav4">Pricing</a>
       <a href="#faq" data-i18n="nav5">FAQ</a>
     </nav>
@@ -527,35 +586,28 @@
     </div>
   </section>
 
-  <!-- MISSIONS -->
-  <section class="sec" id="missions">
+  <!-- USE CASES -->
+  <section class="sec" id="cases">
     <div class="wrap">
-      <div class="head"><p class="tag" data-i18n="t3">Missions</p><h2 class="rv-clip" data-i18n="h2c">What we deploy.</h2></div>
-      <div class="grid-m">
-        <article class="m rv">
-          <div class="m-top"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v10.5H9.5L4 20z"/><path d="M12 8.2v3.1l2.1 1.3"/></svg></span><span class="flag" data-i18n="m1f">Flagship</span></div>
-          <h3 data-i18n="m1h">Lead response &amp; booking</h3><p data-i18n="m1p">Replies in under a minute, books the job.</p>
-        </article>
-        <article class="m rv" style="--d:1">
-          <div class="m-top"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg></span></div>
-          <h3 data-i18n="m2h">Quotes</h3><p data-i18n="m2p">Customer request in, ready-to-send quote out.</p>
-        </article>
-        <article class="m rv" style="--d:2">
-          <div class="m-top"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8 12h8"/></svg></span></div>
-          <h3 data-i18n="m3h">Invoices &amp; documents</h3><p data-i18n="m3p">Reads the paperwork, fills your accounting.</p>
-        </article>
-        <article class="m rv">
-          <div class="m-top"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg></span></div>
-          <h3 data-i18n="m4h">Customer email</h3><p data-i18n="m4p">Answers the common questions, routes the rest.</p>
-        </article>
-        <article class="m rv" style="--d:1">
-          <div class="m-top"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></svg></span></div>
-          <h3 data-i18n="m5h">Weekly reports</h3><p data-i18n="m5p">Your numbers on one page, every Monday.</p>
-        </article>
-        <article class="m rv" style="--d:2">
-          <div class="m-top"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.35-5.65"/><path d="M20 4.5V9h-4.5"/></svg></span></div>
-          <h3 data-i18n="m6h">Follow-ups</h3><p data-i18n="m6p">Chases payments, keeps the CRM current.</p>
-        </article>
+      <div class="head uc-head">
+        <div><p class="tag" data-i18n="t3">Use cases</p><h2 class="rv-clip" data-i18n="h2c">Real work, handled by agents.</h2></div>
+        <p class="uc-intro rv" data-i18n="ucIntro">A chatbot answers questions. An agent does the work: it reads, decides, uses your tools, and asks a person when it should.</p>
+      </div>
+      <div class="uc-tabs rv" id="uc-tabs" role="tablist" aria-label="Industries"></div>
+      <div class="uc-panel rv" id="uc-panel" role="tabpanel"></div>
+      <p class="uc-note" data-i18n="ucNote">Example projects. Outcomes are the targets we design for, confirmed with your numbers during the diagnostic.</p>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="wrap">
+      <p class="tag" data-i18n="t9">Built to be trusted</p>
+      <div class="trust-grid">
+        <div class="rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><h3 data-i18n="tr1h">Runs in your accounts</h3><p data-i18n="tr1p">Your data stays in your tools. No black box.</p></div>
+        <div class="rv" style="--d:1"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></svg></span><h3 data-i18n="tr2h">Human approval</h3><p data-i18n="tr2p">Money, contracts, anything sensitive: a person decides.</p></div>
+        <div class="rv" style="--d:2"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M10 11h5M10 15h5"/></svg></span><h3 data-i18n="tr3h">Every action logged</h3><p data-i18n="tr3p">A full trail of what the agent did, and why.</p></div>
+        <div class="rv" style="--d:3"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.2-3 7.6-7 9-4-1.4-7-4.8-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h3 data-i18n="tr4h">Privacy by design</h3><p data-i18n="tr4p">Built with Québec's Law 25 and the GDPR in mind.</p></div>
       </div>
     </div>
   </section>
@@ -661,6 +713,7 @@
     <div class="wrap">
       <div class="final-in" id="final-in">
         <canvas id="topo2" aria-hidden="true"></canvas>
+        <svg class="bigmark xmark" id="bigmark" viewBox="0 0 24 24" aria-hidden="true"><path class="m1" d="M5 5l7 7-7 7"/><path class="m2" d="M12 5l7 7-7 7"/></svg>
         <h2 data-i18n="h2h">One task eating hours every week? Show us.</h2>
         <div class="actions">
           <a class="btn btn-primary" href="https://calendly.com/gharsallahghazi" target="_blank" rel="noopener">
@@ -676,7 +729,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> Forward</span>
+    <span>© <span id="yr">2026</span> XForward</span>
     <nav aria-label="Footer">
       <a href="insights/" data-i18n="ft1">Articles</a>
       <a href="https://www.linkedin.com/in/ghazi-gharsallah-29264a155/" target="_blank" rel="noopener">LinkedIn</a>
@@ -703,7 +756,7 @@
   /* ------------------------------------------------------------ i18n: English in the markup, French here */
   const FR = {
     skip: `Aller au contenu`,
-    nav1: `Le modèle`, nav2: `Méthode`, nav3: `Missions`, nav4: `Offres`, nav5: `FAQ`,
+    nav1: `Le modèle`, nav2: `Méthode`, nav3: `Cas d'usage`, nav4: `Offres`, nav5: `FAQ`,
     navCta: `Réserver <span class="long">un appel</span>`,
     pinT: `Goulot · Jour 4`, pinS: `Devis à la main : 4 h/jour`,
     pinT2: `Résolu · Jour 30`, pinS2: `80 h récupérées chaque mois`,
@@ -723,13 +776,14 @@
     s3w: `Semaines 2 à 4`, s3h: `Construction`, s3p: `Un agent sur vos vrais outils et vos vraies données.`,
     s4w: `Semaines 4 à 6`, s4h: `Lancement`, s4p: `En production, avec relecture humaine et garde-fous.`,
     s5w: `Ensuite`, s5h: `Passation`, s5p: `Documentation, formation, et le système est à vous.`,
-    t3: `Missions`, h2c: `Ce qu'on déploie.`,
-    m1f: `Agent phare`, m1h: `Prospects et rendez-vous`, m1p: `Répond en moins d'une minute, réserve le rendez-vous.`,
-    m2h: `Devis`, m2p: `Une demande client entre, un devis prêt sort.`,
-    m3h: `Factures et documents`, m3p: `Lit les documents, remplit votre comptabilité.`,
-    m4h: `Courriels clients`, m4p: `Répond aux questions courantes, transmet le reste.`,
-    m5h: `Rapports hebdo`, m5p: `Vos chiffres sur une page, chaque lundi.`,
-    m6h: `Relances`, m6p: `Relance les paiements, tient le CRM à jour.`,
+    t3: `Cas d'usage`, h2c: `Du vrai travail, pris en charge par des agents.`,
+    ucIntro: `Un chatbot répond aux questions. Un agent fait le travail : il lit, décide, utilise vos outils, et demande à une personne quand il le faut.`,
+    ucNote: `Projets types. Les résultats sont les cibles que nous visons, confirmées avec vos chiffres pendant le diagnostic.`,
+    t9: `Conçu pour la confiance`,
+    tr1h: `Dans vos comptes`, tr1p: `Vos données restent dans vos outils. Aucune boîte noire.`,
+    tr2h: `Validation humaine`, tr2p: `Argent, contrats, tout ce qui est sensible : une personne décide.`,
+    tr3h: `Chaque action consignée`, tr3p: `Une trace complète de ce que l'agent a fait, et pourquoi.`,
+    tr4h: `Confidentialité intégrée`, tr4p: `Pensé en fonction de la Loi 25 et du RGPD.`,
     t4: `Calculateur`, h2d: `Ce que le travail répétitif vous coûte.`,
     c1: `Personnes concernées`, c2: `Heures par semaine, chacune`, c3: `Coût horaire`, c4: `Part automatisée`,
     o1: `Valeur récupérée par an`, o2: `Heures récupérées / an`, o3: `Équivalent temps plein`, o4: `Retour sur 12 k$`,
@@ -761,7 +815,7 @@
   };
   const META = {
     en: { title: document.title, desc: $('meta[name="description"]').content },
-    fr: { title: 'Forward — Ingénieurs IA intégrés à votre PME', desc: 'Forward intègre un ingénieur IA senior dans votre PME pour trouver les tâches qui coûtent le plus d’heures et mettre des agents IA en production en quelques semaines, à prix fixe.' }
+    fr: { title: 'XForward — Ingénieurs IA intégrés à votre PME', desc: 'XForward intègre un ingénieur IA senior dans votre PME pour trouver les tâches qui coûtent le plus d’heures et mettre des agents IA en production en quelques semaines, à prix fixe.' }
   };
   const EN = {};
   $$('[data-i18n]').forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
@@ -807,6 +861,7 @@
     splitWords($('#stmt'), 'sw');
     stmtWords = $$('#stmt .sw');
     calc(true);
+    renderCases(false);
     if (topo) topo.hud();
     lastStep = -1;
     if (!first) { store.set('fw-lang', l); update(); }
@@ -1016,6 +1071,156 @@
   }
   if ($('#topo2').getContext) Topo($('#topo2'), { step: .12, lineVar: '--topo-inv', a: .12, ai: .22, unitK: .5, t0: 40 });
 
+  /* ------------------------------------------------------------ use cases */
+  const CASES = {
+    en: {
+      L: { kick: 'Example project', before: 'Today', does: 'What the agent does', targets: 'Target outcomes', tools: 'Connects to', also: 'Also in this sector', run: 'Agent run', live: 'Live', done: '✓ Done · logged for review' },
+      items: [
+        { ind: 'Home services', sub: 'HVAC · Plumbing · Cleaning', title: 'Lead-to-booking agent',
+          before: 'Leads wait hours for a callback, then book whoever answered first.',
+          steps: [['New lead comes in', 'Web form · missed call · SMS'], ['Qualifies the job', 'Service, address, urgency'], ['Checks the live schedule', 'Calendar · service area'], ['Books and confirms', 'SMS confirmation to the client'], ['Escalates emergencies', 'On-call tech notified']],
+          targets: [['< 60 s', 'First reply'], ['24/7', 'Booking coverage'], ['0', 'Leads left unanswered']],
+          tools: ['Web forms', 'Twilio SMS', 'Google Calendar', 'Jobber', 'HubSpot'],
+          also: ['Review requests after each job', 'Follow-ups on unsigned quotes'] },
+        { ind: 'Clinics', sub: 'Dental · Physio · Med spa', title: 'Front-desk agent',
+          before: 'Reception spends half the day on the phone: bookings, reschedules, reminders.',
+          steps: [['Patient calls or texts', 'Phone · SMS · web chat'], ['Identifies patient and need', 'New visit, follow-up, reschedule'], ['Finds an opening', 'Practice management software'], ['Books and sends forms', 'Intake forms · reminders'], ['Routes clinical questions', 'To the right staff member']],
+          targets: [['24/7', 'Self-booking'], ['2–3 h', 'Calls absorbed per day'], ['Auto', 'Reminders and intake forms']],
+          tools: ['Phone & SMS', 'Jane App', 'Dentrix', 'Google Workspace'],
+          also: ['Fill cancellations from the waitlist', 'Recall reminders for check-ups'] },
+        { ind: 'Accounting & legal', sub: 'Accounting firms · Law firms', title: 'Client document agent',
+          before: 'Staff chase clients for documents, then re-type them into the system.',
+          steps: [['Client sends documents', 'Email · upload portal'], ['Classifies and extracts', 'Slips, invoices, IDs, contracts'], ['Spots what is missing', 'Sends a polite reminder'], ['Files everything', 'Client folder · practice software'], ['Prepares a summary', 'The professional signs off']],
+          targets: [['0', 'Manual re-typing'], ['Auto', 'Missing-document chasing'], ['1 page', 'Summary per client file']],
+          tools: ['Outlook', 'SharePoint', 'QuickBooks', 'Xero', 'DocuSign'],
+          also: ['Engagement letters drafted from intake', 'Deadline reminders per client'] },
+        { ind: 'Distribution', sub: 'Wholesale · Manufacturing', title: 'Order-entry agent',
+          before: 'Purchase orders arrive as PDFs and emails; someone types them into the ERP.',
+          steps: [['Purchase order arrives', 'PDF · Excel · email body'], ['Reads every line', 'SKUs, quantities, dates'], ['Checks catalogue and prices', 'Flags any mismatch'], ['Creates the sales order', 'Directly in the ERP'], ['Confirms to the customer', 'With the ship date']],
+          targets: [['< 5 min', 'Order to ERP'], ['0', 'Lines typed by hand'], ['100%', 'Orders checked against prices']],
+          tools: ['Outlook', 'Odoo', 'Sage', 'NetSuite', 'Excel'],
+          also: ['Supplier invoice matching', 'Low-stock reorder drafts'] },
+        { ind: 'E-commerce', sub: 'Online stores · Retail', title: 'Customer support agent',
+          before: '“Where is my order?” emails bury the team every Monday.',
+          steps: [['Ticket comes in', 'Email · chat · Instagram'], ['Looks up the order', 'Status and tracking'], ['Answers or processes', 'Returns within your policy'], ['Hands off exceptions', 'Refunds above your limit go to a person'], ['Tags the trend', 'For the weekly report']],
+          targets: [['60%+', 'Tickets resolved end to end'], ['< 2 min', 'Response time'], ['100%', 'Large refunds approved by a person']],
+          tools: ['Shopify', 'Gorgias', 'Zendesk', 'Canada Post', 'UPS'],
+          also: ['Product questions answered from your catalogue', 'Abandoned-cart follow-ups'] },
+        { ind: 'Property management', sub: 'Residential · Commercial', title: 'Maintenance request agent',
+          before: 'Tenant requests come by text, email and voicemail. Nothing is tracked.',
+          steps: [['Tenant reports an issue', 'Text · photo · voicemail'], ['Sorts urgency and trade', 'Plumbing, electrical, HVAC'], ['Dispatches a vendor', 'Books a visit window'], ['Keeps the tenant updated', 'Automatic status messages'], ['Closes the ticket', 'Photos and invoice attached']],
+          targets: [['< 10 min', 'Request to dispatch'], ['100%', 'Requests tracked'], ['Auto', 'Tenant updates']],
+          tools: ['SMS', 'WhatsApp', 'Buildium', 'AppFolio', 'Email'],
+          also: ['Lease renewal reminders', 'Move-in and move-out checklists'] }
+      ]
+    },
+    fr: {
+      L: { kick: 'Projet type', before: "Aujourd'hui", does: "Ce que fait l'agent", targets: 'Résultats visés', tools: 'Se connecte à', also: 'Aussi dans ce secteur', run: "Exécution de l'agent", live: 'En direct', done: '✓ Terminé · consigné pour relecture' },
+      items: [
+        { ind: 'Services à domicile', sub: 'CVC · Plomberie · Entretien', title: 'Agent prospects et rendez-vous',
+          before: 'Les demandes attendent des heures, et le client réserve chez le premier qui répond.',
+          steps: [['Une demande arrive', 'Formulaire · appel manqué · texto'], ['Qualifie le travail', 'Service, adresse, urgence'], ["Consulte l'horaire en direct", 'Agenda · zone desservie'], ['Réserve et confirme', 'Confirmation par texto'], ['Escalade les urgences', 'Technicien de garde avisé']],
+          targets: [['< 60 s', 'Première réponse'], ['24/7', 'Prise de rendez-vous'], ['0', 'Demande sans réponse']],
+          tools: ['Formulaires web', 'Twilio SMS', 'Google Agenda', 'Jobber', 'HubSpot'],
+          also: ["Demandes d'avis après chaque travail", 'Relances des devis non signés'] },
+        { ind: 'Cliniques', sub: 'Dentaire · Physio · Esthétique', title: 'Agent de réception',
+          before: 'La réception passe la moitié de la journée au téléphone : rendez-vous, reports, rappels.',
+          steps: [['Le patient appelle ou écrit', 'Téléphone · texto · clavardage'], ['Identifie le patient et le besoin', 'Nouvelle visite, suivi, report'], ['Trouve une plage libre', 'Logiciel de gestion de clinique'], ['Réserve et envoie les formulaires', "Formulaires d'accueil · rappels"], ['Oriente les questions cliniques', 'Vers la bonne personne']],
+          targets: [['24/7', 'Réservation autonome'], ['2–3 h', "D'appels absorbés par jour"], ['Auto', 'Rappels et formulaires']],
+          tools: ['Téléphone & SMS', 'Jane App', 'Dentrix', 'Google Workspace'],
+          also: ["Combler les annulations avec la liste d'attente", 'Rappels de suivi périodique'] },
+        { ind: 'Comptabilité et droit', sub: 'Cabinets comptables · Cabinets juridiques', title: 'Agent documents clients',
+          before: "L'équipe court après les documents des clients, puis les ressaisit dans le système.",
+          steps: [['Le client envoie ses documents', 'Courriel · portail de dépôt'], ['Classe et extrait', 'Relevés, factures, pièces, contrats'], ['Repère ce qui manque', 'Envoie un rappel courtois'], ['Classe tout', 'Dossier client · logiciel du cabinet'], ['Prépare un résumé', 'Le professionnel valide']],
+          targets: [['0', 'Ressaisie manuelle'], ['Auto', 'Relance des documents manquants'], ['1 page', 'Résumé par dossier']],
+          tools: ['Outlook', 'SharePoint', 'QuickBooks', 'Xero', 'DocuSign'],
+          also: ["Lettres de mission rédigées à partir de l'accueil", 'Rappels d’échéances par client'] },
+        { ind: 'Distribution', sub: 'Grossistes · Fabrication', title: 'Agent saisie de commandes',
+          before: "Les bons de commande arrivent en PDF et par courriel ; quelqu'un les tape dans l'ERP.",
+          steps: [['Un bon de commande arrive', 'PDF · Excel · courriel'], ['Lit chaque ligne', 'Codes, quantités, dates'], ['Vérifie catalogue et prix', 'Signale tout écart'], ['Crée la commande client', "Directement dans l'ERP"], ['Confirme au client', "Avec la date d'expédition"]],
+          targets: [['< 5 min', "Commande dans l'ERP"], ['0', 'Ligne tapée à la main'], ['100 %', 'Commandes vérifiées vs prix']],
+          tools: ['Outlook', 'Odoo', 'Sage', 'NetSuite', 'Excel'],
+          also: ['Rapprochement des factures fournisseurs', 'Propositions de réapprovisionnement'] },
+        { ind: 'Commerce en ligne', sub: 'Boutiques en ligne · Détail', title: 'Agent service client',
+          before: '« Où est ma commande ? » : les courriels submergent l’équipe chaque lundi.',
+          steps: [['Un billet arrive', 'Courriel · clavardage · Instagram'], ['Retrouve la commande', 'Statut et suivi'], ['Répond ou traite', 'Retours selon votre politique'], ['Transmet les exceptions', 'Remboursements au-delà du seuil : une personne'], ['Repère les tendances', 'Pour le rapport hebdomadaire']],
+          targets: [['60 %+', 'Billets résolus de bout en bout'], ['< 2 min', 'Temps de réponse'], ['100 %', 'Gros remboursements validés']],
+          tools: ['Shopify', 'Gorgias', 'Zendesk', 'Postes Canada', 'UPS'],
+          also: ['Questions produits répondues depuis votre catalogue', 'Relances de paniers abandonnés'] },
+        { ind: 'Gestion immobilière', sub: 'Résidentiel · Commercial', title: "Agent demandes d'entretien",
+          before: 'Les demandes des locataires arrivent par texto, courriel et boîte vocale. Rien n’est suivi.',
+          steps: [['Le locataire signale un problème', 'Texto · photo · message vocal'], ['Évalue urgence et métier', 'Plomberie, électricité, CVC'], ['Envoie un fournisseur', 'Réserve une plage de visite'], ['Tient le locataire informé', 'Messages automatiques'], ['Ferme le billet', 'Photos et facture jointes']],
+          targets: [['< 10 min', 'De la demande à l’envoi'], ['100 %', 'Demandes suivies'], ['Auto', 'Suivi des locataires']],
+          tools: ['SMS', 'WhatsApp', 'Buildium', 'AppFolio', 'Courriel'],
+          also: ['Rappels de renouvellement de bail', "Listes d'entrée et de sortie"] }
+      ]
+    }
+  };
+  const ucTabs = $('#uc-tabs'), ucPanel = $('#uc-panel');
+  let ucIdx = 0, ucTimer = 0, ucVisible = false;
+  const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  function renderCases(animate) {
+    const D = CASES[lang], L = D.L, it = D.items[ucIdx];
+    ucTabs.innerHTML = D.items.map((c, i) => `<button type="button" class="uc-tab" role="tab" id="uc-t${i}" aria-controls="uc-panel" aria-selected="${i === ucIdx}" tabindex="${i === ucIdx ? 0 : -1}">${esc(c.ind)}</button>`).join('');
+    ucPanel.setAttribute('aria-labelledby', 'uc-t' + ucIdx);
+    let tsum = 0;
+    const times = it.steps.map((_, i) => { tsum += [0.4, 1.8, 1.1, 2.3, 0.9][i] || 1; return '00:' + tsum.toFixed(1).padStart(4, '0'); });
+    ucPanel.innerHTML = `
+      <div class="uc-main">
+        <div><p class="uc-kick">${esc(L.kick)} · ${esc(it.ind)}</p><h3 class="uc-title">${esc(it.title)}</h3><p class="uc-sub">${esc(it.sub)}</p></div>
+        <div><p class="uc-lbl">${esc(L.before)}</p><p class="uc-before">${esc(it.before)}</p></div>
+        <div><p class="uc-lbl">${esc(L.targets)}</p><div class="uc-targets">${it.targets.map(([v, k]) => `<div><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join('')}</div></div>
+        <div><p class="uc-lbl">${esc(L.tools)}</p><div class="chips">${it.tools.map(t => `<span>${esc(t)}</span>`).join('')}</div></div>
+        <div><p class="uc-lbl">${esc(L.also)}</p><ul class="uc-also">${it.also.map(a => `<li>${esc(a)}</li>`).join('')}</ul></div>
+      </div>
+      <div class="trace" id="trace" aria-label="${esc(L.does)}">
+        <div class="trace-head"><span>${esc(L.run)} · ${esc(L.does)}</span><span class="live">${esc(L.live)}</span></div>
+        <ol>${it.steps.map(([a, b], i) => `<li><time>${times[i]}</time><span class="nd" aria-hidden="true"></span><span class="tx"><b>${esc(a)}</b><span>${esc(b)}</span></span></li>`).join('')}</ol>
+        <p class="done">${esc(L.done)}</p>
+      </div>`;
+    if (animate) { ucPanel.classList.remove('uc-anim'); void ucPanel.offsetWidth; ucPanel.classList.add('uc-anim'); }
+    runTrace();
+  }
+  function runTrace() {
+    clearTimeout(ucTimer);
+    const tr = $('#trace'); if (!tr) return;
+    const li = $$('li', tr);
+    if (RM.matches || !ucVisible) { li.forEach(l => l.classList.add('on')); tr.classList.add('fin'); return; }
+    li.forEach(l => l.classList.remove('on', 'cur')); tr.classList.remove('fin');
+    let k = 0;
+    const step = () => {
+      if (k > 0) li[k - 1].classList.remove('cur');
+      if (k < li.length) { li[k].classList.add('on', 'cur'); k++; ucTimer = setTimeout(step, 900); }
+      else { tr.classList.add('fin'); ucTimer = setTimeout(runTrace, 3200); }
+    };
+    ucTimer = setTimeout(step, 450);
+  }
+  ucTabs.addEventListener('click', e => {
+    const b = e.target.closest('.uc-tab'); if (!b) return;
+    const i = +b.id.slice(4); if (i === ucIdx) return;
+    ucIdx = i; renderCases(true); $('#uc-t' + i).focus({ preventScroll: true });
+  });
+  ucTabs.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    e.preventDefault();
+    const n = CASES[lang].items.length;
+    ucIdx = (ucIdx + (e.key === 'ArrowRight' ? 1 : n - 1)) % n;
+    renderCases(true); $('#uc-t' + ucIdx).focus({ preventScroll: true });
+  });
+  new IntersectionObserver(es => {
+    const v = es[0].isIntersecting;
+    if (v && !ucVisible) { ucVisible = true; runTrace(); }
+    else if (!v && ucVisible) { ucVisible = false; clearTimeout(ucTimer); }
+  }, { threshold: .25 }).observe(ucPanel);
+
+  /* ------------------------------------------------------------ brand mark: two arrows connect into an X */
+  setTimeout(() => $$('.xmark').forEach(m => m.id !== 'bigmark' && m.classList.add('x')), RM.matches ? 0 : 900);
+  const big = $('#bigmark');
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) setTimeout(() => big.classList.add('x'), RM.matches ? 0 : 400);
+    else big.classList.remove('x');
+  }), { threshold: .6 }).observe(big);
+
   /* ------------------------------------------------------------ calculator */
   const ids = ['people', 'hours', 'rate', 'pct'];
   const inp = Object.fromEntries(ids.map(k => [k, $('#c-' + k)]));
@@ -1173,10 +1378,13 @@
   const rio = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('in');
+    $$(':scope > .rv-clip', e.target).forEach(c => c.classList.add('in'));
     $$('.count', e.target).forEach(countUp);
     rio.unobserve(e.target);
   }), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
-  $$('.rv, .rv-clip').forEach(el => rio.observe(el));
+  $$('.rv').forEach(el => rio.observe(el));
+  // a clipped heading has no visible area to intersect, so watch its parent instead
+  $$('.rv-clip').forEach(el => rio.observe(el.parentElement));
 
   /* hover: spotlight + tilt */
   $$('.m').forEach(el => el.addEventListener('pointermove', e => {
