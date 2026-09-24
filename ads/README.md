@@ -45,6 +45,17 @@ Source: `build3.py` (GSAP + synthesized pings/whooshes/hits). Drafts: `drafts/ro
 
 Source: `build4.py`. Drafts: `drafts/round4/`. Numbers are illustrative targets.
 
+## Round 5: same clear message, four different styles and formats
+
+| | Style | Format | Message |
+|---|---|---|---|
+| 1 | Bauhaus poster | 4:5 · 16 s | Tasks = red circles in chaos; agents = blue squares that put them in order |
+| 2 | Whiteboard | 16:9 · 20 s | Consultant sketches the business, circles time-wasters, draws engineer + agents, ticks wins |
+| 3 | Warm & human | 9:16 · 16 s | "5:00 PM. The shop is closed. But the work isn't." → "Dinner at home. Weekends off." |
+| 4 | Neo-brutalist | 1:1 · 15 s | What they do → what you win → how → pressable "Book a free call" |
+
+Source: `build5.py`. Drafts: `drafts/round5/`.
+
 ## Build and render
 
 Needs Node 22+, FFmpeg, and the HyperFrames CLI (`npm i -g hyperframes`,
@@ -55,6 +66,7 @@ python3 build.py            # round 1 low-res drafts -> projects/<concept>/
 python3 build2.py           # round 2 low-res drafts (Three.js + audio)
 python3 build3.py           # round 3 low-res drafts (recognition hooks + audio)
 python3 build4.py           # round 4 low-res drafts (clear message + audio)
+python3 build5.py           # round 5 low-res drafts (four visual styles)
 python3 build.py --final    # full resolution (1080x1920, 1080x1080, 1920x1080)
 cd projects/a-942pm && hyperframes render -q draft -f 24 -o ../../a.mp4
 ```
