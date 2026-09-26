@@ -102,6 +102,8 @@ Source: `xforward-film/xf_build.py` and `xforward-film/xf_synth.py` (reuses the
 showreel's instruments). Video: `xforward-film/xforward-film.mp4`. Proof numbers
 are the site's target outcomes for example projects, and say so on screen.
 
+![XForward film shots](xforward-film/shots.jpg)
+
 ## Build and render
 
 Needs Node 22+, FFmpeg, and the HyperFrames CLI (`npm i -g hyperframes`,
