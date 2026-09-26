@@ -164,10 +164,10 @@ def s7_html():
     ring2 = "IN CODE · IN CODE · IN CODE · IN CODE · "
     return f"""
 <section id="s7a" class="clip shot" data-start="{t0}" data-duration="{h:.6f}">
-  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":10}}' style="left:0;background:var(--or);color:var(--ink)"><span>E</span></div>
-  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":10}}' style="left:480px;background:var(--bone);color:var(--ink)"><span>D</span></div>
-  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":10}}' style="left:960px;background:var(--co);color:var(--bone)"><span>I</span></div>
-  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":10}}' style="left:1440px;background:var(--ink);color:var(--or)"><span>T</span></div>
+  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":48,"shutterAngle":360,"shutterPhase":-180}}' style="left:0;background:var(--or);color:var(--ink)"><span>E</span></div>
+  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":48,"shutterAngle":360,"shutterPhase":-180}}' style="left:480px;background:var(--bone);color:var(--ink)"><span>D</span></div>
+  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":48,"shutterAngle":360,"shutterPhase":-180}}' style="left:960px;background:var(--co);color:var(--bone)"><span>I</span></div>
+  <div class="strip" data-hf-motion-blur='{{"samplesPerFrame":48,"shutterAngle":360,"shutterPhase":-180}}' style="left:1440px;background:var(--ink);color:var(--or)"><span>T</span></div>
 </section>
 <section id="s7b" class="clip shot" data-start="{t0 + h:.6f}" data-duration="{h:.6f}">
   <svg id="spsvg" viewBox="0 0 1920 1080"><path id="sp1" d="{spiral_path(960, 540)}"/><path id="sp2" d="{spiral_path(960, 540, 5.5, 6, 470, 420)}" transform="rotate(180 960 540)"/></svg>
@@ -315,7 +315,7 @@ html,body{margin:0;background:#000}
 /* finishing */
 #flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:20}
 #vig{position:absolute;inset:0;background:radial-gradient(ellipse 72% 72% at 50% 50%,transparent 58%,rgba(0,0,0,.34) 100%);opacity:0;z-index:21}
-#grain{position:absolute;inset:0;background:url(noise.png);background-size:256px 256px;mix-blend-mode:overlay;opacity:0;z-index:22}
+#grain{position:absolute;inset:0;background:url(noise.png);background-size:512px 512px;image-rendering:pixelated;mix-blend-mode:overlay;opacity:0;z-index:22}
 #hud{position:absolute;inset:0;z-index:30;color:var(--bone);font-size:15px;font-weight:500;letter-spacing:.2em}
 #hud .h{position:absolute;white-space:nowrap}
 #hud .tl{left:56px;top:44px}#hud .tr{right:56px;top:44px}#hud .bl{left:56px;bottom:44px}#hud .br{right:56px;bottom:48px;display:flex;gap:6px}
@@ -444,7 +444,7 @@ tl.fromTo('#bigc', { scale: 1 }, { scale: 0.94, duration: 0.14, ease: 'power2.in
 tl.fromTo('#bigc', { opacity: 1 }, { opacity: 0, duration: 0.09, ease: 'none', immediateRender: false }, bt(12));
 
 // ======================================================== 04–06 are WebGL; DOM adds the drop flash
-tl.fromTo('#flash', { opacity: 0.5 }, { opacity: 0, duration: 0.3, ease: 'expo.out', immediateRender: false }, bt(12));
+tl.fromTo('#flash', { opacity: 0.32 }, { opacity: 0, duration: 0.26, ease: 'expo.out', immediateRender: false }, bt(12));
 tl.fromTo('#flash', { opacity: 0.35 }, { opacity: 0, duration: 0.35, ease: 'expo.out', immediateRender: false }, bt(16));
 
 // ======================================================== 07 EDITING  11.25 – 13.125
@@ -489,7 +489,7 @@ tl.fromTo('#dot8', { scale: 1 }, { scale: 1.3, duration: 0.09, ease: 'power2.out
 tl.fromTo('#dot8', { scale: 1.3 }, { scale: 1, duration: 0.4, ease: 'elastic.out(1,0.4)', immediateRender: false }, bt(31) + 0.09);
 
 // ======================================================== HUD + finishing
-tl.set(['#vig', '#grain'], { opacity: (i) => [1, 0.11][i] }, 0.001);
+tl.set(['#vig', '#grain'], { opacity: (i) => [1, 0.085][i] }, 0.001);
 const hudC = [[0, BONE], [bt(4), INK], [5.36, BONE], [S7, BONE], [T8, BONE]];
 hudC.forEach(([t, c]) => tl.set('#hud', { color: c }, t === 0 ? 0.001 : t));
 tl.set('#hud', { mixBlendMode: 'difference' }, S7);
@@ -507,7 +507,7 @@ function tick() {
   const k = Math.min(7, Math.floor(t / BAR + 1e-6)), dt = t - k * BAR;
   snEl.textContent = '0' + (k + 1);
   slEl.textContent = scr(LABELS[k], Math.min(1, dt / 0.24), f * 7 + 3);
-  const g = rng(f * 13 + 5); grEl.style.backgroundPosition = `${Math.floor(g() * 256)}px ${Math.floor(g() * 256)}px`;
+  const g = rng(f * 13 + 5); grEl.style.backgroundPosition = `${Math.floor(g() * 256) * 2}px ${Math.floor(g() * 256) * 2}px`;
   wdv.textContent = Math.round(parseFloat(gsap.getProperty(l1, '--wd')) || 125);
   const p8 = (t - (T8 + 0.66)) / 0.42;
   skEl.textContent = p8 < 0 ? '' : scr(SK, Math.min(1, p8), f * 3 + 1);
@@ -862,7 +862,7 @@ const { chromium } = require('playwright');
     const ps = document.getElementById('pslot').getBoundingClientRect();
     const nm = document.querySelector('#name .nl').getBoundingClientRect();
     return { ring: [r4.left + r4.width / 2, r4.top + r4.height / 2], letters: [...document.querySelectorAll('#name .nl')].map(c),
-      pslot: [ps.left + ps.width / 2 - 2, nm.top + nm.height * 0.79 - 29], nameBox: [nm.top, nm.height] };
+      pslot: [ps.left + ps.width / 2 - 2, nm.top + nm.height * 0.832 - 29], nameBox: [nm.top, nm.height] };
   });
   console.log(JSON.stringify(m));
   await b.close();
