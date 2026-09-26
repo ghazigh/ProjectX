@@ -80,6 +80,28 @@ full-quality master renders in about 3 minutes on 4 cores).
 
 ![Showreel shots](showreel/shots.jpg)
 
+## XForward film: "Loops → Forward" (20 s, 1080p)
+
+The showreel's craft applied to the brand. Busywork is drawn as loops (the
+site's topographic contour lines); the XForward chevron cuts through them and
+turns them into forward motion. 10 bars at 128 BPM, every cut on the beat.
+
+| Bar | Time | Chapter | What happens |
+|---|---|---|---|
+| 1 | 0:00 | The loop | Task words spin in rings: "Copy. Paste. Chase. Repeat." |
+| 2 | 1.9 s | The cost | Counter lands on "27 h / week lost to busywork." |
+| 3 | 3.8 s | The engineer | The drop: the chevron straightens the loops. "We send an engineer. Not a slide deck." |
+| 4 | 5.6 s | The map | Isometric map of the business drawn node by node (Step 1 — Map) |
+| 5 | 7.5 s | The agents | Nodes extrude to 3D, 24 agent arrows run the routes, bottlenecks turn "Automated ✓" |
+| 6 | 9.4 s | The work | 24k particles leave their loops for forward lanes: "They work 24/7." |
+| 7 | 11.3 s | The ROI | The topo map rises into mountains; a path climbs to the ROI summit |
+| 8 | 13.1 s | The proof | Four one-beat cards with target outcomes from the site's use cases |
+| 9–10 | 15 s | XForward | The two chevrons lock into the X; wordmark, tagline, "Book a free call" |
+
+Source: `xforward-film/xf_build.py` and `xforward-film/xf_synth.py` (reuses the
+showreel's instruments). Video: `xforward-film/xforward-film.mp4`. Proof numbers
+are the site's target outcomes for example projects, and say so on screen.
+
 ## Build and render
 
 Needs Node 22+, FFmpeg, and the HyperFrames CLI (`npm i -g hyperframes`,
@@ -93,6 +115,7 @@ python3 build4.py           # round 4 low-res drafts (clear message + audio)
 python3 build5.py           # round 5 low-res drafts (four visual styles)
 python3 build.py --final    # full resolution (1080x1920, 1080x1080, 1920x1080)
 python3 showreel/build_reel.py --zoom 1   # showreel -> projects/showreel/ (default: 960x540 draft)
+python3 xforward-film/xf_build.py --zoom 1 # XForward film -> projects/xforward-reel/
 cd projects/a-942pm && hyperframes render -q draft -f 24 -o ../../a.mp4
 ```
 
