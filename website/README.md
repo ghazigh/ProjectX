@@ -10,17 +10,33 @@ English by default with an EN/FR toggle (French copy lives in the `FR` object
 in the page script), plus a light/dark toggle that remembers the choice and
 otherwise follows the system setting.
 
-What's on the page: a full-bleed topographic hero pinned to the scroll: the
-terrain tilts into 3D, the "bottleneck" peak rises, then flattens as the sample
-mission reaches day 30. Then a statement that lights up word by word, a
-horizontally-scrolling 5-step method, an industry use-case explorer (six
-example agent projects, each with its own animated mini-app scene (SMS chat,
-week calendar, document portal, PDF-to-ERP split view, helpdesk, kanban board); content lives in
-the `CASES` and `SCENES` objects in
-the script), a trust band, an ROI calculator, pricing
-with hover tilt, founder card, FAQ and a final call to action. Smooth scrolling
-via Lenis (loaded from jsDelivr; the page works without it). All motion is
-disabled under `prefers-reduced-motion`.
+What's on the page, top to bottom:
+
+- **Intro** (once per visit): the two chevrons lock into the X, then the page
+  opens like a slit. Any input skips it.
+- **Hero**: the topographic map is a live WebGL2 height field. Contour lines
+  ripple out from the "bottleneck" on load and bend under the cursor. Scrolling
+  tilts it into 3D terrain, a path climbs to the bottleneck (day 4), then a
+  chevron sweeps through, flattens it and turns the loops into forward-flowing
+  chevrons (day 30). Without WebGL2 it falls back to the 2D canvas version.
+  "Watch the film" opens the 20 s brand film (`media/`).
+- **Model**: a statement that lights up word by word; stats land on digit reels.
+- **Method**: an isometric map of a business, drawn step by step as you scroll:
+  the engineer maps the desks, the bottleneck loops get priced, an agent is
+  built, agents run the routes through a human-review gate, then handover.
+- **Loops → Forward**: 6,500 dots (tasks) break out of their loops and stream
+  forward as you scroll.
+- **Use cases**: six example agent projects, each with its own animated mini-app
+  scene (SMS chat, week calendar, document portal, PDF-to-ERP split view,
+  helpdesk, kanban board); content lives in the `CASES` and `SCENES` objects.
+- Trust band, **ROI calculator** with a break-even chart against the $12k
+  deployment, pricing with hover tilt, founder card, FAQ, and a final call to
+  action over flowing chevrons.
+
+A chapter readout (bottom right, desktop) shows where you are. Smooth
+scrolling via Lenis (loaded from jsDelivr; the page works without it). Under
+`prefers-reduced-motion` the intro is skipped, pinned scenes become static and
+all motion stops.
 
 The logo is two forward arrows that connect into an X on load and open back
 to `>>` on hover. To rename the agency, search-and-replace the name in
@@ -58,6 +74,8 @@ cd website && python3 -m http.server 8000   # then open http://localhost:8000
 ## Files in this folder
 
 - `index.html` — the Forward agency landing page (served at the site root)
+- `media/` — the brand film (`xforward-film.mp4`, 12 MB, loaded only when played) and its poster
+- `og.jpg` — the 1200×630 image shown when the link is shared
 - `insights/` — the SEO blog: `index.html` + two cornerstone articles + `article.css`
 - `sitemap.xml`, `robots.txt` — copy to your site **root** for indexing
 
