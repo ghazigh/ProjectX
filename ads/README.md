@@ -75,7 +75,10 @@ A résumé showreel: one orange dot travels through eight disciplines, one bar o
 Source: `showreel/build_reel.py` (DOM shots in GSAP; 3D/particles/shaders in one
 Three.js canvas with a hand-written bloom + tonemap pass) and
 `showreel/reel_synth.py` (128 BPM A-minor track, synthesized in Python, mixed
-with FFmpeg). Video: `showreel/claude-showreel-2026.mp4`.
+with FFmpeg). Video: `showreel/claude-showreel-2026.mp4` (1080p30, web encode; the
+full-quality master renders in about 3 minutes on 4 cores).
+
+![Showreel shots](showreel/shots.jpg)
 
 ## Build and render
 
