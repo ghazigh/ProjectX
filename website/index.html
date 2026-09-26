@@ -163,9 +163,28 @@
   .btn-ghost{color:var(--ink);border-color:var(--line-2);padding:.5em 1.35em;background:color-mix(in srgb,var(--bg) 60%,transparent)}
   .btn-ghost:hover{border-color:var(--ink)}
   .btn-sm{min-height:36px;font-size:.86rem;padding:.4em 1.05em}
+  .btn-film{gap:.75em;padding:.5em 1.3em .5em .55em;font-family:var(--f-body)}
+  .btn-film .play{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--bg);transition:transform .5s var(--ease),background .3s}
+  .btn-film .play svg{width:11px;height:11px;fill:currentColor;margin-left:2px}
+  .btn-film:hover .play{transform:scale(1.1);background:var(--accent);color:var(--accent-ink)}
+  .btn-film .dur{font:500 .7rem/1 var(--f-mono);color:var(--muted);letter-spacing:.06em}
+
+  /* film dialog */
+  .film{border:0;padding:0;margin:auto;background:transparent;width:min(1120px,calc(100vw - 32px));max-width:none;max-height:none;color:var(--ink);overflow:visible}
+  .film::backdrop{background:rgba(5,6,8,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .film-box{border-radius:22px;overflow:hidden;background:#000;box-shadow:0 50px 140px -30px rgba(0,0,0,.75);border:1px solid rgba(255,255,255,.08)}
+  .film[open] .film-box{animation:filmIn .8s var(--ease)}
+  @keyframes filmIn{from{opacity:0;transform:translateY(28px) scale(.95)}to{opacity:1;transform:none}}
+  .film-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 10px 10px 20px;background:#0A0B0D;color:#ECEEF2}
+  .film-t{display:flex;align-items:center;gap:12px;font:500 .7rem/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+  .film-t .film-d{opacity:.55}
+  .film-x{appearance:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:transparent;color:inherit;cursor:pointer;transition:border-color .25s,transform .5s var(--ease)}
+  .film-x:hover{border-color:#fff;transform:rotate(90deg)}
+  .film-x svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+  .film video{display:block;width:100%;aspect-ratio:16/9;background:#000}
 
   /* ---------------- hero ---------------- */
-  .hero-track{position:relative;height:340vh}
+  .hero-track{position:relative;height:240vh}
   .hero{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;isolation:isolate}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
   .veil{position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -198,14 +217,19 @@
   .pin-ring{border:1.5px solid var(--accent);animation:ring 3s var(--ease) infinite}
   .pin-ring.r2{animation-delay:1.5s}
   @keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(6.5);opacity:0}}
-  .pin-label{position:absolute;bottom:22px;left:0;transform:translateX(-50%);white-space:nowrap;display:flex;flex-direction:column;gap:3px;padding:9px 12px;border-radius:11px;
+  .pin-label{position:absolute;bottom:22px;left:0;transform:translateX(calc(-50% + var(--lx,0px)));white-space:nowrap;display:flex;flex-direction:column;gap:3px;padding:9px 12px;border-radius:11px;
     background:var(--raise);border:1px solid var(--line);box-shadow:var(--shadow);font-size:.82rem;color:var(--ink);animation:pop .8s var(--ease) 1.3s both}
-  @keyframes pop{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+  @keyframes pop{from{opacity:0;transform:translate(calc(-50% + var(--lx,0px)),8px)}to{opacity:1;transform:translate(calc(-50% + var(--lx,0px)),0)}}
   .pin-label b{font:600 .62rem/1.2 var(--f-mono);letter-spacing:.11em;text-transform:uppercase;color:var(--accent)}
-  .pin-label::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;margin-left:-5px;background:var(--raise);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+  .pin-label::after{content:"";position:absolute;left:calc(50% - var(--lx,0px));bottom:-6px;width:10px;height:10px;margin-left:-5px;background:var(--raise);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
   .pin-label.b{display:none}
+  .wp{position:absolute;z-index:2;left:0;top:0;width:0;height:0;pointer-events:none;opacity:0;will-change:transform,opacity}
+  .wp i{position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:var(--bg)}
+  .wp span{position:absolute;left:14px;top:-12px;white-space:nowrap;font:500 .62rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+    padding:6px 9px;border-radius:999px;background:var(--raise);border:1px solid var(--line);box-shadow:var(--shadow)}
   .pin.solved .pin-label.a{display:none}
   .pin.solved .pin-label.b{display:flex;animation-delay:0s}
+  .pin.quiet .pin-label{animation:none;opacity:0;transition:opacity .4s}
 
   .cap{position:absolute;z-index:3;margin:0;left:max(var(--gut),calc((100vw - var(--maxw))/2 + var(--gut)));bottom:15vh;max-width:min(13ch,90vw);
     font-family:var(--f-display);font-stretch:112%;font-weight:640;font-size:clamp(2rem,1rem + 3.6vw,4.4rem);line-height:.98;letter-spacing:-.04em;
@@ -629,6 +653,7 @@
         <div class="pin-label a"><b data-i18n="pinT">Bottleneck · Day 4</b><span data-i18n="pinS">Quotes by hand: 4 h/day</span></div>
         <div class="pin-label b"><b data-i18n="pinT2">Solved · Day 30</b><span data-i18n="pinS2">80 h back every month</span></div>
       </div>
+      <div class="wp" id="wp0" aria-hidden="true"><i></i><span data-i18n="wp0">Day 1 · On site</span></div>
       <div class="wrap hero-in">
         <div class="hero-copy" id="hero-copy">
           <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="eyebrow">Forward-deployed AI engineers · for SMEs</span></p>
@@ -639,7 +664,10 @@
               <span data-i18n="cta1">Book a 20-min call</span>
               <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </a>
-            <a class="btn btn-ghost" href="#method" data-i18n="cta2">How it works</a>
+            <button type="button" class="btn btn-ghost btn-film" data-film>
+              <span class="play" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 1.2v9.6l8-4.8z"/></svg></span>
+              <span data-i18n="film">Watch the film</span><span class="dur" aria-hidden="true">0:20</span>
+            </button>
           </div>
         </div>
       </div>
@@ -850,6 +878,16 @@
   </div>
 </footer>
 
+<dialog class="film" id="film" aria-labelledby="film-t">
+  <div class="film-box">
+    <div class="film-top">
+      <p class="film-t" id="film-t"><span data-i18n="filmT">XForward · the film</span><span class="film-d">0:20</span></p>
+      <button type="button" class="film-x" id="film-x" aria-label="Close" data-i18n-label="close"><svg viewBox="0 0 16 16"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>
+    </div>
+    <video id="film-v" controls playsinline preload="none" poster="media/xforward-film-poster.jpg"><source src="media/xforward-film.mp4" type="video/mp4"></video>
+  </div>
+</dialog>
+
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (() => {
@@ -876,6 +914,7 @@
     h1: `On vous envoie un <em>ingénieur</em>. <span class="dim">Pas un PowerPoint.</span>`,
     lede: `Des ingénieurs IA seniors, intégrés à votre PME. Des agents en production en quelques semaines.`,
     cta1: `Réserver un appel de 20 min`, cta1b: `Réserver un appel de 20 min`, cta2: `Comment ça marche`,
+    film: `Voir le film`, filmT: `XForward · le film`, wp0: `Jour 1 · Sur place`,
     cap1: `<b>Jour 4</b>On trouve où partent les heures.`,
     cap2: `<b>Jour 30</b>80 heures récupérées. <span>Chaque mois.</span>`,
     legend: `Courbes = heures perdues / semaine`, hint: `Défiler`,
@@ -921,9 +960,9 @@
   };
   const UI = {
     en: { copied: 'Copied', copy: 'Copy', perH: r => `$${r}/h`, pct: v => `${v}%`, months: m => `${m} months`, never: '> 24 months', W: 'W', loc: 'en-CA',
-      steps: [[0, 'Day 01 · On site'], [.16, 'Day 04 · Bottleneck found'], [.42, 'Day 09 · Agent built'], [.6, 'Day 14 · Live, human-reviewed'], [.8, 'Day 30 · 80 h saved / month']] },
+      close: 'Close', steps: [[0, 'Day 01 · On site'], [.3, 'Day 04 · Bottleneck found'], [.58, 'Day 09 · Agent built'], [.68, 'Day 14 · Live, human-reviewed'], [.8, 'Day 30 · 80 h saved / month']] },
     fr: { copied: 'Copié', copy: 'Copier', perH: r => `${r} $/h`, pct: v => `${v} %`, months: m => `${m} mois`, never: '> 24 mois', W: 'O', loc: 'fr-CA',
-      steps: [[0, 'Jour 01 · Sur place'], [.16, 'Jour 04 · Goulot identifié'], [.42, 'Jour 09 · Agent construit'], [.6, 'Jour 14 · En production'], [.8, 'Jour 30 · 80 h récupérées / mois']] }
+      close: 'Fermer', steps: [[0, 'Jour 01 · Sur place'], [.3, 'Jour 04 · Goulot identifié'], [.58, 'Jour 09 · Agent construit'], [.68, 'Jour 14 · En production'], [.8, 'Jour 30 · 80 h récupérées / mois']] }
   };
   const META = {
     en: { title: document.title, desc: $('meta[name="description"]').content },
@@ -969,6 +1008,7 @@
     document.title = META[l].title;
     $('meta[name="description"]').content = META[l].desc;
     $$('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
+    $$('[data-i18n-label]').forEach(el => el.setAttribute('aria-label', UI[l][el.dataset.i18nLabel] || el.getAttribute('aria-label')));
     splitWords($('#h1'), 'w');
     splitWords($('#stmt'), 'sw');
     stmtWords = $$('#stmt .sw');
@@ -1171,17 +1211,325 @@
     return { hud, setProgress(rise, collapse) { S.rise = rise; S.collapse = collapse; if (!on) draw(); } };
   }
 
-  const pinEl = $('#pin');
-  if ($('#topo').getContext) {
-    pinEl.style.left = pinEl.style.top = '0';
-    topo = Topo($('#topo'), {
-      step: .1, lineVar: '--topo', a: .2, ai: .42, unitK: .42,
-      pin: [.72, .5], pinTall: [.64, .74], peak: 1.2, hot: 1.02,
-      pointerEl: $('#top'), coords: $('#coords'),
-      onPin: (x, y) => { pinEl.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`; }
-    });
+  /* ------------------------------------------------------------ WebGL2 terrain: the same contours, as a live 3D height field */
+  // integer-hash gradient noise, identical in GLSL and JS, so the DOM pin can sit exactly on the peak
+  const hsh = (x, y) => { let h = Math.imul(x, 0x27d4eb2d) ^ Math.imul(y, 0x165667b1); h = Math.imul(h ^ (h >>> 15), 0x85ebca6b); return (h ^ (h >>> 13)) >>> 0; };
+  const gr = (h, x, y) => { const k = h & 7; return k < 4 ? ((k & 1) ? -x : x) + ((k & 2) ? -y : y) : k < 6 ? (k === 4 ? x : -x) : (k === 6 ? y : -y); };
+  function nz(qx, qy) {
+    const fx = Math.floor(qx), fy = Math.floor(qy), x = qx - fx, y = qy - fy, ix = fx + 4096, iy = fy + 4096, u = fade(x), v = fade(y);
+    const a = gr(hsh(ix, iy), x, y), b = gr(hsh(ix + 1, iy), x - 1, y), c = gr(hsh(ix, iy + 1), x, y - 1), d = gr(hsh(ix + 1, iy + 1), x - 1, y - 1);
+    const ab = a + (b - a) * u; return ab + (c + (d - c) * u - ab) * v;
   }
-  if ($('#topo2').getContext) Topo($('#topo2'), { step: .12, lineVar: '--topo-inv', a: .12, ai: .22, unitK: .5, t0: 40 });
+  const GLSL = `precision highp float; precision highp int;
+uniform float uT, uUnit, uPeak, uR2, uLensA, uFront, uChevK, uFwdOnly;
+uniform vec2 uPin, uLens;
+uint hsh(uvec2 v){ uint h = (v.x * 0x27d4eb2du) ^ (v.y * 0x165667b1u); h = (h ^ (h >> 15u)) * 0x85ebca6bu; return h ^ (h >> 13u); }
+float gr(uint h, vec2 d){ uint k = h & 7u;
+  if (k < 4u) return ((k & 1u) == 0u ? d.x : -d.x) + ((k & 2u) == 0u ? d.y : -d.y);
+  if (k < 6u) return k == 4u ? d.x : -d.x;
+  return k == 6u ? d.y : -d.y; }
+float nz(vec2 q){ vec2 f = floor(q), x = q - f; uvec2 i = uvec2(ivec2(f) + 4096);
+  vec2 u = x * x * x * (x * (x * 6. - 15.) + 10.);
+  float a = gr(hsh(i), x), b = gr(hsh(i + uvec2(1u, 0u)), x - vec2(1., 0.));
+  float c = gr(hsh(i + uvec2(0u, 1u)), x - vec2(0., 1.)), d = gr(hsh(i + 1u), x - 1.);
+  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y); }
+float fieldT(vec2 p){ vec2 q = p / uUnit, d = p - uPin, e = p - uLens;
+  return nz(q + vec2(uT * .02, -uT * .013)) * .85 + nz(q * 1.8 + vec2(20. - uT * .026, 7.)) * .3
+    + uPeak * exp(-dot(d, d) / uR2) + uLensA * exp(-dot(e, e) / .05); }
+float fwdB(vec2 p){ return 1. - smoothstep(uFront - .32, uFront + .02, p.x + uChevK * abs(p.y - uPin.y)); }`;
+  const TERRAIN_VS = `#version 300 es
+${GLSL}
+in vec2 aP; uniform mat4 uVP; uniform float uHS; out vec3 vW;
+void main(){ float h = uHS > 0. ? fieldT(aP) * (1. - fwdB(aP)) * uHS : 0.; vW = vec3(aP.x, h, aP.y); gl_Position = uVP * vec4(vW, 1.); }`;
+  const TERRAIN_FS = `#version 300 es
+${GLSL}
+in vec3 vW; out vec4 o;
+uniform vec3 uBg, uInk, uAcc, uEye;
+uniform vec2 uHead;
+uniform float uA, uAi, uStep, uHot, uLw, uRise, uRev, uTan, uDark, uFwdS, uFwdV, uPathP, uPathL, uPathA, uXMax, uFogN, uFogF;
+uniform vec2 uPath[32]; uniform float uPathS[32];
+void main(){
+  vec2 p = vW.xz;
+  float dz = p.y - uPin.y;
+  float b = uFwdOnly > .5 ? 1. : fwdB(p);
+  float hT = 0.; vec2 g = vec2(0.);
+  if (uFwdOnly < .5) {
+    hT = fieldT(p);
+    g = vec2(fieldT(p + vec2(.012, 0.)) - hT, fieldT(p + vec2(0., .012)) - hT) / .012;
+  }
+  // contour value: the terrain, or chevrons flowing forward behind the sweep
+  float hF = (p.x + uChevK * sqrt(dz * dz + .02)) * uFwdS - uT * uFwdV;
+  float f = mix(hT, hF, b) / uStep;
+  float w = max(fwidth(f), 1e-5), k = floor(f + .5), d = abs(f - k);
+  float idx = mod(k, 5.) < .5 ? 1. : 0.;
+  float aa = clamp(mix(1., 1.45, idx) * uLw * .5 - d / w + .5, 0., 1.) * (1. - smoothstep(.3, .65, w));
+  // illuminated contours (Tanaka): lines on slopes facing away from the light read darker
+  float gm = length(g), sl = smoothstep(.04, .5, gm) * (1. - b);
+  float lit = dot(-g / max(gm, 1e-4), vec2(-.7071, -.7071));
+  float la = aa * mix(uA, uAi, idx) * (1. - uTan * lit * sl);
+  float hot = (k * uStep >= uHot ? 1. : 0.) * (1. - b) * aa;
+  float r = length(p - uPin);
+  float rv = 1. - smoothstep(uRev - .45, uRev, r);
+  float edge = exp(-pow((r - uRev + .14) / .08, 2.)) * aa * (1. - smoothstep(2.6, 3.5, uRev));
+  vec3 col = mix(uBg, uInk, .028 * uRise * sl * mix(max(0., -lit), max(0., lit), uDark));
+  vec2 le = p - uLens;
+  float lensT = exp(-dot(le, le) / .035) * uLensA * 1.2 * (1. - b);
+  col = mix(col, uInk, la * rv);
+  col = mix(col, uAcc, max(max(hot * rv, edge), aa * rv * lensT * mix(uA, uAi, idx) * 1.6));
+  if (uPathP > 0.) {
+    float pd = 1e3, ps = 0.;
+    for (int i = 0; i < 31; i++) {
+      vec2 a = uPath[i], ba = uPath[i + 1] - a, pa = p - a;
+      float t = clamp(dot(pa, ba) / max(dot(ba, ba), 1e-6), 0., 1.);
+      float dd = length(pa - ba * t);
+      if (dd < pd) { pd = dd; ps = uPathS[i] + t * length(ba); }
+    }
+    float fw = max(fwidth(pd), 1e-5), fs = max(fwidth(ps), 1e-5);
+    float ln = clamp(1.5 * uLw - pd / fw + .5, 0., 1.);
+    float e = fs / .075;
+    float dash = 1. - smoothstep(.64 - e, .64 + e, fract(ps / .075));
+    float drawn = clamp((uPathP * uPathL - ps) / fs + .5, 0., 1.);
+    float dh = length(p - uHead);
+    float head = (clamp((.017 - dh) / max(fwidth(dh), 1e-5) + .5, 0., 1.) + .28 * exp(-dh * dh / .0016)) * (1. - step(.999, uPathP));
+    col = mix(col, uAcc, clamp(max(ln * dash * drawn, head), 0., 1.) * uPathA);
+  }
+  float xc = p.x + uChevK * abs(dz), xp = abs(xc - uFront + .03) / max(fwidth(xc), 1e-5);
+  col = mix(col, uAcc, (clamp(1.1 * uLw - xp + .5, 0., 1.) + .1 * exp(-xp * xp / (170. * uLw * uLw))) * (1. - uFwdOnly));
+  float fog = mix(1., 1. - smoothstep(uFogN, uFogF, length(vW - uEye)), uRise) * (1. - smoothstep(uXMax - 1.5, uXMax, abs(p.x)));
+  o = vec4(mix(uBg, col, fog), 1.);
+}`;
+
+  function TerrainGL(canvas, opt) {
+    let gl = null;
+    try { gl = canvas.getContext('webgl2', { antialias: true, alpha: true, premultipliedAlpha: true, powerPreference: 'high-performance' }); } catch (e) {}
+    if (!gl) return null;
+    let prog = null, vao = null, nIdx = 0;
+    const U = {};
+    function build() {
+      const sh = (type, src) => {
+        const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS) && !gl.isContextLost()) throw new Error(gl.getShaderInfoLog(s));
+        return s;
+      };
+      prog = gl.createProgram();
+      gl.attachShader(prog, sh(gl.VERTEX_SHADER, TERRAIN_VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, TERRAIN_FS));
+      gl.bindAttribLocation(prog, 0, 'aP'); gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS) && !gl.isContextLost()) throw new Error(gl.getProgramInfoLog(prog));
+      const n = gl.getProgramParameter(prog, gl.ACTIVE_UNIFORMS);
+      for (let i = 0; i < n; i++) { const u = gl.getActiveUniform(prog, i); U[u.name.replace(/\[0\]$/, '')] = gl.getUniformLocation(prog, u.name); }
+      // ground mesh: dense near the camera, sparse toward the horizon (a single quad when it never rises)
+      const NX = opt.fwdOnly ? 1 : 180, NZ = opt.fwdOnly ? 1 : 200, pos = new Float32Array((NX + 1) * (NZ + 1) * 2);
+      for (let j = 0, o = 0; j <= NZ; j++) {
+        const z = 2.6 - 12.6 * Math.pow(j / NZ, 1.55);
+        for (let i = 0; i <= NX; i++) { pos[o++] = -7 + 14 * i / NX; pos[o++] = z; }
+      }
+      const idx = new Uint32Array(NX * NZ * 6);
+      for (let j = 0, o = 0; j < NZ; j++) for (let i = 0; i < NX; i++) {
+        const a = j * (NX + 1) + i, c = a + NX + 1;
+        idx[o++] = a; idx[o++] = c; idx[o++] = a + 1; idx[o++] = a + 1; idx[o++] = c; idx[o++] = c + 1;
+      }
+      nIdx = idx.length;
+      vao = gl.createVertexArray(); gl.bindVertexArray(vao);
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, pos, gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, idx, gl.STATIC_DRAW);
+      gl.bindVertexArray(null);
+    }
+    try { build(); } catch (e) { console.warn('[xforward] WebGL terrain unavailable, using 2D contours.', e); return null; }
+
+    const S = { rise: 0, path: 0, fwd: 0 };
+    const st = { t: opt.t0 || 0, lens: [0, 9], lensA: 0, lensT: null, rev: opt.reveal ? 0 : 9, revK: -1, par: [0, 0], parT: [0, 0] };
+    const col = { bg: [.945, .949, .933], ink: [.055, .071, .063], acc: [.137, .204, .878] }, tgt = { bg: null, ink: null, acc: null };
+    let W = 0, H = 0, dpr = 1, q = 1, asp = 1, tall = false, pin = [0, 0], unit = 1, r2 = .07, dark = false;
+    let path = null, pathS = null, pathL = 1, on = false, raf = 0, last = 0, inView = false, ptr = null, frames = 0, slow = 0;
+    let VP = null, eye = [0, 3.2, 0], camR = [1, 0, 0], camU = [0, 0, -1], camF = [0, -1, 0], front = -99, HS = 0;
+    const D0 = 3.2, FY = 2 * Math.atan(1 / D0), tmp = [0, 0];
+
+    const parseCol = s => {
+      s = (s || '').trim();
+      if (s[0] === '#') { const h = s.length === 4 ? s.slice(1).split('').map(c => c + c).join('') : s.slice(1, 7), n = parseInt(h, 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; }
+      const m = s.split(',').map(Number); return m.length === 3 && m.every(v => !isNaN(v)) ? m.map(v => v / 255) : null;
+    };
+    function readColors(instant) {
+      const cs = getComputedStyle(root);
+      tgt.bg = parseCol(cs.getPropertyValue(opt.bgVar || '--bg')) || col.bg;
+      tgt.ink = parseCol(cs.getPropertyValue(opt.lineVar)) || col.ink;
+      tgt.acc = parseCol(cs.getPropertyValue(opt.accVar || '--accent')) || col.acc;
+      dark = isDark();
+      if (instant) ['bg', 'ink', 'acc'].forEach(k => { col[k] = tgt[k].slice(); });
+    }
+    const fieldJS = (x, z) => {
+      const qx = x / unit, qz = z / unit, dx = x - pin[0], dz = z - pin[1], t = st.t;
+      return nz(qx + t * .02, qz - t * .013) * .85 + nz(qx * 1.8 + 20 - t * .026, qz * 1.8 + 7) * .3 + opt.peak * Math.exp(-(dx * dx + dz * dz) / r2);
+    };
+    const heightAt = (x, z) => {
+      if (HS <= 0) return 0;
+      const xc = x + opt.chevK * Math.abs(z - pin[1]), e = clamp((xc - (front - .32)) / .34);
+      return fieldJS(x, z) * (e * e * (3 - 2 * e)) * HS;
+    };
+    function buildPath() {
+      const s0 = tall ? [pin[0] - .2, pin[1] + .36] : [pin[0] - .5, pin[1] + .8];
+      const dx = pin[0] - s0[0], dz = pin[1] - s0[1], L = Math.hypot(dx, dz), nx = -dz / L, nzz = dx / L;
+      path = new Float32Array(64); pathS = new Float32Array(32);
+      for (let i = 0; i < 32; i++) {
+        const s = i / 31, w = Math.sin(s * Math.PI * 2.6) * .11 * Math.sqrt(1 - s) * Math.min(1, s * 5);
+        path[2 * i] = s0[0] + dx * s + nx * w; path[2 * i + 1] = s0[1] + dz * s + nzz * w;
+        pathS[i] = i ? pathS[i - 1] + Math.hypot(path[2 * i] - path[2 * i - 2], path[2 * i + 1] - path[2 * i - 1]) : 0;
+      }
+      pathL = pathS[31];
+    }
+    function headAt(P) {
+      const L = P * pathL;
+      for (let i = 1; i < 32; i++) if (pathS[i] >= L) {
+        const a = (L - pathS[i - 1]) / Math.max(1e-6, pathS[i] - pathS[i - 1]);
+        return [path[2 * i - 2] + (path[2 * i] - path[2 * i - 2]) * a, path[2 * i - 1] + (path[2 * i + 1] - path[2 * i - 1]) * a];
+      }
+      return [path[62], path[63]];
+    }
+    function camera() {
+      const r = S.rise, fw = S.fwd;
+      const pitch = (90 - 50 * r - 6 * fw * r - 2.6 * (st.par[1] * .5 + .5) * (1 - .6 * r)) * Math.PI / 180, yaw = (-12 * r + 8 * fw * r + 2.4 * st.par[0] * (1 - .5 * r)) * Math.PI / 180;
+      const D = D0 * (1 - .14 * r + .05 * fw * r);
+      const tx = pin[0] * (tall ? .8 : .32) * r + (tall ? .15 : .42) * fw * r, tz = (tall ? pin[1] * .8 - .3 : pin[1] * .3 - .26) * r - .12 * fw * r;
+      const cp = Math.cos(pitch), sp = Math.sin(pitch), cy = Math.cos(yaw), sy = Math.sin(yaw);
+      eye = [tx + D * cp * sy, D * sp, tz + D * cp * cy];
+      const f = [tx - eye[0], -eye[1], tz - eye[2]], fl = Math.hypot(f[0], f[1], f[2]);
+      camF = [f[0] / fl, f[1] / fl, f[2] / fl]; camR = [cy, 0, -sy];
+      camU = [camR[1] * camF[2] - camR[2] * camF[1], camR[2] * camF[0] - camR[0] * camF[2], camR[0] * camF[1] - camR[1] * camF[0]];
+      const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+      const V = [camR[0], camU[0], -camF[0], 0, camR[1], camU[1], -camF[1], 0, camR[2], camU[2], -camF[2], 0, -dot(camR, eye), -dot(camU, eye), dot(camF, eye), 1];
+      const tf = 1 / Math.tan(FY / 2), nr = .05, fr = 40, nf = 1 / (nr - fr);
+      const P = [tf / asp, 0, 0, 0, 0, tf, 0, 0, 0, 0, (fr + nr) * nf, -1, 0, 0, 2 * fr * nr * nf, 0];
+      VP = new Float32Array(16);
+      for (let c = 0; c < 4; c++) for (let rr = 0; rr < 4; rr++) { let s = 0; for (let k = 0; k < 4; k++) s += P[k * 4 + rr] * V[c * 4 + k]; VP[c * 4 + rr] = s; }
+      HS = (opt.hs || .36) * r * (tall ? .6 : 1);
+      front = opt.fwdOnly ? 99 : fw <= 0 ? -99 : fw >= 1 ? 99 : (-asp - .1) + (3 * asp + 2.7) * fw;
+    }
+    function toScreen(x, y, z, out) {
+      const m = VP, cx = m[0] * x + m[4] * y + m[8] * z + m[12], cy = m[1] * x + m[5] * y + m[9] * z + m[13], cw = m[3] * x + m[7] * y + m[11] * z + m[15];
+      out[0] = (cx / cw * .5 + .5) * W; out[1] = (.5 - cy / cw * .5) * H; return cw > 0;
+    }
+    function ground(cx, cy) {
+      const nx = cx / W * 2 - 1, ny = 1 - cy / H * 2, th = Math.tan(FY / 2);
+      const d = [0, 1, 2].map(i => camF[i] + camR[i] * nx * th * asp + camU[i] * ny * th);
+      if (d[1] > -1e-4) return null;
+      const s = -eye[1] / d[1]; return [eye[0] + d[0] * s, eye[2] + d[2] * s];
+    }
+    function draw() {
+      if (!W || gl.isContextLost()) return;
+      camera();
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.clearColor(0, 0, 0, 0); gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.useProgram(prog); gl.bindVertexArray(vao);
+      gl.uniformMatrix4fv(U.uVP, false, VP);
+      const f1 = (k, v) => gl.uniform1f(U[k], v);
+      f1('uT', st.t); f1('uUnit', unit); f1('uPeak', opt.peak || 0); f1('uR2', r2); f1('uLensA', st.lensA); f1('uFront', front);
+      f1('uChevK', opt.chevK); f1('uFwdOnly', opt.fwdOnly ? 1 : 0); f1('uHS', HS);
+      f1('uA', opt.a); f1('uAi', opt.ai); f1('uStep', opt.step); f1('uHot', opt.hot == null ? 99 : Math.max(opt.hot, fieldJS(pin[0], pin[1]) - .3)); f1('uLw', dpr);
+      f1('uRise', S.rise); f1('uRev', st.rev); f1('uTan', opt.tanaka || 0); f1('uDark', dark ? 1 : 0);
+      f1('uFwdS', .1 / .125); f1('uFwdV', .065); f1('uXMax', 7); f1('uFogN', 3.2); f1('uFogF', 9);
+      gl.uniform2f(U.uPin, pin[0], pin[1]); gl.uniform2f(U.uLens, st.lens[0], st.lens[1]);
+      gl.uniform3fv(U.uBg, col.bg); gl.uniform3fv(U.uInk, col.ink); gl.uniform3fv(U.uAcc, col.acc); gl.uniform3fv(U.uEye, eye);
+      if (path && S.path > 0) {
+        gl.uniform2fv(U.uPath, path); gl.uniform1fv(U.uPathS, pathS); f1('uPathL', pathL); f1('uPathP', S.path);
+        f1('uPathA', 1 - clamp(S.fwd * 2.2)); const h = headAt(S.path); gl.uniform2f(U.uHead, h[0], h[1]);
+      } else f1('uPathP', 0);
+      gl.drawElements(gl.TRIANGLES, nIdx, gl.UNSIGNED_INT, 0);
+      if (opt.onPin && opt.peak) { const ok = toScreen(pin[0], heightAt(pin[0], pin[1]), pin[1], tmp); opt.onPin(tmp[0], tmp[1], ok); }
+      if (opt.onWp && path) { const ok = toScreen(path[0], heightAt(path[0], path[1]), path[1], tmp); opt.onWp(tmp[0], tmp[1], ok); }
+    }
+    function hud() {
+      if (!opt.coords || !W) return;
+      const p = ptr || { x: W * .72, y: H * .5 };
+      const lat = (45.5188 - (p.y / H) * .024).toFixed(4), lon = (73.587 - (p.x / W) * .033).toFixed(4);
+      opt.coords.textContent = `${lat}° N · ${lon}° ${UI[lang].W}`;
+    }
+    function resize() {
+      const r = canvas.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      W = r.width; H = r.height; asp = W / H; tall = W < H * 1.05;
+      dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, opt.maxDpr || 1.75) * q);
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      unit = Math.max(220, Math.min(W, H) * opt.unitK) / (H / 2);
+      if (opt.pin) {
+        const pp = tall ? opt.pinTall : opt.pin, rad = Math.max(.2, Math.min(W, H) * .13 / (H / 2));
+        pin = [(pp[0] - .5) * 2 * asp, (pp[1] - .5) * 2]; r2 = rad * rad;
+      }
+      if (opt.path) buildPath();
+      draw(); hud();
+    }
+    function tick(dt) {
+      st.t += dt;
+      if (st.revK >= 0) { st.revK = Math.min(1, st.revK + dt / 2.4); st.rev = 3.6 * (1 - Math.pow(1 - st.revK, 2)); if (st.revK >= 1) { st.revK = -1; st.rev = 9; } }
+      const k = 1 - Math.exp(-dt * 7);
+      if (st.lensT) {
+        if (st.lensA < .02) st.lens = st.lensT.slice();
+        st.lens[0] += (st.lensT[0] - st.lens[0]) * k; st.lens[1] += (st.lensT[1] - st.lens[1]) * k;
+        st.lensA += (.42 - st.lensA) * k * .6;
+      } else st.lensA += (0 - st.lensA) * k * .6;
+      const kp = 1 - Math.exp(-dt * 2.5);
+      st.par[0] += (st.parT[0] - st.par[0]) * kp; st.par[1] += (st.parT[1] - st.par[1]) * kp;
+      const kc = 1 - Math.exp(-dt * 9);
+      ['bg', 'ink', 'acc'].forEach(c => { for (let i = 0; i < 3; i++) col[c][i] += (tgt[c][i] - col[c][i]) * kc; });
+    }
+    function loop(now) {
+      raf = requestAnimationFrame(loop);
+      if (last && now - last < 14) return;
+      const dt = last ? Math.min(now - last, 100) / 1000 : 1 / 60;
+      last = now; tick(dt); draw();
+      if (!ptr && ++frames % 12 === 0) hud();
+      // quality watchdog: if frames drop, render fewer pixels
+      if (frames > 40) { slow = slow * .95 + (dt > 1 / 40 ? .05 : 0); if (slow > .5 && q > .6) { q = Math.max(.6, q - .2); slow = 0; frames = 0; resize(); } }
+    }
+    const start = () => { if (on || RM.matches || document.hidden || !inView) return; on = true; last = 0; raf = requestAnimationFrame(loop); };
+    const stop = () => { on = false; cancelAnimationFrame(raf); };
+    readColors(true);
+    new ResizeObserver(resize).observe(canvas);
+    new IntersectionObserver(es => { inView = es[0].isIntersecting; inView ? start() : stop(); }).observe(canvas);
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+    RM.addEventListener && RM.addEventListener('change', () => { if (RM.matches) { stop(); st.rev = 9; st.revK = -1; } else start(); draw(); });
+    const recolor = () => { readColors(!on); if (!on) draw(); };
+    darkMQ.addEventListener('change', recolor);
+    new MutationObserver(recolor).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); stop(); });
+    canvas.addEventListener('webglcontextrestored', () => { try { build(); resize(); start(); } catch (e) {} });
+    if (opt.pointerEl) {
+      const fine = matchMedia('(hover: hover) and (pointer: fine)');
+      opt.pointerEl.addEventListener('pointermove', e => {
+        const r = canvas.getBoundingClientRect(); ptr = { x: e.clientX - r.left, y: e.clientY - r.top }; hud();
+        if (fine.matches && !RM.matches) { st.lensT = ground(ptr.x, ptr.y); st.parT = [ptr.x / W * 2 - 1, ptr.y / H * 2 - 1]; }
+      });
+      opt.pointerEl.addEventListener('pointerleave', () => { ptr = null; st.lensT = null; st.parT = [0, 0]; hud(); });
+    }
+    return {
+      hud,
+      set(o) { Object.assign(S, o); if (W) camera(); if (!on) draw(); },
+      reveal() { if (RM.matches) { st.rev = 9; draw(); return; } st.rev = 0; st.revK = 0; },
+      get solved() { return front > pin[0] + .1; }
+    };
+  }
+
+  const pinEl = $('#pin'), wpEl = $('#wp0');
+  const onPin = (x, y) => {
+    pinEl.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+    const lb = pinEl.querySelector(pinEl.classList.contains('solved') ? '.pin-label.b' : '.pin-label.a'), half = lb.offsetWidth / 2;
+    const lx = half ? clamp(x, half + 12, innerWidth - half - 12) - x : 0;
+    pinEl.style.setProperty('--lx', lx.toFixed(1) + 'px');
+  };
+  // WebGL2 first; if it is unavailable, swap in a fresh canvas and fall back to the 2D contour engine
+  const glOrNull = (sel, o) => { const c = $(sel), e = TerrainGL(c, o); if (!e) c.replaceWith(c.cloneNode(false)); return e; };
+  pinEl.style.left = pinEl.style.top = '0';
+  topo = glOrNull('#topo', {
+    step: .1, lineVar: '--topo', a: .2, ai: .42, unitK: .42, tanaka: .55, chevK: 1, hs: .46,
+    pin: [.72, .5], pinTall: [.64, .74], peak: 1.2, hot: 1.02, path: true, reveal: true,
+    pointerEl: $('#top'), coords: $('#coords'), onPin,
+    onWp: (x, y) => { wpEl.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`; }
+  });
+  const heroGL = !!topo;
+  if (!topo && $('#topo').getContext) topo = Topo($('#topo'), { step: .1, lineVar: '--topo', a: .2, ai: .42, unitK: .42, pin: [.72, .5], pinTall: [.64, .74], peak: 1.2, hot: 1.02, pointerEl: $('#top'), coords: $('#coords'), onPin });
+  if (!glOrNull('#topo2', { fwdOnly: true, step: .1, lineVar: '--topo-inv', bgVar: '--ink', accVar: '--inv-accent', a: .13, ai: .24, unitK: .5, chevK: 1, t0: 40, maxDpr: 1.5 }) && $('#topo2').getContext)
+    Topo($('#topo2'), { step: .12, lineVar: '--topo-inv', a: .12, ai: .22, unitK: .5, t0: 40 });
 
   /* ------------------------------------------------------------ use cases */
   const CASES = {
@@ -1482,26 +1830,42 @@
 
   /* ------------------------------------------------------------ scroll-driven scenes */
   const hdr = $('#hdr'), track = $('#hero-track'), heroCopy = $('#hero-copy'), veil = $('#veil'), hint = $('#hint');
+  /* film */
+  const film = $('#film'), filmV = $('#film-v');
+  $$('[data-film]').forEach(b => b.addEventListener('click', () => {
+    if (typeof film.showModal !== 'function') { location.href = 'media/xforward-film.mp4'; return; }
+    film.showModal(); if (lenis) lenis.stop();
+    try { filmV.currentTime = 0; } catch (e) {}
+    const pr = filmV.play(); if (pr && pr.catch) pr.catch(() => {});
+  }));
+  $('#film-x').addEventListener('click', () => film.close());
+  film.addEventListener('click', e => { if (e.target === film) film.close(); });
+  film.addEventListener('close', () => { filmV.pause(); if (lenis) lenis.start(); });
   const cap1 = $('#cap1'), cap2 = $('#cap2'), stTxt = $('#st-txt'), stBar = $('#st-bar');
   const hs = $('#hs'), hsTrack = $('#hs-track'), hsBar = $('#hs-bar'), hsN = $('#hs-n'), steps = $$('.st');
   const hsMQ = matchMedia('(min-width: 900px) and (prefers-reduced-motion: no-preference)');
   const stmt = $('#stmt'), finalIn = $('#final-in');
 
   function heroScene() {
-    if (RM.matches) { if (topo) topo.setProgress(0, 0); return; }
+    if (RM.matches) { if (heroGL) topo.set({ rise: 0, path: 0, fwd: 0 }); else if (topo) topo.setProgress(0, 0); return; }
     const span = track.offsetHeight - innerHeight;
     const p = span > 0 ? clamp(-track.getBoundingClientRect().top / span) : 0;
-    if (topo) topo.setProgress(smooth(clamp(p / .42)), smooth(clamp((p - .5) / .32)));
-    const out = smooth(clamp((p - .04) / .22));
+    // 1 the map rises into terrain · 2 a path climbs to the bottleneck · 3 the chevron sweeps through and the loops run forward
+    const rise = smooth(clamp((p - .02) / .34)), fwd = clamp((p - .56) / .3);
+    if (heroGL) topo.set({ rise, path: smooth(clamp((p - .16) / .32)), fwd });
+    else if (topo) topo.setProgress(rise, smooth(fwd));
+    const out = smooth(clamp((p - .03) / .2));
     heroCopy.style.opacity = (1 - out).toFixed(3);
     heroCopy.style.transform = `translate3d(0, ${(-out * 90).toFixed(1)}px, 0) scale(${(1 - out * .04).toFixed(4)})`;
     heroCopy.style.visibility = out > .99 ? 'hidden' : '';
     veil.style.opacity = (1 - out * .85).toFixed(3);
     hint.style.opacity = String(1 - clamp(p * 12));
-    const c1 = smooth(win(p, .26, .5, .07)), c2 = smooth(clamp((p - .7) / .08));
+    const c1 = smooth(win(p, .3, .56, .06)), c2 = smooth(clamp((p - .78) / .08));
     cap1.style.opacity = c1.toFixed(3); cap1.style.transform = `translate3d(0, ${((1 - c1) * 40).toFixed(1)}px, 0)`;
     cap2.style.opacity = c2.toFixed(3); cap2.style.transform = `translate3d(0, ${((1 - c2) * 40).toFixed(1)}px, 0)`;
-    pinEl.classList.toggle('solved', p > .74);
+    pinEl.classList.toggle('solved', heroGL ? topo.solved : p > .72);
+    pinEl.classList.toggle('quiet', innerWidth < innerHeight * 1.05 && p > .74);
+    if (heroGL) wpEl.style.opacity = (smooth(clamp((p - .15) / .06)) * (1 - smooth(clamp((p - .54) / .06)))).toFixed(3);
     const list = UI[lang].steps; let si = 0;
     for (let i = 0; i < list.length; i++) if (p >= list[i][0]) si = i;
     if (si !== lastStep) { lastStep = si; stTxt.textContent = list[si][1]; }
@@ -1642,6 +2006,7 @@
   $('#yr').textContent = new Date().getFullYear();
   setLang(store.get('fw-lang') === 'fr' ? 'fr' : 'en', true);
   update();
+  if (heroGL) topo.reveal();
 })();
 </script>
 </body>
