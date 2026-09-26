@@ -56,6 +56,27 @@ Source: `build4.py`. Drafts: `drafts/round4/`. Numbers are illustrative targets.
 
 Source: `build5.py`. Drafts: `drafts/round5/`.
 
+## Showreel: CLAUDE — Motion Designer (15 s, 1080p)
+
+A résumé showreel: one orange dot travels through eight disciplines, one bar of
+128 BPM each, every cut on the beat.
+
+| Bar | Time | Shot | What it shows |
+|---|---|---|---|
+| 1 | 0:00 | Principles | Bouncing ball: anticipation, arcs, squash & stretch, onion skins, motion blur, splat |
+| 2 | 1.9 s | Typography | Variable-font width axis, echo trail, bouncing stagger; zoom through the O's counter |
+| 3 | 3.8 s | Geometry | 144-shape grid morphing circle → square → triangle → star in stagger waves |
+| 4 | 5.6 s | 3D | Match cut to a lacquer sphere → noise blob → chrome → 150-sphere burst → double helix |
+| 5 | 7.5 s | Particles | 40k GPU particles: supernova ring, spiral galaxy, "MOTION" |
+| 6 | 9.4 s | Shaders | Domain-warped liquid with beat ripples; pull out through the letters of "FLUID" |
+| 7 | 11.3 s | Editing | Six half-beat micro-shots (split, spiral, counter, glitch, flip grid, circular type) + 3-2-1 |
+| 8 | 13.1 s | Title | The dot pops again and becomes the period of "CLAUDE." |
+
+Source: `showreel/build_reel.py` (DOM shots in GSAP; 3D/particles/shaders in one
+Three.js canvas with a hand-written bloom + tonemap pass) and
+`showreel/reel_synth.py` (128 BPM A-minor track, synthesized in Python, mixed
+with FFmpeg). Video: `showreel/claude-showreel-2026.mp4`.
+
 ## Build and render
 
 Needs Node 22+, FFmpeg, and the HyperFrames CLI (`npm i -g hyperframes`,
@@ -68,6 +89,7 @@ python3 build3.py           # round 3 low-res drafts (recognition hooks + audio)
 python3 build4.py           # round 4 low-res drafts (clear message + audio)
 python3 build5.py           # round 5 low-res drafts (four visual styles)
 python3 build.py --final    # full resolution (1080x1920, 1080x1080, 1920x1080)
+python3 showreel/build_reel.py --zoom 1   # showreel -> projects/showreel/ (default: 960x540 draft)
 cd projects/a-942pm && hyperframes render -q draft -f 24 -o ../../a.mp4
 ```
 
