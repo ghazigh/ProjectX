@@ -281,36 +281,85 @@
   .stat p{margin-top:12px;color:var(--muted);font-size:.95rem}
   @media (max-width:640px){.stats{grid-template-columns:minmax(0,1fr)}}
 
-  /* method: horizontal pinned scroll */
-  .hs{position:relative;height:320vh}
-  .hs-stick{position:sticky;top:0;height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:clamp(28px,5vh,56px);overflow:hidden}
-  .hs-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;width:100%}
-  .hs-head h2{margin-top:18px}
-  .hs-count{font:500 .8rem/1 var(--f-mono);letter-spacing:.1em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-  .hs-count b{color:var(--ink);font-weight:500}
-  .hs-track{display:flex;gap:20px;width:max-content;will-change:transform;padding-inline:max(var(--gut),calc((100vw - var(--maxw))/2 + var(--gut)))}
-  .st{position:relative;width:clamp(290px,31vw,420px);height:clamp(300px,50vh,440px);display:flex;flex-direction:column;justify-content:space-between;
-    padding:clamp(24px,2.6vw,36px);border:1px solid var(--line);border-radius:24px;background:var(--surface);overflow:hidden;
-    transition:border-color .6s var(--ease),background-color .6s var(--ease)}
-  .st-n{font-family:var(--f-display);font-stretch:125%;font-weight:700;font-size:clamp(5rem,3rem + 5vw,8.5rem);line-height:.8;letter-spacing:-.06em;
-    color:transparent;-webkit-text-stroke:1.2px var(--line-2);transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}
-  .st.on{border-color:var(--accent);background:var(--raise)}
-  .st.on .st-n{color:var(--accent);-webkit-text-stroke-color:var(--accent)}
+  /* method: an isometric map of the business, drawn as you scroll */
+  .mm{position:relative;height:420vh}
+  .mm-stick{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden;padding-top:48px}
+  .mm-grid{display:grid;grid-template-columns:minmax(0,4.1fr) minmax(0,7.9fr);grid-template-areas:"head map" "steps map";column-gap:clamp(24px,4vw,64px);align-items:center;width:100%}
+  .mm-head{grid-area:head;align-self:end}
+  .mm-head h2{margin-top:18px}
+  .mm-steps{grid-area:steps;align-self:start;list-style:none;margin:clamp(20px,3.6vh,40px) 0 0;padding:0;display:grid}
+  .mm-step{position:relative;display:grid;grid-template-columns:2.4em minmax(0,1fr);column-gap:10px;padding:11px 0 11px 20px;opacity:.36;transition:opacity .5s var(--ease)}
+  .mm-step.done{opacity:.6}
+  .mm-step.on{opacity:1}
+  .mm-n{font:600 .74rem/2 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums;transition:color .4s}
+  .mm-step.on .mm-n{color:var(--accent)}
   .st-w{font:500 .7rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .st h3{font-size:clamp(1.5rem,1.1rem + 1vw,2rem);font-stretch:110%;font-weight:640;letter-spacing:-.03em;margin:10px 0 8px}
-  .st p:last-child{color:var(--ink-2)}
-  .hs-bar-wrap{width:100%}
-  .hs-bar{height:2px;background:var(--line);border-radius:2px;overflow:hidden}
-  .hs-bar i{display:block;height:100%;background:var(--accent);transform:scaleX(var(--p,0));transform-origin:left}
-  @media (max-width:899px), (prefers-reduced-motion: reduce){
-    .method{padding-block:clamp(96px,13vw,180px)}
-    .hs{height:auto}
-    .hs-stick{position:static;height:auto;overflow:visible;display:block}
-    .hs-head{margin-bottom:44px}
-    .hs-count,.hs-bar-wrap{display:none}
-    .hs-track{width:auto;flex-direction:column;padding-inline:var(--gut);max-width:var(--maxw);margin-inline:auto;transform:none!important}
-    .st{width:auto;height:auto;gap:40px}
-    .st .st-n{font-size:4.2rem}
+  .mm-tx h3{font-size:clamp(1.2rem,1rem + .6vw,1.5rem);font-stretch:110%;font-weight:640;letter-spacing:-.03em;line-height:1.1;margin:3px 0 0}
+  .mm-p{color:var(--ink-2);max-height:0;opacity:0;overflow:hidden;transition:max-height .7s var(--ease),opacity .5s var(--ease),margin .7s var(--ease)}
+  .mm-step.on .mm-p{max-height:5.5em;opacity:1;margin-top:8px}
+  .mm-bar{position:absolute;left:0;top:11px;bottom:11px;width:2px;border-radius:2px;background:var(--line);overflow:hidden}
+  .mm-bar b{display:block;height:100%;background:var(--accent);transform:scaleY(var(--f,0));transform-origin:top}
+  .mm-map{grid-area:map;position:relative;margin:0}
+  .mm-svg{display:block;width:100%;height:auto;aspect-ratio:616/364;max-height:74vh;overflow:visible}
+  .mm-lbls{position:absolute;inset:0;pointer-events:none}
+  .mm-cap{position:absolute;right:4px;top:0;font:500 .6rem/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .mm-svg .mm-gnd path{fill:none;stroke:var(--line-2);stroke-width:.7}
+  .mm-svg .mm-bed{fill:none;stroke:var(--line);stroke-width:10;stroke-linecap:round;stroke-dasharray:1 1}
+  .mm-svg .mm-rt{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:1 1}
+  .mm-svg .mm-rt.acc{stroke:var(--accent);stroke-width:2.4}
+  .mm-svg .mm-lp{fill:none;stroke:#E0892B;stroke-width:1.7;stroke-linecap:round;stroke-dasharray:2 2.4}
+  .mm-svg .mm-lp.b{stroke-width:1.1;opacity:.55}
+  .mm-svg .mm-f{stroke:var(--line-2);stroke-width:1;stroke-linejoin:round}
+  .mm-svg .mm-f.t{fill:var(--raise)}
+  .mm-svg .mm-f.l{fill:color-mix(in srgb,var(--raise) 91%,var(--ink))}
+  .mm-svg .mm-f.r{fill:color-mix(in srgb,var(--raise) 82%,var(--ink))}
+  .mm-svg .mm-led{fill:var(--line-2);transition:fill .5s}
+  .mm-svg .mm-led.on{fill:var(--accent)}
+  .mm-svg .mm-agent .mm-f{stroke:color-mix(in srgb,var(--accent) 70%,#000)}
+  .mm-svg .mm-agent .mm-f.t{fill:var(--accent)}
+  .mm-svg .mm-agent .mm-f.l{fill:color-mix(in srgb,var(--accent) 86%,#000)}
+  .mm-svg .mm-agent .mm-f.r{fill:color-mix(in srgb,var(--accent) 74%,#000)}
+  .mm-svg .mm-chev{fill:none;stroke:var(--accent-ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .mm-svg .mm-scaf{fill:none;stroke:var(--accent);stroke-width:1;stroke-dasharray:3 3}
+  .mm-svg .mm-link{fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:1 4}
+  .mm-svg .mm-man{fill:var(--muted)}
+  .mm-svg .mm-ag{fill:none;stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .mm-svg .mm-gate{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+  .mm-svg .mm-sheet{fill:var(--raise);stroke:var(--line-2);stroke-width:1}
+  .mm-svg .mm-shadow{fill:var(--ink);opacity:.12}
+  .mm-svg .mm-stem{stroke:var(--accent);stroke-width:1.6}
+  .mm-svg .mm-edot{fill:var(--accent);stroke:var(--bg);stroke-width:2.5}
+  .mm-svg .mm-ering{fill:none;stroke:var(--accent);stroke-width:1.4}
+  .mm-l,.mm-pill{position:absolute;left:0;top:0;translate:-50% -100%;white-space:nowrap;will-change:transform,opacity}
+  .mm-l{display:grid;justify-items:center;gap:4px;text-align:center}
+  .mm-l b{font:700 .8rem/1 var(--f-display);font-stretch:112%;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+  .mm-l span{font:500 .58rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .mm-pill{display:inline-flex;align-items:center;gap:6px;font:500 .62rem/1 var(--f-mono);letter-spacing:.05em;padding:6px 9px;border-radius:999px;background:var(--raise);border:1px solid var(--line);color:var(--ink);box-shadow:var(--shadow)}
+  .mm-pill.warn{background:#F2A33A;color:#1A1204;border-color:transparent}
+  .mm-pill.ok,.mm-pill.acc{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+  .mm-pill.eng{translate:12px -50%;font-weight:600;padding:5px 8px}
+  .mm-pill svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.4}
+  @media (max-width:899px){
+    .mm{height:480vh}
+    .mm-stick{padding-top:64px}
+    .mm-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "map" "steps";row-gap:8px}
+    .mm-head h2{font-size:clamp(1.8rem,1.2rem + 3vw,2.4rem);margin-top:10px}
+    .mm-map{margin-inline:-6px}
+    .mm-svg{max-height:46svh}
+    .mm-steps{margin-top:4px}
+    .mm-step{display:none;padding-block:6px}
+    .mm-step.on{display:grid}
+    .mm-l span{display:none}
+    .mm-l b{font-size:.62rem}
+    .mm-pill{font-size:.52rem;padding:4px 7px}
+    .mm-pill.eng,.mm-pill .t{display:none}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .mm{height:auto}
+    .mm-stick{position:static;height:auto;display:block;padding-block:clamp(96px,13vw,180px)}
+    .mm-step,.mm-step.on{display:grid;opacity:1}
+    .mm-p{max-height:none;opacity:1;margin-top:8px}
+    .mm-bar b{transform:none}
   }
 
   /* use cases */
@@ -706,22 +755,25 @@
     </div>
   </section>
 
-  <!-- METHOD: horizontal pinned -->
+  <!-- METHOD: an isometric map of the business, drawn step by step as you scroll -->
   <section class="method" id="method">
-    <div class="hs" id="hs">
-      <div class="hs-stick">
-        <div class="wrap hs-head">
-          <div><p class="tag" data-i18n="t2">Method</p><h2 data-i18n="h2b">Five steps. Six weeks.</h2></div>
-          <p class="hs-count" aria-hidden="true"><b id="hs-n">01</b> / 05</p>
+    <div class="mm" id="mm">
+      <div class="mm-stick">
+        <div class="wrap mm-grid">
+          <div class="mm-head"><p class="tag" data-i18n="t2">Method</p><h2 data-i18n="h2b">Five steps. Six weeks.</h2></div>
+          <ol class="mm-steps" id="mm-steps">
+            <li class="mm-step on"><span class="mm-n">01</span><div class="mm-tx"><p class="st-w" data-i18n="s1w">Week 1</p><h3 data-i18n="s1h">Immersion</h3><p class="mm-p" data-i18n="s1p">We sit with your team and watch the real work.</p></div><i class="mm-bar" aria-hidden="true"><b></b></i></li>
+            <li class="mm-step"><span class="mm-n">02</span><div class="mm-tx"><p class="st-w" data-i18n="s2w">Week 1</p><h3 data-i18n="s2h">Diagnosis</h3><p class="mm-p" data-i18n="s2p">Every repetitive task, priced in hours and dollars.</p></div><i class="mm-bar" aria-hidden="true"><b></b></i></li>
+            <li class="mm-step"><span class="mm-n">03</span><div class="mm-tx"><p class="st-w" data-i18n="s3w">Weeks 2–4</p><h3 data-i18n="s3h">Build</h3><p class="mm-p" data-i18n="s3p">An agent on your real tools and data.</p></div><i class="mm-bar" aria-hidden="true"><b></b></i></li>
+            <li class="mm-step"><span class="mm-n">04</span><div class="mm-tx"><p class="st-w" data-i18n="s4w">Weeks 4–6</p><h3 data-i18n="s4h">Launch</h3><p class="mm-p" data-i18n="s4p">Live, with human review and guardrails.</p></div><i class="mm-bar" aria-hidden="true"><b></b></i></li>
+            <li class="mm-step"><span class="mm-n">05</span><div class="mm-tx"><p class="st-w" data-i18n="s5w">After</p><h3 data-i18n="s5h">Handover</h3><p class="mm-p" data-i18n="s5p">Docs, training, and the system is yours.</p></div><i class="mm-bar" aria-hidden="true"><b></b></i></li>
+          </ol>
+          <figure class="mm-map" aria-hidden="true">
+            <svg class="mm-svg" id="mm-svg"></svg>
+            <div class="mm-lbls" id="mm-lbls"></div>
+            <figcaption class="mm-cap" data-i18n="mmCap">Example map</figcaption>
+          </figure>
         </div>
-        <div class="hs-track" id="hs-track">
-          <article class="st"><span class="st-n">01</span><div><p class="st-w" data-i18n="s1w">Week 1</p><h3 data-i18n="s1h">Immersion</h3><p data-i18n="s1p">We sit with your team and watch the real work.</p></div></article>
-          <article class="st"><span class="st-n">02</span><div><p class="st-w" data-i18n="s2w">Week 1</p><h3 data-i18n="s2h">Diagnosis</h3><p data-i18n="s2p">Every repetitive task, priced in hours and dollars.</p></div></article>
-          <article class="st"><span class="st-n">03</span><div><p class="st-w" data-i18n="s3w">Weeks 2–4</p><h3 data-i18n="s3h">Build</h3><p data-i18n="s3p">An agent on your real tools and data.</p></div></article>
-          <article class="st"><span class="st-n">04</span><div><p class="st-w" data-i18n="s4w">Weeks 4–6</p><h3 data-i18n="s4h">Launch</h3><p data-i18n="s4p">Live, with human review and guardrails.</p></div></article>
-          <article class="st"><span class="st-n">05</span><div><p class="st-w" data-i18n="s5w">After</p><h3 data-i18n="s5h">Handover</h3><p data-i18n="s5p">Docs, training, and the system is yours.</p></div></article>
-        </div>
-        <div class="wrap hs-bar-wrap"><div class="hs-bar" id="hs-bar"><i></i></div></div>
       </div>
     </div>
   </section>
@@ -926,7 +978,7 @@
     s2w: `Semaine 1`, s2h: `Diagnostic`, s2p: `Chaque tâche répétitive, chiffrée en heures et en dollars.`,
     s3w: `Semaines 2 à 4`, s3h: `Construction`, s3p: `Un agent sur vos vrais outils et vos vraies données.`,
     s4w: `Semaines 4 à 6`, s4h: `Lancement`, s4p: `En production, avec relecture humaine et garde-fous.`,
-    s5w: `Ensuite`, s5h: `Passation`, s5p: `Documentation, formation, et le système est à vous.`,
+    s5w: `Ensuite`, s5h: `Passation`, s5p: `Documentation, formation, et le système est à vous.`, mmCap: `Carte d'exemple`,
     t3: `Cas d'usage`, h2c: `Du vrai travail, pris en charge par des agents.`,
     ucIntro: `Un chatbot répond aux questions. Un agent fait le travail : il lit, décide, utilise vos outils, et demande à une personne quand il le faut.`,
     ucNote: `Projets types. Les résultats sont les cibles que nous visons, confirmées avec vos chiffres pendant le diagnostic.`,
@@ -1014,6 +1066,7 @@
     stmtWords = $$('#stmt .sw');
     calc(true);
     renderCases(false);
+    mmap.texts(l); mmap.render(mmS, mmT);
     if (topo) topo.hud();
     lastStep = -1;
     if (!first) { store.set('fw-lang', l); update(); }
@@ -1828,6 +1881,209 @@ void main(){
   ids.forEach(k => inp[k].addEventListener('input', () => calc(false)));
   $('#roi').addEventListener('submit', e => e.preventDefault());
 
+  /* ------------------------------------------------------------ method: an isometric map of the business, drawn as you scroll */
+  const MAPT = {
+    en: { nodes: [['Inbox', '62 emails / day'], ['Quotes', '18 requests / week'], ['CRM', '1,200 contacts'], ['Invoices', '340 / month'], ['Calendar', '45 bookings / week']],
+      eng: 'Engineer', loops: ['By hand · 4 h/day', 'By hand · 6 h/week'], auto: 'Automated ✓', agent: 'Agent', gate: 'Human review', docs: 'Docs + training' },
+    fr: { nodes: [['Courriels', '62 courriels / jour'], ['Devis', '18 demandes / sem.'], ['CRM', '1 200 contacts'], ['Factures', '340 / mois'], ['Agenda', '45 rendez-vous / sem.']],
+      eng: 'Ingénieur', loops: ['À la main · 4 h/jour', 'À la main · 6 h/sem.'], auto: 'Automatisé ✓', agent: 'Agent', gate: 'Validation humaine', docs: 'Docs + formation' }
+  };
+  function MethodMap(svg, layer) {
+    const NS = 'http://www.w3.org/2000/svg', K = 56, CX = .8660254 * K, CY = .5 * K, VB = [-178, -176, 616, 364];
+    svg.setAttribute('viewBox', VB.join(' '));
+    const iso = (u, v, z = 0) => [(u - v) * CX, (u + v) * CY - z * K];
+    const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; };
+    const P = a => a.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+    const seg = (x, a, b) => clamp((x - a) / (b - a));
+    const back = k => { if (k <= 0) return 0; if (k >= 1) return 1; const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(k - 1, 3) + c1 * Math.pow(k - 1, 2); };
+    const eio = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    const N = [[0, 2], [0, -1], [3, -1], [3, -4], [6, -1]].map(([u, v], i) => ({ u, v, i, t: [.18, .4, .54, .68, .82][i] }));
+    const R = [[0, 1], [1, 2], [2, 3], [2, 4]].map(([a, b], i) => ({ a: N[a], b: N[b], i, t: 1.05 + i * .14, len: Math.hypot(N[b].u - N[a].u, N[b].v - N[a].v) }));
+    const AG = { u: -2.2, v: -1 }, GATE = { u: 3, v: -2.5 }, DOCS = { u: 1.9, v: 2.7 };
+
+    const defs = mk('defs');
+    const rg = mk('radialGradient', { id: 'mm-fade', cx: '.52', cy: '.5', r: '.6' }, defs);
+    [[0, 1], [.7, .55], [1, 0]].forEach(([o, a]) => mk('stop', { offset: o, 'stop-color': '#fff', 'stop-opacity': a }, rg));
+    const mask = mk('mask', { id: 'mm-mask', maskUnits: 'userSpaceOnUse', x: VB[0], y: VB[1], width: VB[2], height: VB[3] }, defs);
+    mk('rect', { x: VB[0], y: VB[1], width: VB[2], height: VB[3], fill: 'url(#mm-fade)' }, mask);
+
+    // ground: an isometric grid, like a blueprint table
+    const gG = mk('g', { class: 'mm-gnd', mask: 'url(#mm-mask)' });
+    let gd = '';
+    const ln = (a, b) => `M${a[0].toFixed(1)} ${a[1].toFixed(1)}L${b[0].toFixed(1)} ${b[1].toFixed(1)}`;
+    for (let v = -10; v <= 8; v++) gd += ln(iso(-7, v), iso(12, v));
+    for (let u = -7; u <= 12; u++) gd += ln(iso(u, -10), iso(u, 8));
+    mk('path', { d: gd }, gG);
+
+    // routes, loops, agents live on the ground, below the blocks
+    const gR = mk('g');
+    R.forEach(r => {
+      const d = ln(iso(r.a.u, r.a.v), iso(r.b.u, r.b.v));
+      r.bed = mk('path', { d, class: 'mm-bed', pathLength: 1 }, gR);
+      r.ln = mk('path', { d, class: 'mm-rt', pathLength: 1 }, gR);
+      r.acc = mk('path', { d, class: 'mm-rt acc', pathLength: 1 }, gR);
+    });
+    const gL = mk('g');
+    const loops = [1, 3].map((ni, j) => {
+      const c = iso(N[ni].u, N[ni].v), g = mk('g', {}, gL), R0 = 1.3;
+      const e1 = mk('ellipse', { cx: 0, cy: 0, rx: R0 * 1.2247 * K, ry: R0 * .7071 * K, class: 'mm-lp', pathLength: 100 }, g);
+      const e2 = mk('ellipse', { cx: 0, cy: 0, rx: R0 * .8 * 1.2247 * K, ry: R0 * .8 * .7071 * K, class: 'mm-lp b', pathLength: 100 }, g);
+      return { ni, c, g, e1, e2, t: [1.5, 1.66][j] };
+    });
+    const gM = mk('g');
+    const manual = Array.from({ length: 8 }, (_, i) => ({ r: R[i % 4], off: (i * .41) % 1, el: mk('circle', { r: 2.6, class: 'mm-man' }, gM) }));
+    const gA = mk('g');
+    const agents = Array.from({ length: 14 }, (_, i) => ({ r: R[i % 4], off: (i * .618) % 1, spd: .5 + (i % 3) * .12, el: mk('polyline', { class: 'mm-ag' }, gA) }));
+
+    // blocks, painted far to near
+    const gN = mk('g');
+    const faces = g => ({ g, nl: mk('polygon', { class: 'mm-f l' }, g), nr: mk('polygon', { class: 'mm-f r' }, g), nt: mk('polygon', { class: 'mm-f t' }, g) });
+    const box = (f, u, v, a, b, h, s) => {
+      a *= s; b *= s; h *= s;
+      const p = (du, dv, z) => iso(u + du, v + dv, z);
+      f.nl.setAttribute('points', P([p(-a, b, 0), p(a, b, 0), p(a, b, h), p(-a, b, h)]));
+      f.nr.setAttribute('points', P([p(a, -b, 0), p(a, b, 0), p(a, b, h), p(a, -b, h)]));
+      f.nt.setAttribute('points', P([p(-a, -b, h), p(a, -b, h), p(a, b, h), p(-a, b, h)]));
+    };
+    const items = [...N.map(n => ({ k: 'n', n, d: n.u + n.v })), { k: 'agent', d: AG.u + AG.v }, { k: 'docs', d: DOCS.u + DOCS.v }, { k: 'gate', d: GATE.u + GATE.v + .01 }].sort((a, b) => a.d - b.d);
+    let agentF, scaf, link, gate, docs = [];
+    items.forEach(it => {
+      if (it.k === 'n') { it.n.f = faces(mk('g', { class: 'mm-node' }, gN)); it.n.led = mk('circle', { r: 3.2, class: 'mm-led' }, it.n.f.g); }
+      else if (it.k === 'agent') {
+        const g = mk('g', { class: 'mm-agent' }, gN);
+        link = mk('path', { d: ln(iso(AG.u + .34, AG.v), iso(N[1].u - .84, N[1].v)), class: 'mm-link' }, g);
+        scaf = mk('path', { class: 'mm-scaf' }, g);
+        agentF = faces(g);
+        agentF.chev = mk('polyline', { class: 'mm-chev' }, g);
+      } else if (it.k === 'docs') { const g = mk('g', { class: 'mm-docs' }, gN); for (let i = 0; i < 3; i++) docs.push(mk('polygon', { class: 'mm-sheet' }, g)); }
+      else gate = mk('polyline', { class: 'mm-gate' }, gN);
+    });
+    // agent scaffold: the edges of its box, dashed
+    (() => {
+      const a = .3, b = .3, h = .5, p = (du, dv, z) => iso(AG.u + du, AG.v + dv, z);
+      const E = [[[-a, -b, 0], [a, -b, 0]], [[a, -b, 0], [a, b, 0]], [[a, b, 0], [-a, b, 0]], [[-a, b, 0], [-a, -b, 0]], [[-a, -b, h], [a, -b, h]], [[a, -b, h], [a, b, h]], [[a, b, h], [-a, b, h]], [[-a, b, h], [-a, -b, h]],
+        [[-a, -b, 0], [-a, -b, h]], [[a, -b, 0], [a, -b, h]], [[a, b, 0], [a, b, h]], [[-a, b, 0], [-a, b, h]]];
+      scaf.setAttribute('d', E.map(([s, e]) => ln(p(...s), p(...e))).join(''));
+    })();
+    // the engineer: a pin that walks the map
+    const gT = mk('g');
+    const eng = mk('g', { class: 'mm-engp' }, gT);
+    mk('ellipse', { cx: 0, cy: 0, rx: 13, ry: 7.5, class: 'mm-shadow' }, eng);
+    const engRing = mk('circle', { cx: 0, cy: -26, r: 7, class: 'mm-ering' }, eng);
+    mk('line', { x1: 0, y1: 0, x2: 0, y2: -26, class: 'mm-stem' }, eng);
+    mk('circle', { cx: 0, cy: -26, r: 6, class: 'mm-edot' }, eng);
+
+    // HTML labels over the map: same type and pills as the rest of the site
+    const lab = (cls, html) => { const e = document.createElement('div'); e.className = cls; e.innerHTML = html; layer.appendChild(e); return e; };
+    const nodeL = N.map(() => lab('mm-l', '<b></b><span></span>'));
+    const loopL = loops.map(() => lab('mm-pill warn', ''));
+    const agentL = lab('mm-pill acc', ''), gateL = lab('mm-pill', ''), docsL = lab('mm-pill', ''), engL = lab('mm-pill eng', '');
+    let T = MAPT.en, loopState = [-1, -1];
+    function texts(l) {
+      T = MAPT[l]; loopState = [-1, -1];
+      nodeL.forEach((e, i) => { e.firstChild.textContent = T.nodes[i][0]; e.lastChild.textContent = T.nodes[i][1]; });
+      agentL.textContent = T.agent; gateL.innerHTML = `<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="3.6" r="2.2"/><path d="M1.8 11c.5-2.6 2.2-4 4.2-4s3.7 1.4 4.2 4"/></svg><span class="t">${esc(T.gate)}</span>`;
+      docsL.textContent = T.docs; engL.textContent = T.eng;
+    }
+    let sc = 1, ox = 0, oy = 0;
+    function measure() { const r = svg.getBoundingClientRect(); if (!r.width) return; sc = Math.min(r.width / VB[2], r.height / VB[3]); ox = (r.width - VB[2] * sc) / 2; oy = (r.height - VB[3] * sc) / 2; }
+    const place = (e, q, vis) => {
+      e.style.transform = `translate3d(${(ox + (q[0] - VB[0]) * sc).toFixed(1)}px, ${(oy + (q[1] - VB[1]) * sc).toFixed(1)}px, 0)`;
+      e.style.opacity = vis.toFixed(3); e.style.visibility = vis > .01 ? '' : 'hidden';
+    };
+    // engineer route: [s, u, v]
+    const EK = [[0, -4, 4.6], [.16, .35, 2.3], [.3, .35, 2.3], [.38, .35, -.7], [.48, .35, -.7], [.52, 3.35, -.7], [.62, 3.35, -.7], [.66, 3.35, -3.7], [.76, 3.35, -3.7], [.8, 6.35, -.7], [1.08, 6.35, -.7], [1.42, .35, -.7], [2.95, .35, -.7], [3.22, 3.35, -.7], [4.4, 3.35, -.7], [4.92, 9, 2.2]];
+    function engAt(s) {
+      if (s <= EK[0][0]) return [EK[0][1], EK[0][2]];
+      for (let i = 1; i < EK.length; i++) if (s <= EK[i][0]) {
+        const a = EK[i - 1], b = EK[i], k = eio(seg(s, a[0], b[0]));
+        return [a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
+      }
+      return [EK[EK.length - 1][1], EK[EK.length - 1][2]];
+    }
+    function render(s, t) {
+      gG.style.opacity = (.3 + .7 * eio(seg(s, 0, .3))).toFixed(3);
+      const ext = N.map(n => eio(seg(s, 3.02 + n.i * .06, 3.36 + n.i * .06)));
+      N.forEach((n, i) => {
+        const k = back(seg(s, n.t, n.t + .12)), h = .16 + .44 * ext[i];
+        n.f.g.style.opacity = k > .001 ? '1' : '0';
+        if (k > .001) box(n.f, n.u, n.v, .8, .6, h, k);
+        const top = iso(n.u, n.v, h * k);
+        n.led.setAttribute('cx', (top[0] + .45 * CX).toFixed(1)); n.led.setAttribute('cy', (top[1] - .05 * CY).toFixed(1));
+        n.led.classList.toggle('on', s > 3.3 + i * .06);
+        place(nodeL[i], iso(n.u - .8 * k, n.v - .6 * k, h * k + .16), clamp(seg(s, n.t + .05, n.t + .15)));
+      });
+      R.forEach(r => {
+        const k = eio(seg(s, r.t, r.t + .3)), a = seg(s, 3.08 + r.i * .06, 3.3 + r.i * .06) * (1 - seg(s, 4.3, 4.7));
+        const off = (1 - k).toFixed(4), vis = k > .002 ? '1' : '0';
+        r.bed.style.strokeDashoffset = off; r.ln.style.strokeDashoffset = off; r.acc.style.strokeDashoffset = off;
+        r.bed.style.opacity = vis; r.ln.style.opacity = vis; r.acc.style.opacity = (k > .002 ? a : 0).toFixed(3);
+      });
+      loops.forEach((L, j) => {
+        const on = back(seg(s, L.t, L.t + .18)), off = eio(seg(s, 3.4 + .12 * j, 3.72 + .12 * j)), k = on * (1 - off);
+        L.g.setAttribute('transform', `translate(${L.c[0].toFixed(1)} ${L.c[1].toFixed(1)}) scale(${Math.max(.001, k * (1 + .25 * off)).toFixed(3)})`);
+        L.g.style.opacity = (k > .001 ? 1 - off : 0).toFixed(3);
+        L.e1.style.strokeDashoffset = (-t * 9 * (j ? 1 : -1)).toFixed(2); L.e2.style.strokeDashoffset = (t * 12 * (j ? 1 : -1)).toFixed(2);
+        const st = s > 3.5 + .12 * j ? 1 : 0;
+        if (st !== loopState[j]) { loopState[j] = st; loopL[j].textContent = st ? T.auto : T.loops[j]; loopL[j].classList.toggle('warn', !st); loopL[j].classList.toggle('ok', !!st); }
+        const n = N[L.ni];
+        place(loopL[j], iso(n.u + .95, n.v + 1.05, 0), clamp(seg(s, L.t + .1, L.t + .22)) * (st ? clamp(1 - seg(s, 4.5, 4.8)) : 1));
+      });
+      // step 3: an agent is built next to the quotes desk
+      const scafA = seg(s, 2.04, 2.2) * (1 - seg(s, 2.55, 2.7)), ak = back(seg(s, 2.3, 2.6));
+      scaf.style.opacity = scafA.toFixed(3);
+      agentF.g.style.opacity = ak > .001 ? '1' : '0';
+      if (ak > .001) {
+        box(agentF, AG.u, AG.v, .3, .3, .5, ak);
+        const c = (du, dv) => iso(AG.u + du * ak, AG.v + dv * ak, .5 * ak);
+        agentF.chev.setAttribute('points', P([c(-.1, -.15), c(.1, .02), c(-.1, .17)]));
+      }
+      link.style.opacity = seg(s, 2.5, 2.7).toFixed(3);
+      place(agentL, iso(AG.u - .3, AG.v - .3, .5 * ak + .14), clamp(seg(s, 2.5, 2.65)));
+      // step 4: a person approves what matters
+      const gk = back(seg(s, 3.22, 3.42)), gh = .6 * gk, gp = (du, z) => iso(GATE.u + du, GATE.v, z);
+      gate.setAttribute('points', P([gp(-.62, 0), gp(-.62, gh), gp(.62, gh), gp(.62, 0)]));
+      gate.style.opacity = gk > .001 ? '1' : '0';
+      place(gateL, iso(GATE.u + .62, GATE.v, gh + .12), clamp(seg(s, 3.34, 3.5)));
+      // step 5: docs and training, handed over
+      docs.forEach((d, i) => {
+        const k = back(seg(s, 4.08 + i * .07, 4.3 + i * .07)), z = i * .09 * k, a = .55, b = .4, p = (du, dv) => iso(DOCS.u + du, DOCS.v + dv, z);
+        d.setAttribute('points', P([p(-a, -b), p(a, -b), p(a, b), p(-a, b)]));
+        d.style.opacity = k > .001 ? '1' : '0';
+      });
+      place(docsL, iso(DOCS.u, DOCS.v, .5), clamp(seg(s, 4.3, 4.45)));
+      // before launch, work crawls along by hand
+      const mv = seg(s, 1.35, 1.6) * (1 - seg(s, 3.15, 3.35));
+      manual.forEach(M => {
+        if (mv <= 0) { M.el.style.opacity = '0'; return; }
+        const r = M.r, k = ((t * .07 / r.len) + M.off) % 1, q = iso(r.a.u + (r.b.u - r.a.u) * k, r.a.v + (r.b.v - r.a.v) * k, .04);
+        M.el.setAttribute('cx', q[0].toFixed(1)); M.el.setAttribute('cy', q[1].toFixed(1));
+        M.el.style.opacity = (mv * Math.min(1, k * 6, (1 - k) * 6)).toFixed(3);
+      });
+      // agents run the routes from launch onward
+      agents.forEach((A, i) => {
+        const vis = seg(s, 3.2 + i * .025, 3.34 + i * .025);
+        if (vis <= 0) { A.el.style.opacity = '0'; return; }
+        const r = A.r, du = (r.b.u - r.a.u) / r.len, dv = (r.b.v - r.a.v) / r.len;
+        const k = ((t * A.spd / r.len) + A.off) % 1, u = r.a.u + (r.b.u - r.a.u) * k, v = r.a.v + (r.b.v - r.a.v) * k;
+        const fade = Math.min(1, k * 8, (1 - k) * 8);
+        const q = (fw, sd) => iso(u + du * fw - dv * sd, v + dv * fw + du * sd, .06);
+        A.el.setAttribute('points', P([q(-.1, -.2), q(.12, 0), q(-.1, .2)]));
+        A.el.style.opacity = (vis * fade).toFixed(3);
+      });
+      // the engineer walks in, maps, stays through launch, then leaves
+      const e = engAt(s), ev = seg(s, 0, .06) * (1 - seg(s, 4.72, 4.92));
+      let ez = 0;
+      N.forEach((n, i) => { const k = back(seg(s, n.t, n.t + .12)), d = Math.max(Math.abs(e[0] - n.u) - .8, Math.abs(e[1] - n.v) - .6); if (k > .001) ez = Math.max(ez, (.16 + .44 * ext[i]) * k * clamp(1 - d / .25)); });
+      const ep = iso(e[0], e[1], ez);
+      eng.setAttribute('transform', `translate(${ep[0].toFixed(1)} ${ep[1].toFixed(1)})`);
+      eng.style.opacity = ev.toFixed(3);
+      engRing.setAttribute('r', (7 + (t * 1.1 % 1) * 12).toFixed(1)); engRing.style.opacity = (.8 * (1 - t * 1.1 % 1)).toFixed(3);
+      place(engL, [ep[0], ep[1] - 26], ev);
+    }
+    return { render, texts, measure };
+  }
+
   /* ------------------------------------------------------------ scroll-driven scenes */
   const hdr = $('#hdr'), track = $('#hero-track'), heroCopy = $('#hero-copy'), veil = $('#veil'), hint = $('#hint');
   /* film */
@@ -1842,8 +2098,16 @@ void main(){
   film.addEventListener('click', e => { if (e.target === film) film.close(); });
   film.addEventListener('close', () => { filmV.pause(); if (lenis) lenis.start(); });
   const cap1 = $('#cap1'), cap2 = $('#cap2'), stTxt = $('#st-txt'), stBar = $('#st-bar');
-  const hs = $('#hs'), hsTrack = $('#hs-track'), hsBar = $('#hs-bar'), hsN = $('#hs-n'), steps = $$('.st');
-  const hsMQ = matchMedia('(min-width: 900px) and (prefers-reduced-motion: no-preference)');
+  const mmEl = $('#mm'), mmSteps = $$('.mm-step'), mmBars = $$('.mm-bar b'), mmSvg = $('#mm-svg');
+  const mmap = MethodMap(mmSvg, $('#mm-lbls'));
+  let mmS = 0, mmT = 0, mmOn = false, mmRaf = 0, mmLast = 0;
+  const mmLoop = now => { mmRaf = requestAnimationFrame(mmLoop); mmT += mmLast ? Math.min(now - mmLast, 100) / 1000 : 0; mmLast = now; mmap.render(mmS, mmT); };
+  new IntersectionObserver(es => {
+    const v = es[0].isIntersecting;
+    if (v && !mmOn && !RM.matches) { mmOn = true; mmLast = 0; mmRaf = requestAnimationFrame(mmLoop); }
+    else if (!v && mmOn) { mmOn = false; cancelAnimationFrame(mmRaf); }
+  }).observe(mmSvg);
+  new ResizeObserver(() => { mmap.measure(); mmap.render(mmS, mmT); }).observe(mmSvg);
   const stmt = $('#stmt'), finalIn = $('#final-in');
 
   function heroScene() {
@@ -1873,22 +2137,16 @@ void main(){
   }
 
   function methodScene() {
-    if (!hsMQ.matches) {
-      if (lastActive !== -2) { hsTrack.style.transform = ''; steps.forEach(s => s.classList.add('on')); lastActive = -2; }
+    if (RM.matches) {
+      if (lastActive !== -2) { lastActive = -2; mmS = 5; mmSteps.forEach(el => { el.classList.add('on'); el.classList.remove('done'); }); mmap.render(5, 0); }
       return;
     }
-    if (lastActive === -2) { steps.forEach(s => s.classList.remove('on')); lastActive = -1; }
-    const span = hs.offsetHeight - innerHeight;
-    const p = span > 0 ? clamp(-hs.getBoundingClientRect().top / span) : 0;
-    const dist = Math.max(0, hsTrack.scrollWidth - innerWidth);
-    hsTrack.style.transform = `translate3d(${(-p * dist).toFixed(1)}px, 0, 0)`;
-    hsBar.style.setProperty('--p', p.toFixed(4));
-    const a = Math.min(steps.length - 1, Math.round(p * (steps.length - 1)));
-    if (a !== lastActive) {
-      lastActive = a;
-      steps.forEach((s, i) => s.classList.toggle('on', i === a));
-      hsN.textContent = String(a + 1).padStart(2, '0');
-    }
+    const span = mmEl.offsetHeight - innerHeight;
+    mmS = 5 * (span > 0 ? clamp(-mmEl.getBoundingClientRect().top / span) : 0);
+    const a = Math.min(4, Math.floor(mmS));
+    if (a !== lastActive) { lastActive = a; mmSteps.forEach((el, i) => { el.classList.toggle('on', i === a); el.classList.toggle('done', i < a); }); }
+    mmBars.forEach((b, i) => b.style.setProperty('--f', clamp(mmS - i).toFixed(3)));
+    if (!mmOn) mmap.render(mmS, mmT);
   }
 
   function stmtScene() {
@@ -1916,7 +2174,6 @@ void main(){
   }
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   addEventListener('resize', update);
-  if (hsMQ.addEventListener) hsMQ.addEventListener('change', update);
 
   /* smooth scrolling (progressive: falls back to native if the library is unavailable) */
   let lenis = null;
