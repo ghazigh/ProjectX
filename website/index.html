@@ -424,6 +424,38 @@
   @media (max-width:980px){.uc-panel{grid-template-columns:minmax(0,1fr)}}
   @media (max-width:520px){.uc-targets{grid-template-columns:minmax(0,1fr)}.uc-targets div{display:flex;align-items:baseline;gap:12px}.uc-targets span{margin:0}}
 
+  /* products: real screens in a browser frame that cycles through them */
+  .wk-list{display:grid;gap:clamp(56px,8vw,120px)}
+  .wk{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+  .wk:nth-child(even) .wk-shot{order:2}
+  .wk-shot{position:relative;border-radius:18px;background:var(--raise);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;
+    transform:perspective(1400px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .8s var(--ease)}
+  .wk-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+  .wk-bar .dots{display:flex;gap:6px}
+  .wk-bar .dots i{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
+  .wk-url{flex:1;min-width:0;text-align:center;font:500 .7rem/1 var(--f-mono);color:var(--muted);padding:6px 10px;border-radius:999px;background:var(--bg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wk-view{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface)}
+  .wk-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transform:scale(1.045);transition:opacity .9s var(--ease),transform 5s linear}
+  .wk-view img.on{opacity:1;transform:none}
+  .wk-tabs{display:flex;gap:4px;padding:8px;border-top:1px solid var(--line);background:var(--surface);overflow-x:auto;scrollbar-width:none}
+  .wk-tabs::-webkit-scrollbar{display:none}
+  .wk-tabs button{position:relative;flex:1 0 auto;appearance:none;border:0;background:transparent;color:var(--muted);cursor:pointer;font:500 .72rem/1 var(--f-mono);letter-spacing:.04em;padding:10px 12px;border-radius:10px;overflow:hidden;transition:background .3s,color .3s}
+  .wk-tabs button:hover{color:var(--ink)}
+  .wk-tabs button.on{background:var(--raise);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+  .wk-tabs button::after{content:"";position:absolute;left:10px;right:10px;bottom:4px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left}
+  .wk-tabs button.on.run::after{animation:wkrun var(--dur,4.5s) linear forwards}
+  @keyframes wkrun{to{transform:scaleX(1)}}
+  .wk-kick{font:500 .7rem/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .wk h3{font-size:clamp(2rem,1.3rem + 2.2vw,3.2rem);font-stretch:114%;font-weight:660;letter-spacing:-.045em;line-height:1;margin:12px 0 6px}
+  .wk-sub{font-family:var(--f-display);font-stretch:108%;font-size:1.2rem;font-weight:560;letter-spacing:-.02em;color:var(--ink-2)}
+  .wk-p{margin-top:16px;color:var(--muted)}
+  .wk-feat{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;color:var(--ink-2);font-size:.97rem}
+  .wk-feat li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px}
+  .wk-feat li::before{content:"";width:10px;height:5px;margin-top:.5em;border-left:1.6px solid var(--accent);border-bottom:1.6px solid var(--accent);transform:rotate(-45deg)}
+  .wk-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .wk-note{margin-top:clamp(36px,5vw,56px);font-size:.84rem;color:var(--muted)}
+  @media (max-width:900px){.wk{grid-template-columns:minmax(0,1fr)}.wk:nth-child(even) .wk-shot{order:0}}
+
   /* trust band */
   .trust{padding-block:clamp(64px,8vw,110px);border-block:1px solid var(--line);background:var(--surface)}
   .trust-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,3vw,40px);margin-top:32px}
@@ -770,6 +802,7 @@
       <a href="#model" data-i18n="nav1">Model</a>
       <a href="#method" data-i18n="nav2">Method</a>
       <a href="#cases" data-i18n="nav3">Use cases</a>
+      <a href="#work" data-i18n="nav6">Products</a>
       <a href="#pricing" data-i18n="nav4">Pricing</a>
       <a href="#faq" data-i18n="nav5">FAQ</a>
     </nav>
@@ -903,6 +936,49 @@
       <div class="uc-tabs rv" id="uc-tabs" role="tablist" aria-label="Industries"></div>
       <div class="uc-panel rv" id="uc-panel" role="tabpanel"></div>
       <p class="uc-note" data-i18n="ucNote">Example projects. Outcomes are the targets we design for, confirmed with your numbers during the diagnostic.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTS: things we built, shown with their real screens -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="head uc-head">
+        <div><p class="tag" data-i18n="t10">Products</p><h2 class="rv-clip" data-i18n="h2w">Built by us. Running on agents.</h2></div>
+        <p class="uc-intro rv" data-i18n="wkIntro">Products we designed and shipped end to end: the data layer, the agents, and the interface people use every day.</p>
+      </div>
+      <div class="wk-list">
+        <article class="wk rv">
+          <div class="wk-shot" data-wk>
+            <div class="wk-bar"><span class="dots"><i></i><i></i><i></i></span><span class="wk-url">ghazigh.github.io/AI_Data</span></div>
+            <div class="wk-view"><img src="media/work/dl-home.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Datalith website home page" class="on"><img src="media/work/dl-demo.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Datalith console: estate overview with the agent-readiness score"><img src="media/work/dl-graph.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Datalith console: the enterprise knowledge graph"></div>
+            <div class="wk-tabs"><button type="button" data-i18n="wkA1" class="on">Website</button><button type="button" data-i18n="wkA2">Readiness score</button><button type="button" data-i18n="wkA3">Knowledge graph</button></div>
+          </div>
+          <div class="wk-tx">
+            <p class="wk-kick" data-i18n="wkAk">Product · Enterprise data</p>
+            <h3>Datalith</h3>
+            <p class="wk-sub" data-i18n="wkAs">The agentic data center.</p>
+            <p class="wk-p" data-i18n="wkAp">Connects every data source in a company, builds one knowledge graph, and serves governed data any AI agent can use.</p>
+            <ul class="wk-feat" data-i18n="wkAl"><li>Scores how ready your data is for agents, 0 to 100, with the red flags</li><li>Maps the whole estate: sources, domains, entities, live activity</li><li>Proposes the agents worth building, with impact and effort</li></ul>
+            <div class="wk-links"><a class="btn btn-ghost" href="https://ghazigh.github.io/AI_Data/" target="_blank" rel="noopener"><span data-i18n="wkAb">Visit Datalith</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+          </div>
+        </article>
+        <article class="wk rv">
+          <div class="wk-shot" data-wk>
+            <div class="wk-bar"><span class="dots"><i></i><i></i><i></i></span><span class="wk-url">ghazigh.github.io/RealAI</span></div>
+            <div class="wk-view"><img src="media/work/ra-home.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="RealAI website home page" class="on"><img src="media/work/ra-ws.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="RealAI workspace dashboard for a real estate broker"><img src="media/work/ra-voice.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="RealAI voice agent: call log and live transcript"></div>
+            <div class="wk-tabs"><button type="button" data-i18n="wkB1" class="on">Website</button><button type="button" data-i18n="wkB2">Broker workspace</button><button type="button" data-i18n="wkB3">Voice agent</button></div>
+          </div>
+          <div class="wk-tx">
+            <p class="wk-kick" data-i18n="wkBk">Product · Real estate, Québec</p>
+            <h3>RealAI</h3>
+            <p class="wk-sub" data-i18n="wkBs">Five AI agents for Montréal brokers.</p>
+            <p class="wk-p" data-i18n="wkBp">Each agent does one real job in a broker's day, in French and English, on top of the CRM they already use.</p>
+            <ul class="wk-feat" data-i18n="wkBl"><li>Finds sellers and qualifies them before they reach the CRM</li><li>Calls every new web lead in under 60 seconds and books the visit</li><li>Writes listing content, keeps Bill 96 compliance, recaptures expired listings</li></ul>
+            <div class="wk-links"><a class="btn btn-ghost" href="https://ghazigh.github.io/RealAI/" target="_blank" rel="noopener"><span data-i18n="wkBb">Visit RealAI</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+          </div>
+        </article>
+      </div>
+      <p class="wk-note" data-i18n="wkNote">Screens show sample data.</p>
     </div>
   </section>
 
@@ -1075,7 +1151,17 @@
   /* ------------------------------------------------------------ i18n: English in the markup, French here */
   const FR = {
     skip: `Aller au contenu`,
-    nav1: `Le modèle`, nav2: `Méthode`, nav3: `Cas d'usage`, nav4: `Offres`, nav5: `FAQ`,
+    nav1: `Le modèle`, nav2: `Méthode`, nav3: `Cas d'usage`, nav4: `Offres`, nav5: `FAQ`, nav6: `Produits`,
+    t10: `Produits`, h2w: `Construits par nous. Propulsés par des agents.`,
+    wkIntro: `Des produits que nous avons conçus et livrés de bout en bout : la couche de données, les agents, et l'interface utilisée chaque jour.`,
+    wkA1: `Site web`, wkA2: `Score de préparation`, wkA3: `Graphe de connaissances`, wkAk: `Produit · Données d'entreprise`,
+    wkAs: `Le centre de données agentique.`, wkAp: `Connecte toutes les sources de données d'une entreprise, construit un seul graphe de connaissances, et sert des données gouvernées que n'importe quel agent IA peut utiliser.`,
+    wkAl: `<li>Mesure si vos données sont prêtes pour les agents, de 0 à 100, avec les signaux d'alerte</li><li>Cartographie tout le parc : sources, domaines, entités, activité en direct</li><li>Propose les agents qui valent la peine d'être construits, avec impact et effort</li>`,
+    wkAb: `Visiter Datalith`,
+    wkB1: `Site web`, wkB2: `Espace du courtier`, wkB3: `Agent vocal`, wkBk: `Produit · Immobilier, Québec`,
+    wkBs: `Cinq agents IA pour les courtiers de Montréal.`, wkBp: `Chaque agent fait un vrai travail dans la journée d'un courtier, en français et en anglais, par-dessus le CRM qu'il utilise déjà.`,
+    wkBl: `<li>Trouve les vendeurs et les qualifie avant qu'ils arrivent dans le CRM</li><li>Rappelle chaque nouveau prospect web en moins de 60 secondes et réserve la visite</li><li>Rédige le contenu des inscriptions, assure la conformité à la Loi 96, récupère les inscriptions expirées</li>`,
+    wkBb: `Visiter RealAI`, wkNote: `Les écrans montrent des données d'exemple.`,
     navCta: `Réserver <span class="long">un appel</span>`,
     pinT: `Goulot · Jour 4`, pinS: `Devis à la main : 4 h/jour`,
     pinT2: `Résolu · Jour 30`, pinS2: `80 h récupérées chaque mois`,
@@ -2590,7 +2676,7 @@ void main(){
   }
 
   /* chapter readout: where you are, in a word */
-  const CH = [['model', 't1'], ['method', 't2'], ['loops', 'lfTag'], ['cases', 't3'], ['calc', 't4'], ['pricing', 't5'], ['team', 't7'], ['faq', 't8'], ['contact', '']];
+  const CH = [['model', 't1'], ['method', 't2'], ['loops', 'lfTag'], ['cases', 't3'], ['work', 't10'], ['calc', 't4'], ['pricing', 't5'], ['team', 't7'], ['faq', 't8'], ['contact', '']];
   const chapEl = $('#chap'), chapN = $('#chap-n'), chapT = $('#chap-t'), chapS = $('#chap-s'), chSecs = CH.map(([id]) => $('#' + id));
   chapS.innerHTML = CH.map(() => '<s></s>').join('');
   let chapI = -2, scrRaf = 0;
@@ -2618,6 +2704,27 @@ void main(){
     scramble(chapT, chapTitle(a));
     $$('s', chapS).forEach((x, i) => x.classList.toggle('on', i <= a));
   }
+
+  /* products: each browser frame cycles through its real screens while in view */
+  $$('[data-wk]').forEach(box => {
+    const imgs = $$('.wk-view img', box), tabs = $$('.wk-tabs button', box);
+    let i = 0, timer = 0, vis = false, hover = false;
+    const show = k => {
+      i = k; imgs.forEach((im, j) => im.classList.toggle('on', j === k));
+      tabs.forEach((b, j) => { b.classList.toggle('on', j === k); b.classList.remove('run'); });
+      clearTimeout(timer);
+      if (vis && !hover && !RM.matches) { void tabs[k].offsetWidth; tabs[k].classList.add('run'); timer = setTimeout(() => show((i + 1) % imgs.length), 4500); }
+    };
+    tabs.forEach((b, k) => b.addEventListener('click', () => show(k)));
+    box.addEventListener('pointerenter', () => { hover = true; show(i); });
+    box.addEventListener('pointerleave', () => { hover = false; box.style.setProperty('--rx', '0deg'); box.style.setProperty('--ry', '0deg'); show(i); });
+    if (!RM.matches && matchMedia('(hover: hover)').matches) box.addEventListener('pointermove', e => {
+      const r = box.getBoundingClientRect();
+      box.style.setProperty('--rx', ((.5 - (e.clientY - r.top) / r.height) * 4).toFixed(2) + 'deg');
+      box.style.setProperty('--ry', (((e.clientX - r.left) / r.width - .5) * 5).toFixed(2) + 'deg');
+    });
+    new IntersectionObserver(es => { const v = es[0].isIntersecting; if (v !== vis) { vis = v; show(i); } }, { threshold: .35 }).observe(box);
+  });
 
   /* ------------------------------------------------------------ copy email */
   const copyBtn = $('#copy');

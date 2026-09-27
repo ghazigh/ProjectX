@@ -74,7 +74,7 @@ cd website && python3 -m http.server 8000   # then open http://localhost:8000
 ## Files in this folder
 
 - `index.html` — the Forward agency landing page (served at the site root)
-- `media/` — the brand film (`xforward-film.mp4`, 12 MB, loaded only when played) and its poster
+- `media/` — the brand film (`xforward-film.mp4`, 12 MB, loaded only when played) and its poster; `media/work/` — product screenshots (Datalith, RealAI)
 - `og.jpg` — the 1200×630 image shown when the link is shared
 - `insights/` — the SEO blog: `index.html` + two cornerstone articles + `article.css`
 - `sitemap.xml`, `robots.txt` — copy to your site **root** for indexing
