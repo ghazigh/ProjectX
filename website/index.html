@@ -455,6 +455,33 @@
   .wk-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
   .wk-note{margin-top:clamp(36px,5vw,56px);font-size:.84rem;color:var(--muted)}
   @media (max-width:900px){.wk{grid-template-columns:minmax(0,1fr)}.wk:nth-child(even) .wk-shot{order:0}}
+  /* Sat Lab console mockup: scan, then alerts, then the trim plan */
+  .sl{position:absolute;inset:0;background:#0C120F}
+  .sl svg{width:100%;height:100%;display:block}
+  .sl text{font:500 21px var(--f-mono);fill:#8FA39A}
+  .sl .sl-brand{font:700 24px var(--f-display);fill:#E8F2EC}
+  .sl-nav text.on{fill:#7CF0B4}
+  .sl-kpis rect,.sl-panel rect{fill:rgba(10,14,12,.86);stroke:rgba(124,240,180,.18)}
+  .sl .k{font-size:16px;letter-spacing:.1em;text-transform:uppercase;fill:#6F857B}
+  .sl .v{font:700 34px var(--f-display);fill:#E8F2EC}
+  .sl .v.a{fill:#FF6B5B}.sl .v.s{font-size:24px}
+  .sl-panel text{fill:#C9D8D0}.sl-panel text.g{fill:#7CF0B4}
+  .sl-row{fill:none;stroke:rgba(255,236,170,.12);stroke-width:86;stroke-linecap:round;stroke-linejoin:round}
+  .sl-line{fill:none;stroke:#F2E6B5;stroke-width:2.2;stroke-dasharray:10 6}
+  .sl-pyl{fill:#F2E6B5}
+  .sl-tree{fill:#3FA26A;opacity:.62;transition:fill .6s}
+  .sl[data-step="1"] .sl-tree.hot,.sl[data-step="2"] .sl-tree.hot{fill:#E0533F;opacity:.85}
+  .sl-scanner{animation:slscan 3.6s linear infinite;opacity:0;transition:opacity .4s}
+  .sl[data-step="0"] .sl-scanner{opacity:1}
+  @keyframes slscan{from{transform:translateX(0)}to{transform:translateX(1460px)}}
+  .sl-alert,.sl-ok,.sl-route,.sl-panel{opacity:0;transition:opacity .5s var(--ease) var(--d,0s)}
+  .sl[data-step="1"] .sl-alert,.sl[data-step="2"] .sl-ok,.sl[data-step="2"] .sl-route,.sl[data-step="2"] .sl-panel{opacity:1}
+  .sl-ring{fill:none;stroke:#FF6B5B;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:slping 1.6s var(--ease) infinite}
+  .sl-dot{fill:#FF6B5B}
+  @keyframes slping{from{transform:scale(.5);opacity:1}to{transform:scale(2.2);opacity:0}}
+  .sl-ok circle{fill:#7CF0B4}.sl-ok path{fill:none;stroke:#0C120F;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .sl-route{fill:none;stroke:#7CF0B4;stroke-width:2;stroke-dasharray:6 7}
+  .sl-tag{position:absolute;left:10px;bottom:10px;font:500 .5rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:#8FA39A;background:rgba(10,14,12,.8);padding:6px 9px;border-radius:999px;border:1px solid rgba(124,240,180,.18)}
 
   /* trust band */
   .trust{padding-block:clamp(64px,8vw,110px);border-block:1px solid var(--line);background:var(--surface)}
@@ -977,6 +1004,53 @@
             <div class="wk-links"><a class="btn btn-ghost" href="https://ghazigh.github.io/RealAI/" target="_blank" rel="noopener"><span data-i18n="wkBb">Visit RealAI</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
           </div>
         </article>
+        <article class="wk rv">
+          <div class="wk-shot" data-wk>
+            <div class="wk-bar"><span class="dots"><i></i><i></i><i></i></span><span class="wk-url">ai-lab-478318.web.app</span></div>
+            <div class="wk-view"><img src="media/work/rs-land.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Research AI website home page with a paper workspace" class="on"><img src="media/work/rs-land-2.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Research AI agents: Literature Scout, Logic Architect, Scientific Writer"><img src="media/work/rs-land-3.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Research AI professor console with the policy in force"></div>
+            <div class="wk-tabs"><button type="button" data-i18n="wkC1" class="on">Website</button><button type="button" data-i18n="wkC2">Agents</button><button type="button" data-i18n="wkC3">Professor console</button></div>
+          </div>
+          <div class="wk-tx">
+            <p class="wk-kick" data-i18n="wkCk">Product · Academic research</p>
+            <h3>Research AI</h3>
+            <p class="wk-sub" data-i18n="wkCs">From research idea to structured draft.</p>
+            <p class="wk-p" data-i18n="wkCp">A team of agents scouts the literature, structures the argument and drafts sections, while a person stays in charge of what gets submitted.</p>
+            <ul class="wk-feat" data-i18n="wkCl"><li>Literature Scout, Logic Architect and Scientific Writer agents</li><li>Every citation resolved to a real DOI or arXiv record</li><li>Full audit trail, professor sign-off, data kept in Canada</li></ul>
+            <div class="wk-links"><a class="btn btn-ghost" href="https://ai-lab-478318.web.app/" target="_blank" rel="noopener"><span data-i18n="wkCb">Visit Research AI</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+          </div>
+        </article>
+        <article class="wk rv">
+          <div class="wk-shot" data-wk>
+            <div class="wk-bar"><span class="dots"><i></i><i></i><i></i></span><span class="wk-url">satlab-975f7.web.app</span></div>
+            <div class="wk-view"><div class="sl" data-step="0" aria-hidden="true"><svg viewBox="0 0 1200 750" preserveAspectRatio="xMidYMid slice">
+<defs><filter id="sl-terrain"><feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="5" seed="7"/><feColorMatrix values="0 0 0 0 .09  0 0 0 0 .16  0 0 0 0 .1  0 0 0 -1.4 1.25"/></filter>
+<filter id="sl-fine"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 .2  0 0 0 0 .3  0 0 0 0 .2  0 0 0 -.9 .5"/></filter>
+<linearGradient id="sl-scan" x1="0" x2="1"><stop offset="0" stop-color="#7CF0B4" stop-opacity="0"/><stop offset=".85" stop-color="#7CF0B4" stop-opacity=".22"/><stop offset="1" stop-color="#7CF0B4" stop-opacity=".9"/></linearGradient></defs>
+<rect width="1200" height="750" fill="#0C120F"/><rect width="1200" height="750" filter="url(#sl-terrain)"/><rect width="1200" height="750" filter="url(#sl-fine)" opacity=".5"/>
+<polyline points="260,610 420,540 560,470 700,430 840,360 980,300 1150,250" class="sl-row"/><circle cx="440" cy="433" r="18" class="sl-tree"/><circle cx="323" cy="517" r="25" class="sl-tree"/><circle cx="935" cy="271" r="19" class="sl-tree"/><circle cx="470" cy="408" r="14" class="sl-tree"/><circle cx="1065" cy="175" r="23" class="sl-tree"/><circle cx="937" cy="275" r="15" class="sl-tree"/><circle cx="1024" cy="322" r="20" class="sl-tree hot"/><circle cx="828" cy="321" r="18" class="sl-tree hot"/><circle cx="356" cy="597" r="15" class="sl-tree"/><circle cx="910" cy="436" r="18" class="sl-tree"/><circle cx="645" cy="510" r="13" class="sl-tree"/><circle cx="522" cy="453" r="17" class="sl-tree hot"/><circle cx="1171" cy="332" r="12" class="sl-tree"/><circle cx="822" cy="302" r="13" class="sl-tree"/><circle cx="830" cy="411" r="17" class="sl-tree hot"/><circle cx="729" cy="302" r="12" class="sl-tree"/><circle cx="299" cy="539" r="19" class="sl-tree"/><circle cx="994" cy="240" r="13" class="sl-tree"/><circle cx="650" cy="386" r="11" class="sl-tree"/><circle cx="1139" cy="345" r="25" class="sl-tree"/><circle cx="299" cy="651" r="12" class="sl-tree"/><circle cx="805" cy="321" r="13" class="sl-tree"/><circle cx="640" cy="398" r="20" class="sl-tree"/><circle cx="390" cy="491" r="17" class="sl-tree"/><circle cx="617" cy="568" r="19" class="sl-tree"/><circle cx="632" cy="385" r="13" class="sl-tree"/><circle cx="282" cy="505" r="20" class="sl-tree"/><circle cx="1100" cy="190" r="19" class="sl-tree"/><circle cx="534" cy="443" r="18" class="sl-tree hot"/><circle cx="962" cy="396" r="13" class="sl-tree"/><circle cx="477" cy="579" r="11" class="sl-tree"/><circle cx="612" cy="372" r="17" class="sl-tree"/><circle cx="448" cy="494" r="14" class="sl-tree"/><circle cx="443" cy="427" r="17" class="sl-tree"/><circle cx="513" cy="527" r="25" class="sl-tree hot"/><circle cx="803" cy="498" r="20" class="sl-tree"/><circle cx="999" cy="224" r="11" class="sl-tree"/><circle cx="433" cy="473" r="21" class="sl-tree"/><circle cx="989" cy="399" r="18" class="sl-tree"/><circle cx="854" cy="414" r="16" class="sl-tree"/><circle cx="726" cy="534" r="21" class="sl-tree"/><circle cx="267" cy="508" r="14" class="sl-tree"/><circle cx="980" cy="213" r="17" class="sl-tree"/><circle cx="705" cy="537" r="13" class="sl-tree"/><circle cx="252" cy="584" r="24" class="sl-tree"/><circle cx="411" cy="653" r="19" class="sl-tree"/><circle cx="1015" cy="248" r="20" class="sl-tree"/><circle cx="1008" cy="400" r="17" class="sl-tree"/><circle cx="309" cy="515" r="24" class="sl-tree"/><circle cx="778" cy="358" r="11" class="sl-tree"/><circle cx="1012" cy="237" r="16" class="sl-tree"/><circle cx="355" cy="632" r="23" class="sl-tree"/><circle cx="501" cy="399" r="24" class="sl-tree"/><circle cx="606" cy="420" r="20" class="sl-tree"/><circle cx="1050" cy="343" r="21" class="sl-tree"/><circle cx="631" cy="367" r="25" class="sl-tree"/><circle cx="657" cy="346" r="13" class="sl-tree"/><circle cx="998" cy="206" r="15" class="sl-tree"/><circle cx="1027" cy="361" r="24" class="sl-tree"/><circle cx="845" cy="270" r="12" class="sl-tree"/><polyline points="260,610 420,540 560,470 700,430 840,360 980,300 1150,250" class="sl-line"/><rect x="255" y="605" width="10" height="10" rx="2" class="sl-pyl"/><rect x="415" y="535" width="10" height="10" rx="2" class="sl-pyl"/><rect x="555" y="465" width="10" height="10" rx="2" class="sl-pyl"/><rect x="695" y="425" width="10" height="10" rx="2" class="sl-pyl"/><rect x="835" y="355" width="10" height="10" rx="2" class="sl-pyl"/><rect x="975" y="295" width="10" height="10" rx="2" class="sl-pyl"/><rect x="1145" y="245" width="10" height="10" rx="2" class="sl-pyl"/>
+<g class="sl-scanner"><rect x="-260" y="0" width="260" height="750" fill="url(#sl-scan)"/></g>
+<g class="sl-alert" style="--d:0.0s"><circle cx="1024" cy="322" r="16" class="sl-ring"/><circle cx="1024" cy="322" r="4" class="sl-dot"/></g><g class="sl-alert" style="--d:0.15s"><circle cx="828" cy="321" r="16" class="sl-ring"/><circle cx="828" cy="321" r="4" class="sl-dot"/></g><g class="sl-alert" style="--d:0.3s"><circle cx="522" cy="453" r="16" class="sl-ring"/><circle cx="522" cy="453" r="4" class="sl-dot"/></g><g class="sl-alert" style="--d:0.44999999999999996s"><circle cx="830" cy="411" r="16" class="sl-ring"/><circle cx="830" cy="411" r="4" class="sl-dot"/></g><g class="sl-alert" style="--d:0.6s"><circle cx="534" cy="443" r="16" class="sl-ring"/><circle cx="534" cy="443" r="4" class="sl-dot"/></g><g class="sl-alert" style="--d:0.75s"><circle cx="513" cy="527" r="16" class="sl-ring"/><circle cx="513" cy="527" r="4" class="sl-dot"/></g><path d="M150 700 L513 555 L522 481 L534 471 L828 349 L830 439 L1024 350" class="sl-route"/><g class="sl-ok" style="--d:0.0s"><circle cx="1024" cy="322" r="11"/><path d="M1019 322l4 4 7-8"/></g><g class="sl-ok" style="--d:0.12s"><circle cx="828" cy="321" r="11"/><path d="M823 321l4 4 7-8"/></g><g class="sl-ok" style="--d:0.24s"><circle cx="522" cy="453" r="11"/><path d="M517 453l4 4 7-8"/></g><g class="sl-ok" style="--d:0.36s"><circle cx="830" cy="411" r="11"/><path d="M825 411l4 4 7-8"/></g><g class="sl-ok" style="--d:0.48s"><circle cx="534" cy="443" r="11"/><path d="M529 443l4 4 7-8"/></g><g class="sl-ok" style="--d:0.6s"><circle cx="513" cy="527" r="11"/><path d="M508 527l4 4 7-8"/></g>
+<rect x="0" y="0" width="200" height="750" fill="#0A0E0C" opacity=".92"/>
+<g class="sl-nav"><rect x="24" y="28" width="22" height="22" rx="6" fill="#7CF0B4"/><text x="56" y="45" class="sl-brand">Sat Lab</text>
+<text x="24" y="118">Overview</text><text x="24" y="162" class="on">Corridors</text><text x="24" y="206">Scenes</text><text x="24" y="250">Alerts</text><text x="24" y="294">Twin</text></g>
+<g class="sl-kpis"><g transform="translate(228 24)"><rect width="220" height="78" rx="12"/><text x="16" y="28" class="k">Tier-1 alerts</text><text x="16" y="62" class="v a">6</text></g>
+<g transform="translate(460 24)"><rect width="220" height="78" rx="12"/><text x="16" y="28" class="k">Grid coverage</text><text x="16" y="62" class="v">98.4%</text></g>
+<g transform="translate(692 24)"><rect width="220" height="78" rx="12"/><text x="16" y="28" class="k">Avg encroachment</text><text x="16" y="62" class="v">1.7 m</text></g>
+<g transform="translate(924 24)"><rect width="250" height="78" rx="12"/><text x="16" y="28" class="k">Pass</text><text x="16" y="62" class="v s">Sentinel-2 · 10 m</text></g></g>
+<g class="sl-panel" transform="translate(846 430)"><rect width="330" height="296" rx="14"/><text x="18" y="34" class="k">Trim plan · crew A</text>
+<text x="18" y="80">Span 214 · 0.6 m</text><text x="18" y="120">Span 219 · 0.8 m</text><text x="18" y="160">Span 231 · 0.4 m</text><text x="18" y="200">Span 240 · 0.9 m</text><text x="18" y="256" class="g">✓ 6 spans · Tuesday</text></g>
+</svg><span class="sl-tag">Illustration · sample data</span></div></div>
+            <div class="wk-tabs"><button type="button" data-i18n="wkD1" class="on">Satellite scan</button><button type="button" data-i18n="wkD2">Encroachment</button><button type="button" data-i18n="wkD3">Trim plan</button></div>
+          </div>
+          <div class="wk-tx">
+            <p class="wk-kick" data-i18n="wkDk">Product · Utilities &amp; geospatial</p>
+            <h3>Sat Lab</h3>
+            <p class="wk-sub" data-i18n="wkDs">Satellite AI for power-grid resilience.</p>
+            <p class="wk-p" data-i18n="wkDp">Reads satellite imagery along power-line corridors, finds the vegetation that threatens the lines, and turns it into a trim plan crews can act on.</p>
+            <ul class="wk-feat" data-i18n="wkDl"><li>A multi-resolution satellite cascade, from Sentinel-2 to high-resolution imagery</li><li>Encroachment and danger trees flagged span by span, with a risk score</li><li>A digital twin of the network, with alerts and a full audit trail</li></ul>
+            <div class="wk-links"><a class="btn btn-ghost" href="https://satlab-975f7.web.app/" target="_blank" rel="noopener"><span data-i18n="wkDb">Visit Sat Lab</span><span class="arr" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+          </div>
+        </article>
       </div>
       <p class="wk-note" data-i18n="wkNote">Screens show sample data.</p>
     </div>
@@ -1161,7 +1235,15 @@
     wkB1: `Site web`, wkB2: `Espace du courtier`, wkB3: `Agent vocal`, wkBk: `Produit · Immobilier, Québec`,
     wkBs: `Cinq agents IA pour les courtiers de Montréal.`, wkBp: `Chaque agent fait un vrai travail dans la journée d'un courtier, en français et en anglais, par-dessus le CRM qu'il utilise déjà.`,
     wkBl: `<li>Trouve les vendeurs et les qualifie avant qu'ils arrivent dans le CRM</li><li>Rappelle chaque nouveau prospect web en moins de 60 secondes et réserve la visite</li><li>Rédige le contenu des inscriptions, assure la conformité à la Loi 96, récupère les inscriptions expirées</li>`,
-    wkBb: `Visiter RealAI`, wkNote: `Les écrans montrent des données d'exemple.`,
+    wkBb: `Visiter RealAI`,
+    wkC1: `Site web`, wkC2: `Agents`, wkC3: `Console du professeur`, wkCk: `Produit · Recherche universitaire`,
+    wkCs: `De l'idée de recherche au brouillon structuré.`, wkCp: `Une équipe d'agents explore la littérature, structure l'argument et rédige les sections, pendant qu'une personne garde la main sur ce qui est soumis.`,
+    wkCl: `<li>Agents Literature Scout, Logic Architect et Scientific Writer</li><li>Chaque citation reliée à un vrai DOI ou à un article arXiv</li><li>Traçabilité complète, validation du professeur, données gardées au Canada</li>`,
+    wkCb: `Visiter Research AI`,
+    wkD1: `Passage satellite`, wkD2: `Empiètement`, wkD3: `Plan d'élagage`, wkDk: `Produit · Services publics et géospatial`,
+    wkDs: `L'IA satellitaire pour la résilience du réseau électrique.`, wkDp: `Analyse l'imagerie satellite le long des corridors de lignes électriques, repère la végétation qui menace les lignes, et en fait un plan d'élagage prêt pour les équipes.`,
+    wkDl: `<li>Une cascade satellite multirésolution, de Sentinel-2 à l'imagerie haute résolution</li><li>Empiètements et arbres dangereux signalés portée par portée, avec un score de risque</li><li>Un jumeau numérique du réseau, avec alertes et traçabilité complète</li>`,
+    wkDb: `Visiter Sat Lab`, wkNote: `Les écrans montrent des données d'exemple.`,
     navCta: `Réserver <span class="long">un appel</span>`,
     pinT: `Goulot · Jour 4`, pinS: `Devis à la main : 4 h/jour`,
     pinT2: `Résolu · Jour 30`, pinS2: `80 h récupérées chaque mois`,
@@ -2707,13 +2789,13 @@ void main(){
 
   /* products: each browser frame cycles through its real screens while in view */
   $$('[data-wk]').forEach(box => {
-    const imgs = $$('.wk-view img', box), tabs = $$('.wk-tabs button', box);
+    const imgs = $$('.wk-view img', box), tabs = $$('.wk-tabs button', box), mock = $('.sl', box);
     let i = 0, timer = 0, vis = false, hover = false;
     const show = k => {
-      i = k; imgs.forEach((im, j) => im.classList.toggle('on', j === k));
+      i = k; imgs.forEach((im, j) => im.classList.toggle('on', j === k)); if (mock) mock.dataset.step = k;
       tabs.forEach((b, j) => { b.classList.toggle('on', j === k); b.classList.remove('run'); });
       clearTimeout(timer);
-      if (vis && !hover && !RM.matches) { void tabs[k].offsetWidth; tabs[k].classList.add('run'); timer = setTimeout(() => show((i + 1) % imgs.length), 4500); }
+      if (vis && !hover && !RM.matches) { void tabs[k].offsetWidth; tabs[k].classList.add('run'); timer = setTimeout(() => show((i + 1) % tabs.length), 4500); }
     };
     tabs.forEach((b, k) => b.addEventListener('click', () => show(k)));
     box.addEventListener('pointerenter', () => { hover = true; show(i); });
